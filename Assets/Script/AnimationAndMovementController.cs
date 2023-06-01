@@ -16,7 +16,11 @@ public class AnimationAndMovementController : MonoBehaviour
 
     // variables to store player input value
     Vector2 currentMovementInput;
-    Vector3 currentMovement;
+    public Vector3 currentMovement;
+
+    [HideInInspector]
+    public Vector3 lastMovement;
+
     Vector3 appliedMovement;
     bool isMovementPressed;
     bool isRunPressed;
@@ -68,6 +72,8 @@ public class AnimationAndMovementController : MonoBehaviour
         playerInput.CharacterControls.Jump.canceled += OnJump;
 
         setupJumpVariables();
+
+        lastMovement = new Vector3(1, 0, 0f);
     }
 
     // callback handler function for jump buttons
@@ -86,6 +92,18 @@ public class AnimationAndMovementController : MonoBehaviour
     void OnMovementInput(InputAction.CallbackContext context)
     {
         currentMovementInput = context.ReadValue<Vector2>();
+        if(currentMovementInput.x != 0)
+        {
+            lastMovement = new Vector3(currentMovementInput.x, 0, 0f);
+        }
+        if(currentMovementInput.y != 0)
+        {
+            lastMovement = new Vector3(0f, 0, currentMovementInput.y);
+        }
+        if(currentMovementInput.x != 0 && currentMovementInput.y != 0)
+        {
+            lastMovement = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
+        }
         currentMovement.x = isRunPressed ? currentMovementInput.x : currentMovementInput.x * runMultiplier;
         currentMovement.z = isRunPressed ? currentMovementInput.y : currentMovementInput.y * runMultiplier;
         isMovementPressed = currentMovementInput.x != zero || currentMovementInput.y != zero;
