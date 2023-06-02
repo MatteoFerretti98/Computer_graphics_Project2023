@@ -13,12 +13,12 @@ public class GarlicBehaviour : MeleeWeaponBehaviour
         markedEnemies = new List<GameObject>();
     }
 
-    protected override void OnTriggerEnter(SphereCollider col) //SE NON FUNZIONA!!!! CAMBIARE SphereCollider con Collider
+    protected override void OnTriggerEnter(Collider col)
     {
         if(col.CompareTag("Enemy") && !markedEnemies.Contains(col.gameObject))
         {
-            EnemyStats enemy = col.GetComponent<EnemyStats>();
-            enemy.TakeDamage(currentDamage);
+            //EnemyStats enemy = col.GetComponent<EnemyStats>();            DA DECOMMENTARE////////////////////////////////////////////////////////
+            //enemy.TakeDamage(currentDamage);
 
             markedEnemies.Add(col.gameObject); // Mark the enemy so it doesn't take another instance of damage from this garlic
         }

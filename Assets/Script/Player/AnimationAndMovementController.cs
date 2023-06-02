@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class AnimationAndMovementController : MonoBehaviour
 {
+
+    public CharacterScriptableObject characterData;
+
+
+
     //Declere reference variables
     CharacterController characterController;
     Animator animator;
@@ -12,7 +17,6 @@ public class AnimationAndMovementController : MonoBehaviour
 
     // variables to store optimized setter/getter parameter IDs
     int isWalkingHash;
-    int isRunningHash;
 
     // variables to store player input value
     Vector2 currentMovementInput;
@@ -23,11 +27,9 @@ public class AnimationAndMovementController : MonoBehaviour
 
     Vector3 appliedMovement;
     bool isMovementPressed;
-    bool isRunPressed;
 
     // constants
     float rotationFactorPerFrame = 15.0f;
-    float runMultiplier = 4.0f;
     int zero = 0;
 
     // gravity variables
@@ -58,7 +60,6 @@ public class AnimationAndMovementController : MonoBehaviour
 
         // set the parameter hash references
         isWalkingHash = Animator.StringToHash("isWalking");
-        isRunningHash = Animator.StringToHash("isRunning");
         isJumpingHash = Animator.StringToHash("isJumping");
         jumpCountHash = Animator.StringToHash("jumpCount");
 
@@ -66,8 +67,6 @@ public class AnimationAndMovementController : MonoBehaviour
         playerInput.CharacterControls.Move.started += OnMovementInput;
         playerInput.CharacterControls.Move.canceled += OnMovementInput;
         playerInput.CharacterControls.Move.performed += OnMovementInput;
-        playerInput.CharacterControls.Run.started += onRun;
-        playerInput.CharacterControls.Run.canceled += onRun;
         playerInput.CharacterControls.Jump.started += OnJump;
         playerInput.CharacterControls.Jump.canceled += OnJump;
 
@@ -80,12 +79,6 @@ public class AnimationAndMovementController : MonoBehaviour
     void OnJump(InputAction.CallbackContext context)
     {
         isJumpPressed = context.ReadValueAsButton();
-    }
-
-    // callback handler for function for run buttons
-    void onRun(InputAction.CallbackContext context)
-    {
-        isRunPressed = context.ReadValueAsButton();
     }
 
     // handler function to set the player input values
@@ -104,8 +97,8 @@ public class AnimationAndMovementController : MonoBehaviour
         {
             lastMovement = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
         }
-        currentMovement.x = isRunPressed ? currentMovementInput.x : currentMovementInput.x * runMultiplier;
-        currentMovement.z = isRunPressed ? currentMovementInput.y : currentMovementInput.y * runMultiplier;
+        currentMovement.x = currentMovementInput.x * characterData.MoveSpeed;
+        currentMovement.z = currentMovementInput.y * characterData.MoveSpeed;
         isMovementPressed = currentMovementInput.x != zero || currentMovementInput.y != zero;
     }
 
@@ -113,7 +106,6 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         // get parameter values from animator
         bool isWalking = animator.GetBool(isWalkingHash);
-        bool isRunning = animator.GetBool(isRunningHash);
 
         // start walking if movement pressed is true and not already walking
         if (isMovementPressed && !isWalking)
@@ -124,17 +116,6 @@ public class AnimationAndMovementController : MonoBehaviour
         else if (!isMovementPressed && isWalking)
         {
             animator.SetBool(isWalkingHash, false);
-        }
-
-        // run if movement and run pressed are true and not currently running
-        if ((isMovementPressed && isRunPressed) && !isRunning)
-        {
-            animator.SetBool(isRunningHash, true);
-        }
-        // stop running if movement or run pressed are false and currently running
-        else if ((!isMovementPressed || !isRunPressed) && isRunning)
-        {
-            animator.SetBool(isRunningHash, false);
         }
     }
 
@@ -203,7 +184,7 @@ public class AnimationAndMovementController : MonoBehaviour
             animator.SetBool(isJumpingHash, true);
             isJumpAnimating = true;
             isJumping = true;
-            jumpCount += 1;
+            jumpCount = 1;
             animator.SetInteger(jumpCountHash, jumpCount);
             currentMovement.y = initialJumpVelocities[jumpCount];
             appliedMovement.y = initialJumpVelocities[jumpCount];
@@ -254,13 +235,6 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         jumpCount = 0;
-    }
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
 
