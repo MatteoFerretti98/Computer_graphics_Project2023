@@ -5,9 +5,24 @@ using UnityEngine;
 // Base script of all projectile behaviours [To be placed on the prefab of a weapon that is a projectile]
 public class ProjectileWeaponBehaviour : MonoBehaviour
 {
+    public WeaponScriptableObject weaponData;
+    
     protected Vector3 direction;
     public float destroyAfterSeconds;
-    //public float customYPosition; // Y position value to be set
+
+    // Current Stats
+    protected float currentDamage;
+    protected float currentSpeed;
+    protected float currentCooldownDuration;
+    protected int currentPierce;
+
+    void Awake()
+    {
+        currentDamage = weaponData.Damage;
+        currentSpeed = weaponData.Speed;
+        currentCooldownDuration = weaponData.CooldownDuration;
+        currentPierce = weaponData.Pierce;
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -15,12 +30,11 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         Destroy(gameObject, destroyAfterSeconds);
     }
 
-    public void DirectionChecker(Vector3 dir, GameObject player)
+    public void DirectionChecker(Vector3 dir)
     {
         direction = dir;
         float dirx = direction.x;
         float dirz = direction.z;
-        float playerHeight = player.transform.position.y;
 
         Vector3 scale = transform.localScale;
         Vector3 rotation = transform.rotation.eulerAngles;
@@ -33,9 +47,29 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
 
         // Set Y position of weapon to prefer value to spawn
         Vector3 newPosition = transform.position;
-        newPosition.y = playerHeight + 0.5f;
+        newPosition.y = 1.5f;
         transform.position = newPosition;
 
         transform.localScale = scale;
+    }
+
+    protected virtual void OnTriggerEnter(MeshCollider col) //SE NON FUNZIONA!!!! CAMBIARE MeshCollider con Collider
+    {
+        //Refference the script from the collided collider and deal damage using TakeDamage()
+        if (col.CompareTag("Enemy"))
+        {
+            EnemyStats enemy = col.GetComponent<EnemyStats>();
+            enemy.TakeDamage(currentDamage);    // Make sure to use currentDamage instead of weaponData.damage in case any damage multipliers in the future
+            ReducePierce();
+        }
+    }
+
+    void ReducePierce() //Destroy once the pierce reaches 0
+    {
+        currentPierce--;
+        if(currentPierce <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
