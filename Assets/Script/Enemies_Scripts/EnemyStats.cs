@@ -27,7 +27,7 @@ public class EnemyStats : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<AnimationAndMovementController>().transform;
+        player = FindObjectOfType<PlayerStats>().transform;
     }
 
     void Update()
@@ -55,13 +55,13 @@ public class EnemyStats : MonoBehaviour
     }
 
 
-    void OnCollisionStay2D(Collision col)
+    void OnCollisionStay(Collision col)
     {
         //Reference the script from the collided collider and deal damage using TakeDamage()
         if (col.gameObject.CompareTag("Player"))
         {
-            //PlayerStats player = col.gameObject.GetComponent<PlayerStats>();
-            //player.TakeDamage(currentDamage);    //Make sure to use currentDamage instead of weaponData.Damage in case any damage multipliers in the future
+            PlayerStats player = col.gameObject.GetComponent<PlayerStats>();
+            player.TakeDamage(currentDamage);    //Make sure to use currentDamage instead of weaponData.Damage in case any damage multipliers in the future
         }
     }
 

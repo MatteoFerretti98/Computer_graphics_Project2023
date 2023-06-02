@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<AnimationAndMovementController>().transform;
+        player = FindObjectOfType<PlayerStats>().transform;
         CalculateWaveQuota();
     }
 

@@ -58,8 +58,8 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         //Refference the script from the collided collider and deal damage using TakeDamage()
         if (col.CompareTag("Enemy"))
         {
-            //EnemyStats enemy = col.GetComponent<EnemyStats>();           DA DECOMMENTARE////////////////////////////////////////////////////////
-            //enemy.TakeDamage(currentDamage);    // Make sure to use currentDamage instead of weaponData.damage in case any damage multipliers in the future
+            EnemyStats enemy = col.GetComponent<EnemyStats>();
+            enemy.TakeDamage(currentDamage);    // Make sure to use currentDamage instead of weaponData.damage in case any damage multipliers in the future
             ReducePierce();
         }
     }
