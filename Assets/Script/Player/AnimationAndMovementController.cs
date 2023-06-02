@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class AnimationAndMovementController : MonoBehaviour
 {
 
-    public CharacterScriptableObject characterData;
+    PlayerStats player;
 
 
 
@@ -53,6 +53,8 @@ public class AnimationAndMovementController : MonoBehaviour
     // Awake is called erlier than Start in Unity's event life cycle
     void Awake()
     {
+        player = GetComponent<PlayerStats>();
+
         // initially set reference variables
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();  
@@ -97,8 +99,8 @@ public class AnimationAndMovementController : MonoBehaviour
         {
             lastMovement = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
         }
-        currentMovement.x = currentMovementInput.x * characterData.MoveSpeed;
-        currentMovement.z = currentMovementInput.y * characterData.MoveSpeed;
+        currentMovement.x = currentMovementInput.x * player.currentMoveSpeed;
+        currentMovement.z = currentMovementInput.y * player.currentMoveSpeed;
         isMovementPressed = currentMovementInput.x != zero || currentMovementInput.y != zero;
     }
 

@@ -29,4 +29,8 @@ public class CharacterScriptableObject : ScriptableObject
     [SerializeField]
     float projectileSpeed;    //Modifies the movement speed of all projectiles
     public float ProjectileSpeed { get => projectileSpeed; private set => projectileSpeed = value; }
+
+    [SerializeField]
+    float magnet;    //Modifies the movement speed of all projectiles
+    public float Magnet { get => magnet; private set => magnet = value; }
 }
