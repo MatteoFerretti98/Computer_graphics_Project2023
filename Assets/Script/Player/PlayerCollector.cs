@@ -5,24 +5,24 @@ using UnityEngine;
 public class PlayerCollector : MonoBehaviour
 {
     PlayerStats player;
-    SphereCollider playerCollector;
+    CapsuleCollider playerCollector;
     public float pullSpeed;
 
     private void Start()
     {
         player = FindObjectOfType<PlayerStats>();
-        playerCollector = GetComponent<SphereCollider>();
+        playerCollector = GetComponent<CapsuleCollider>();
     }
 
     void Update()
     {
-        playerCollector.radius = player.currentMagnet;
+        playerCollector.radius = player.CurrentMagnet;
     }
 
     void OnTriggerEnter(Collider col)
     {
         //Check if the other game object has the ICollectible interface
-        if (col.gameObject.TryGetComponent(out ICollectible collectible))         // DA DECOMMENTARE
+        if (col.gameObject.TryGetComponent(out ICollectible collectible))       
         {
             //Pulling animation
             //Gets the Rigidbody component on the item

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -53,6 +54,11 @@ public class AnimationAndMovementController : MonoBehaviour
     // Awake is called erlier than Start in Unity's event life cycle
     void Awake()
     {
+        /*if (GameManager.instance.isGameOver)
+        {
+            return;
+        }*/
+
         player = GetComponent<PlayerStats>();
 
         // initially set reference variables
@@ -86,6 +92,11 @@ public class AnimationAndMovementController : MonoBehaviour
     // handler function to set the player input values
     void OnMovementInput(InputAction.CallbackContext context)
     {
+        /*if (GameManager.instance.isGameOver)
+        {
+            return;
+        }*/
+
         currentMovementInput = context.ReadValue<Vector2>();
         if(currentMovementInput.x != 0)
         {
@@ -99,8 +110,8 @@ public class AnimationAndMovementController : MonoBehaviour
         {
             lastMovement = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
         }
-        currentMovement.x = currentMovementInput.x * player.currentMoveSpeed;
-        currentMovement.z = currentMovementInput.y * player.currentMoveSpeed;
+        currentMovement.x = currentMovementInput.x * player.CurrentMoveSpeed;
+        currentMovement.z = currentMovementInput.y * player.CurrentMoveSpeed;
         isMovementPressed = currentMovementInput.x != zero || currentMovementInput.y != zero;
     }
 

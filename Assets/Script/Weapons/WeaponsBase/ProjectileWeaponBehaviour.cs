@@ -26,7 +26,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
 
     public float GetCurrentDamage()
     {
-        return currentDamage *= FindObjectOfType<PlayerStats>().currentMight;
+        return currentDamage *= FindObjectOfType<PlayerStats>().CurrentMight;
     }
 
     // Start is called before the first frame update
@@ -69,11 +69,11 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         }
         else if (col.CompareTag("Prop"))
         {
-            /*if (col.gameObject.TryGetComponent(out BreakableProps breakable))     // DA DECOMMENTARE
+            if (col.gameObject.TryGetComponent(out BreakableProps breakable))    
             {
                 breakable.TakeDamage(GetCurrentDamage());
                 ReducePierce();
-            }*/
+            }
         }
     }
 
