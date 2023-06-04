@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ef602b3d70fd29429478a222698ccca, type: 3}
-  m_Name: Bat Enemy
+  m_Name: Monster Duo Enemy
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  maxHealth: 5
+  moveSpeed: 1
+  maxHealth: 10
   damage: 30

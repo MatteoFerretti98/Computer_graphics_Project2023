@@ -200,13 +200,16 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        if (invincibilityTimer > 0)
+        Debug.LogWarning(invincibilityTimer);
+        if (invincibilityTimer >= 0)
         {
             invincibilityTimer -= Time.deltaTime;
+            Debug.LogWarning(invincibilityTimer);
         }
         //If the invincibility timer has reached 0, set the invincibility flag to false
         else if (isInvincible)
         {
+            Debug.LogWarning("Non è invicibile");
             isInvincible = false;
         }
 
@@ -252,8 +255,11 @@ public class PlayerStats : MonoBehaviour
             invincibilityTimer = invincibilityDuration;
             isInvincible = true;
 
+            Debug.LogWarning("Damage Player: "+dmg);
+
             if (CurrentHealth <= 0)
             {
+                Debug.LogWarning("Death Player");
                 Kill();
             }
         }
@@ -261,6 +267,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Kill()
     {
+
         /*if (!GameManager.instance.isGameOver)
         {
             GameManager.instance.AssignLevelReachedUI(level);
