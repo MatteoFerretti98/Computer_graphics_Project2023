@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //TestSwitchState();
+        TestSwitchState();
 
         // Define the behavior for each state
         switch (currentState)
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
     }
 
     // test game over
-    /*
+    
     void TestSwitchState()
     {
         if (Input.GetKeyDown(KeyCode.G))
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
             ChangeState(GameState.GameOver);
         }
     }
-    */
+    
 
     // Define the method to change the state of the game
     public void ChangeState(GameState newState)
@@ -167,6 +167,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void DisplayPauseScreen()
+    {
+        confirmScreen.SetActive(false);
+        pauseScreen.SetActive(true); 
+
+    }
+
+    public void DisplayQuitConfirmScreen()
+    {
+        confirmScreen.SetActive(true); 
+
+    }
+
     void DisableScreens()
     {
         pauseScreen.SetActive(false);
@@ -177,6 +190,11 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         ChangeState(GameState.GameOver);
+    }
+
+    public void StopGame()
+    {
+        Time.timeScale = 0f;
     }
 
     void DisplayResults()
