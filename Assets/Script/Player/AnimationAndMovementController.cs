@@ -54,8 +54,9 @@ public class AnimationAndMovementController : MonoBehaviour
     // Awake is called erlier than Start in Unity's event life cycle
     void Awake()
     {
+   
         if (GameManager.instance.isGameOver)
-        {
+        {   
             return;
         }
 

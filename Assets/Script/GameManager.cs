@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            Debug.Log("Game istance is created");
         }
         else
         {
