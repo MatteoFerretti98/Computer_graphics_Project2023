@@ -24,10 +24,10 @@ public class PlayerStats : MonoBehaviour
             if (currentHealth != value)
             {
                 currentHealth = value;
-                /*if (GameManager.instance != null)
+                if (GameManager.instance != null)
                 {
                     GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
-                }*/
+                }
                 //Add any additional logic here that needs to be executed when the value changes
             }
         }
@@ -42,10 +42,10 @@ public class PlayerStats : MonoBehaviour
             if (currentRecovery != value)
             {
                 currentRecovery = value;
-                /*if (GameManager.instance != null)
+                if (GameManager.instance != null)
                 {
                     GameManager.instance.currentRecoveryDisplay.text = "Recovery: " + currentRecovery;
-                }*/
+                }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
             }
@@ -61,10 +61,10 @@ public class PlayerStats : MonoBehaviour
             if (currentMoveSpeed != value)
             {
                 currentMoveSpeed = value;
-                /*if (GameManager.instance != null)
+                if (GameManager.instance != null)
                 {
                     GameManager.instance.currentMoveSpeedDisplay.text = "Move Speed: " + currentMoveSpeed;
-                }*/
+                }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
             }
@@ -80,10 +80,10 @@ public class PlayerStats : MonoBehaviour
             if (currentMight != value)
             {
                 currentMight = value;
-                /*if (GameManager.instance != null)
+                if (GameManager.instance != null)
                 {
                     GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
-                }*/
+                }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
             }
@@ -99,10 +99,10 @@ public class PlayerStats : MonoBehaviour
             if (currentProjectileSpeed != value)
             {
                 currentProjectileSpeed = value;
-                /*if (GameManager.instance != null)
+                if (GameManager.instance != null)
                 {
                     GameManager.instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
-                }*/
+                }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
             }
@@ -118,10 +118,10 @@ public class PlayerStats : MonoBehaviour
             if (currentMagnet != value)
             {
                 currentMagnet = value;
-                /*if (GameManager.instance != null)
+                if (GameManager.instance != null)
                 {
                     GameManager.instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
-                }*/
+                }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
             }
@@ -188,14 +188,14 @@ public class PlayerStats : MonoBehaviour
         experienceCap = levelRanges[0].experienceCapIncrease;
 
         //Set the current stats display
-        /*GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
+        GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
         GameManager.instance.currentRecoveryDisplay.text = "Recovery: " + currentRecovery;
         GameManager.instance.currentMoveSpeedDisplay.text = "Move Speed: " + currentMoveSpeed;
         GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
         GameManager.instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
         GameManager.instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
 
-        GameManager.instance.AssignChosenCharacterUI(characterData);*/
+        GameManager.instance.AssignChosenCharacterUI(characterData);
     }
 
     void Update()
@@ -209,7 +209,7 @@ public class PlayerStats : MonoBehaviour
         //If the invincibility timer has reached 0, set the invincibility flag to false
         else if (isInvincible)
         {
-            Debug.LogWarning("Non è invicibile");
+            Debug.LogWarning("Non ï¿½ invicibile");
             isInvincible = false;
         }
 
@@ -268,12 +268,12 @@ public class PlayerStats : MonoBehaviour
     public void Kill()
     {
 
-        /*if (!GameManager.instance.isGameOver)
+        if (!GameManager.instance.isGameOver)
         {
             GameManager.instance.AssignLevelReachedUI(level);
             GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlots, inventory.passiveItemUISlots);
             GameManager.instance.GameOver();
-        }*/
+        }
     }
 
     public void RestoreHealth(float amount)

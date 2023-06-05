@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.InputSystem.HID.HID;
 
 public class GameManager : MonoBehaviour
@@ -23,11 +24,27 @@ public class GameManager : MonoBehaviour
     // Store the previous state of the game before it was paused
     public GameState previousState;
 
-    [Header("UI")]
+    [Header("Screens")]
     public GameObject pauseScreen;
     public GameObject resultsScreen;
     public GameObject confirmScreen;
 
+
+    //Current stat displays
+    [Header("Current Stat Displays")]
+    public Text currentHealthDisplay;
+    public Text currentRecoveryDisplay;
+    public Text currentMoveSpeedDisplay;
+    public Text currentMightDisplay;
+    public Text currentProjectileSpeedDisplay;
+    public Text currentMagnetDisplay;
+
+    [Header("Results Screen Displays")]
+    public Image chosenCharacterImage;
+    public Text chosenCharacterName;
+    public Text levelReachedDisplay;
+    public List<Image> chosenWeaponsUI = new List<Image>(6);
+    public List<Image> chosenPassiveItemsUI = new List<Image>(6);
 
     // Flag to check if the game is over
     public bool isGameOver = false;
@@ -61,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        TestSwitchState();
+        //TestSwitchState();
 
         // Define the behavior for each state
         switch (currentState)
@@ -91,6 +108,7 @@ public class GameManager : MonoBehaviour
     }
 
     // test game over
+    /*
     void TestSwitchState()
     {
         if (Input.GetKeyDown(KeyCode.G))
@@ -98,6 +116,7 @@ public class GameManager : MonoBehaviour
             ChangeState(GameState.GameOver);
         }
     }
+    */
 
     // Define the method to change the state of the game
     public void ChangeState(GameState newState)
@@ -162,6 +181,61 @@ public class GameManager : MonoBehaviour
     void DisplayResults()
     {
         resultsScreen.SetActive(true);
+    }
+
+    public void AssignChosenCharacterUI(CharacterScriptableObject chosenCharacterData)
+    {
+        chosenCharacterImage.sprite = chosenCharacterData.Icon;
+        chosenCharacterName.text = chosenCharacterData.Name;
+    }
+
+    public void AssignLevelReachedUI(int levelReachedData)
+    {
+        levelReachedDisplay.text = levelReachedData.ToString();
+    }
+
+    public void AssignChosenWeaponsAndPassiveItemsUI(List<Image> chosenWeaponsData, List<Image> chosenPassiveItemsData)
+    {
+        // Check that both lists have the same length
+        if (chosenWeaponsData.Count != chosenWeaponsUI.Count || chosenPassiveItemsData.Count != chosenPassiveItemsUI.Count)
+        {
+            Debug.LogError("Chosen weapons and passive items data lists have different lengths");
+            return;
+        }
+
+        // Assign chosen weapons data to chosenWeaponsUI
+        for (int i = 0; i < chosenWeaponsUI.Count; i++)
+        {
+            // Check that the sprite of the corresponding element in chosenWeaponsData is not null
+            if (chosenWeaponsData[i].sprite)
+            {
+                // Enable the corresponding element in chosenWeaponsUI and set its sprite to the corresponding sprite in chosenWeaponsData
+                chosenWeaponsUI[i].enabled = true;
+                chosenWeaponsUI[i].sprite = chosenWeaponsData[i].sprite;
+            }
+            else
+            {
+                // If the sprite is null, disable the corresponding element in chosenWeaponsUI
+                chosenWeaponsUI[i].enabled = false;
+            }
+        }
+
+        // Assign chosen passive items data to chosenPassiveItemsUI
+        for (int i = 0; i < chosenPassiveItemsUI.Count; i++)
+        {
+            // Check that the sprite of the corresponding element in chosenPassiveItemsData is not null
+            if (chosenPassiveItemsData[i].sprite)
+            {
+                // Enable the corresponding element in chosenPassiveItemsUI and set its sprite to the corresponding sprite in chosenPassiveItemsData
+                chosenPassiveItemsUI[i].enabled = true;
+                chosenPassiveItemsUI[i].sprite = chosenPassiveItemsData[i].sprite;
+            }
+            else
+            {
+                // If the sprite is null, disable the corresponding element in chosenPassiveItemsUI
+                chosenPassiveItemsUI[i].enabled = false;
+            }
+        }
     }
 
 
