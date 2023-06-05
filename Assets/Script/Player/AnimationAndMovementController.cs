@@ -54,10 +54,11 @@ public class AnimationAndMovementController : MonoBehaviour
     // Awake is called erlier than Start in Unity's event life cycle
     void Awake()
     {
-        /*if (GameManager.instance.isGameOver)
-        {
+   
+        if (GameManager.instance.isGameOver)
+        {   
             return;
-        }*/
+        }
 
         player = GetComponent<PlayerStats>();
 
@@ -92,10 +93,10 @@ public class AnimationAndMovementController : MonoBehaviour
     // handler function to set the player input values
     void OnMovementInput(InputAction.CallbackContext context)
     {
-        /*if (GameManager.instance.isGameOver)
+        if (GameManager.instance.isGameOver)
         {
             return;
-        }*/
+        }
 
         currentMovementInput = context.ReadValue<Vector2>();
         if(currentMovementInput.x != 0)

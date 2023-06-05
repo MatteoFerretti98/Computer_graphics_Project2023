@@ -210,7 +210,7 @@ public class PlayerStats : MonoBehaviour
         //If the invincibility timer has reached 0, set the invincibility flag to false
         else if (isInvincible)
         {
-            Debug.LogWarning("Non è invicibile");
+            Debug.LogWarning("Non ï¿½ invicibile");
             isInvincible = false;
         }
 
