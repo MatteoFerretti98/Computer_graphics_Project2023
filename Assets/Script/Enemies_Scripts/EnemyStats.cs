@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -77,13 +78,22 @@ public class EnemyStats : MonoBehaviour
 
     private void OnDestroy()
     {
-        EnemySpawner es = FindObjectOfType<EnemySpawner>();
-        es.OnEnemyKilled();
+        try
+        {
+            EnemySpawner es = FindObjectOfType<EnemySpawner>();
+            es.OnEnemyKilled();
+        }
+        catch (Exception e)
+        {
+            // Scrivere eventualmente stringa di errore
+        }
+        
+        
     }
 
     void ReturnEnemy()
     {
         EnemySpawner es = FindObjectOfType<EnemySpawner>();
-        transform.position = player.position + es.relativeSpawnPoints[Random.Range(0, es.relativeSpawnPoints.Count)].position;
+        transform.position = player.position + es.relativeSpawnPoints[UnityEngine.Random.Range(0, es.relativeSpawnPoints.Count)].position;
     }
 }

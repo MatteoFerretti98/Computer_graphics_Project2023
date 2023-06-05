@@ -105,10 +105,10 @@ MonoBehaviour:
   isScaling: 1
   rotationAngle: {x: 0, y: 0, z: 10}
   rotationSpeed: 10
-  floatSpeed: 0.04
-  floatRate: 0.5
-  startScale: {x: 0.4, y: 0.4, z: 0.4}
-  endScale: {x: 0.5, y: 0.5, z: 0.5}
+  floatSpeed: 0.02
+  floatRate: 0.2
+  startScale: {x: 0.3, y: 0.3, z: 0.3}
+  endScale: {x: 0.3, y: 0.3, z: 0.3}
   scaleSpeed: 1
   scaleRate: 0.5
 --- !u!64 &-2944457656532858855
