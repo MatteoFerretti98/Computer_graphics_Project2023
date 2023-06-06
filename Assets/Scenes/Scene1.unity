@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ea476d93492b147887fb5ad2bbf34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
   experience: 0
   level: 1
   experienceCap: 5
@@ -392,10 +393,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.67704314
+  m_Radius: 0.50168157
   m_Height: 1.4531714
   m_Direction: 1
-  m_Center: {x: -0.02450484, y: 0.7717212, z: 0}
+  m_Center: {x: -0.00059580803, y: 0.7717212, z: 0.024588242}
 --- !u!1 &342499286
 GameObject:
   m_ObjectHideFlags: 0

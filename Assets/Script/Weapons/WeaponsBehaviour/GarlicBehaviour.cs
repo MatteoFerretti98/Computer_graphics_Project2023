@@ -15,8 +15,11 @@ public class GarlicBehaviour : MeleeWeaponBehaviour
 
     protected override void OnTriggerEnter(Collider col)
     {
+        Debug.Log("Triggerato");
+        Debug.Log(col.gameObject.tag.ToString());
         if(col.CompareTag("Enemy") && !markedEnemies.Contains(col.gameObject))
         {
+            Debug.Log("Triggerato if cond");
             EnemyStats enemy = col.GetComponent<EnemyStats>();
             enemy.TakeDamage(GetCurrentDamage());
 

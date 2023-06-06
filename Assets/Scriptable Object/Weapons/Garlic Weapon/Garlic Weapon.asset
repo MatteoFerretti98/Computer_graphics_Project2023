@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d339c06edff64e4fafdb1a3e3136a66, type: 3}
   m_Name: Garlic Weapon
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8666620214655604362, guid: 6892ff0ec71ece146810c7c99ba80e36, type: 3}
+  prefab: {fileID: 6855251672343262498, guid: 0604bb7ce4ba112409370dc5bfb7d57b, type: 3}
   damage: 50
   speed: 0
   cooldownDuration: 3
