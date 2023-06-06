@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.HID.HID;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 
@@ -32,12 +33,12 @@ public class GameManager : MonoBehaviour
 
     //Current stat displays
     [Header("Current Stat Displays")]
-    public Text currentHealthDisplay;
-    public Text currentRecoveryDisplay;
-    public Text currentMoveSpeedDisplay;
-    public Text currentMightDisplay;
-    public Text currentProjectileSpeedDisplay;
-    public Text currentMagnetDisplay;
+    public TextMeshProUGUI currentHealthDisplay;
+    public TextMeshProUGUI currentRecoveryDisplay;
+    public TextMeshProUGUI currentMoveSpeedDisplay;
+    public TextMeshProUGUI currentMightDisplay;
+    public TextMeshProUGUI currentProjectileSpeedDisplay;
+    public TextMeshProUGUI currentMagnetDisplay;
 
     [Header("Results Screen Displays")]
     public Image chosenCharacterImage;
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            Debug.Log("Game istance is created");
+            Debug.Log("Game instance is created");
         }
         else
         {
