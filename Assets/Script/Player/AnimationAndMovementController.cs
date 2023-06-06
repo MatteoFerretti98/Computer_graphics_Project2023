@@ -98,7 +98,22 @@ public class AnimationAndMovementController : MonoBehaviour
             return;
         }*/
 
-        currentMovementInput = context.ReadValue<Vector2>();
+        //currentMovementInput = context.ReadValue<Vector2>();
+
+        //var matrix = Matrix4x4.Rotate(Quaternion.Euler(0,45,0));
+
+        //Debug.Log("Input x: " + context.ReadValue<Vector2>().x.ToString() + ", y: " + context.ReadValue<Vector2>().y.ToString());
+        //currentMovementInput = matrix.MultiplyPoint3x4(context.ReadValue<Vector2>());
+        //Debug.Log("movement x: "+ currentMovementInput.x.ToString() + ", y: " + currentMovementInput.y.ToString());
+
+        if(context.ReadValue<Vector2>().x == 1 && context.ReadValue<Vector2>().x == 0)
+        {
+            currentMovementInput.x = 1;
+            currentMovementInput.y = 1;
+        }
+
+        //currentMovementInput = skewedInput;
+        
         if(currentMovementInput.x != 0)
         {
             lastMovement = new Vector3(currentMovementInput.x, 0, 0f);
