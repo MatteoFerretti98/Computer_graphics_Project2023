@@ -24,10 +24,10 @@ public class PlayerStats : MonoBehaviour
             if (currentHealth != value)
             {
                 currentHealth = value;
-                if (GameManager.instance != null)
+                /*if (GameManager.instance != null)
                 {
                     GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
-                }
+                }*/
                 //Add any additional logic here that needs to be executed when the value changes
             }
         }
@@ -80,10 +80,12 @@ public class PlayerStats : MonoBehaviour
             if (currentMight != value)
             {
                 currentMight = value;
+                /*
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
                 }
+                */
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
             }
@@ -200,17 +202,13 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        Debug.LogWarning(invincibilityTimer);
-        Debug.Log("Update");
         if (invincibilityTimer >= 0)
         {
             invincibilityTimer -= Time.deltaTime;
-            Debug.LogWarning(invincibilityTimer);
         }
         //If the invincibility timer has reached 0, set the invincibility flag to false
         else if (isInvincible)
         {
-            Debug.LogWarning("Non � invicibile");
             isInvincible = false;
         }
 
@@ -269,10 +267,11 @@ public class PlayerStats : MonoBehaviour
     public void Kill()
     {
 
+        Debug.Log("Game over:"+GameManager.instance.isGameOver);
         if (!GameManager.instance.isGameOver)
         {
-            GameManager.instance.AssignLevelReachedUI(level);
-            GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlots, inventory.passiveItemUISlots);
+            //GameManager.instance.AssignLevelReachedUI(level);
+            //GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlots, inventory.passiveItemUISlots);
             GameManager.instance.GameOver();
         }
     }
@@ -318,7 +317,7 @@ public class PlayerStats : MonoBehaviour
         //Spawn the starting weapon
         GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
         spawnedWeapon.transform.SetParent(transform);    //Set the weapon to be a child of the player
-        inventory.AddWeapon(weaponIndex, spawnedWeapon.GetComponent<WeaponController>());   //Add the weapon to it's slot
+        //inventory.AddWeapon(weaponIndex, spawnedWeapon.GetComponent<WeaponController>());   //Add the weapon to it's slot
 
         weaponIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE WEAPON TO THE SLOT]
     }
@@ -335,7 +334,7 @@ public class PlayerStats : MonoBehaviour
         //Spawn the passive item
         GameObject spawnedPassiveItem = Instantiate(passiveItem, transform.position, Quaternion.identity);
         spawnedPassiveItem.transform.SetParent(transform);    //Set the passive item to be a child of the player
-        inventory.AddPassiveItem(passiveItemIndex, spawnedPassiveItem.GetComponent<PassiveItem>());   //Add the passive item to it's slot
+        //inventory.AddPassiveItem(passiveItemIndex, spawnedPassiveItem.GetComponent<PassiveItem>());   //Add the passive item to it's slot
 
         passiveItemIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE PASSIVE ITEM TO THE SLOT]
     }
