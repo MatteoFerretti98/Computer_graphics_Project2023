@@ -24,10 +24,10 @@ public class PlayerStats : MonoBehaviour
             if (currentHealth != value)
             {
                 currentHealth = value;
-                /*if (GameManager.instance != null)
+                if (GameManager.instance != null)
                 {
                     GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
-                }*/
+                }
                 //Add any additional logic here that needs to be executed when the value changes
             }
         }
@@ -80,12 +80,12 @@ public class PlayerStats : MonoBehaviour
             if (currentMight != value)
             {
                 currentMight = value;
-                /*
+                
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
                 }
-                */
+                
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
             }
