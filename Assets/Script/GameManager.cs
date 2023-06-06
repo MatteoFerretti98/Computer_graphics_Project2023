@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI currentMightDisplay;
     public TextMeshProUGUI currentProjectileSpeedDisplay;
     public TextMeshProUGUI currentMagnetDisplay;
+    public TextMeshProUGUI currentCoinsDisplay;
 
     [Header("Results Screen Displays")]
     public Image chosenCharacterImage;
@@ -50,6 +51,9 @@ public class GameManager : MonoBehaviour
     // Flag to check if the game is over
     public bool isGameOver = false;
 
+
+    [SerializeField]
+    private PlayerStats player;
 
     void Awake()
     {
@@ -64,6 +68,8 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("EXTRA " + this + " DELETED");
             Destroy(gameObject);
         }
+
+       
 
         DisableScreens();
     }
@@ -99,6 +105,11 @@ public class GameManager : MonoBehaviour
                 {
                     isGameOver = true;
                     Time.timeScale = 0f;
+                    //aggiunta monete accomulate durante il gioco
+                    player = FindObjectOfType<PlayerStats>();
+                    PersistenceManager.PersistenceInstance.Coins += player.CurrentCoins;
+                    PersistenceManager.PersistenceInstance.writeFile();
+
                     Debug.Log("Game is over");
                     DisplayResults();
                 }

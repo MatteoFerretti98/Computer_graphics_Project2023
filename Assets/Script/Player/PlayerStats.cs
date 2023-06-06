@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
     float currentMight;
     float currentProjectileSpeed;
     float currentMagnet;
+    int currentCoins;
 
     #region Current Stats Properties
     public float CurrentHealth
@@ -129,6 +130,24 @@ public class PlayerStats : MonoBehaviour
             }
         }
     }
+
+    public int CurrentCoins
+    {
+        get { return currentCoins; }
+        set
+        {
+            //Check if the value has changed
+            //if (currentCoins != value)
+            //{
+                currentCoins = value;
+                if (GameManager.instance != null)
+                {
+                    GameManager.instance.currentCoinsDisplay.text = "Coins: " + currentCoins;
+                }
+                //Add any additional logic here that needs to be executed when the value changes
+            //}
+        }
+    }
     #endregion
 
     //Experience and level of the player
@@ -168,6 +187,8 @@ public class PlayerStats : MonoBehaviour
 
         inventory = GetComponent<InventoryManager>();
 
+        PersistenceManager.PersistenceInstance.readFile();
+       
 
         //Assign the variables
         CurrentHealth = characterData.MaxHealth;
@@ -176,6 +197,7 @@ public class PlayerStats : MonoBehaviour
         CurrentMight = characterData.Might;
         CurrentProjectileSpeed = characterData.ProjectileSpeed;
         CurrentMagnet = characterData.Magnet;
+        CurrentCoins = PersistenceManager.PersistenceInstance.Coins;
 
         //Spawn the starting weapon
         SpawnWeapon(characterData.StartingWeapon);
@@ -196,6 +218,7 @@ public class PlayerStats : MonoBehaviour
         GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
         GameManager.instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
         GameManager.instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
+        GameManager.instance.currentCoinsDisplay.text = "Coins: " + currentCoins;
 
         GameManager.instance.AssignChosenCharacterUI(characterData);
     }
@@ -275,7 +298,10 @@ public class PlayerStats : MonoBehaviour
             GameManager.instance.GameOver();
         }
     }
-
+    public void IncrementCoins()
+    {
+        CurrentCoins += 1;
+    }
     public void RestoreHealth(float amount)
     {
         // Only heal the player if their current health is less than their maximum health
