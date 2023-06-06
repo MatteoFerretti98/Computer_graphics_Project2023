@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scene1_Sam.unity
     guid: 786e76e1b6aa05a4c91f9c8270ec3b3d
   - enabled: 0
-    path: Assets/Menu_Sam.unity
+    path: Assets/Scenes/CharacterSelector.unity
     guid: d9b6f2fe97abf5e4ba0f9a38815b1b57
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: b0dc500a22ec474489a3c7eb21ff8c04
   - enabled: 1
-    path: Assets/Scenes/Scene1.unity
+    path: Assets/Scenes/Scene1_sam.unity
     guid: afd5891214134428995902e9251c73f2
   - enabled: 1
     path: Assets/Scenes/CharacterSelector.unity
