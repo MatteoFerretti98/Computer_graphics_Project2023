@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class AnimationAndMovementController : MonoBehaviour
 {
@@ -98,18 +99,9 @@ public class AnimationAndMovementController : MonoBehaviour
             return;
         }*/
 
-        //currentMovementInput = context.ReadValue<Vector2>();
+        currentMovementInput = context.ReadValue<Vector2>();
 
-        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0,45,0));
-
-        Debug.Log("Input x: " + context.ReadValue<Vector2>().x.ToString() + ", y: " + context.ReadValue<Vector2>().y.ToString());
-        currentMovementInput = matrix.MultiplyPoint3x4(context.ReadValue<Vector2>());
-        Debug.Log("movement x: "+ currentMovementInput.x.ToString() + ", y: " + currentMovementInput.y.ToString());
-
-
-        //currentMovementInput = skewedInput;
-        
-        if(currentMovementInput.x != 0)
+        if (currentMovementInput.x != 0)
         {
             lastMovement = new Vector3(currentMovementInput.x, 0, 0f);
         }
@@ -121,6 +113,10 @@ public class AnimationAndMovementController : MonoBehaviour
         {
             lastMovement = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
         }
+        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+        var skewedMovement = matrix.MultiplyPoint3x4(lastMovement);
+        lastMovement = skewedMovement;
+
         currentMovement.x = currentMovementInput.x * player.CurrentMoveSpeed;
         currentMovement.z = currentMovementInput.y * player.CurrentMoveSpeed;
         isMovementPressed = currentMovementInput.x != zero || currentMovementInput.y != zero;
@@ -145,11 +141,15 @@ public class AnimationAndMovementController : MonoBehaviour
 
     void handleRotation()
     {
+
+        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+        var skewedMovement = matrix.MultiplyPoint3x4(currentMovement);
+
         Vector3 positionToLookAt;
         // the change in position our character should point to
-        positionToLookAt.x = currentMovement.x;
+        positionToLookAt.x = skewedMovement.x;
         positionToLookAt.y = zero;
-        positionToLookAt.z = currentMovement.z;
+        positionToLookAt.z = skewedMovement.z;
         // the current rotation of our character
         Quaternion currentRotation = transform.rotation;
 
@@ -167,8 +167,10 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         handleRotation();
         handleAnimation();
-        appliedMovement.x = currentMovement.x;
-        appliedMovement.z = currentMovement.z;
+        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+        var skewedMovement = matrix.MultiplyPoint3x4(currentMovement);
+        appliedMovement.x = skewedMovement.x;
+        appliedMovement.z = skewedMovement.z;
         characterController.Move(appliedMovement * Time.deltaTime);
         handleGravity();
         handleJump();
