@@ -270,8 +270,8 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Game over:"+GameManager.instance.isGameOver);
         if (!GameManager.instance.isGameOver)
         {
-            //GameManager.instance.AssignLevelReachedUI(level);
-            //GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlots, inventory.passiveItemUISlots);
+            GameManager.instance.AssignLevelReachedUI(level);
+            GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlots, inventory.passiveItemUISlots); 
             GameManager.instance.GameOver();
         }
     }
@@ -317,7 +317,7 @@ public class PlayerStats : MonoBehaviour
         //Spawn the starting weapon
         GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
         spawnedWeapon.transform.SetParent(transform);    //Set the weapon to be a child of the player
-        //inventory.AddWeapon(weaponIndex, spawnedWeapon.GetComponent<WeaponController>());   //Add the weapon to it's slot
+        inventory.AddWeapon(weaponIndex, spawnedWeapon.GetComponent<WeaponController>());   //Add the weapon to it's slot // instance error
 
         weaponIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE WEAPON TO THE SLOT]
     }
@@ -334,7 +334,7 @@ public class PlayerStats : MonoBehaviour
         //Spawn the passive item
         GameObject spawnedPassiveItem = Instantiate(passiveItem, transform.position, Quaternion.identity);
         spawnedPassiveItem.transform.SetParent(transform);    //Set the passive item to be a child of the player
-        //inventory.AddPassiveItem(passiveItemIndex, spawnedPassiveItem.GetComponent<PassiveItem>());   //Add the passive item to it's slot
+        inventory.AddPassiveItem(passiveItemIndex, spawnedPassiveItem.GetComponent<PassiveItem>());   //Add the passive item to it's slot // instance error
 
         passiveItemIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE PASSIVE ITEM TO THE SLOT]
     }

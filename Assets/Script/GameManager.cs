@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject resultsScreen;
     public GameObject confirmScreen;
+    public GameObject gameScreen;
 
 
     //Current stat displays
@@ -42,8 +43,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Results Screen Displays")]
     public Image chosenCharacterImage;
-    public Text chosenCharacterName;
-    public Text levelReachedDisplay;
+    public TextMeshProUGUI chosenCharacterName;
+    public TextMeshProUGUI levelReachedDisplay;
     public List<Image> chosenWeaponsUI = new List<Image>(6);
     public List<Image> chosenPassiveItemsUI = new List<Image>(6);
 
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
                     isGameOver = true;
                     Time.timeScale = 0f;
                     Debug.Log("Game is over");
+                    gameScreen.SetActive(false); //
                     DisplayResults();
                 }
                 break;
@@ -135,6 +137,7 @@ public class GameManager : MonoBehaviour
             previousState = currentState;
             ChangeState(GameState.Paused); // do this only if game not yet paused
             Time.timeScale = 0f; // Stop the game
+            gameScreen.SetActive(false);
             pauseScreen.SetActive(true); // Enable the pause screen
             Debug.Log("Game is paused");
         }
@@ -148,6 +151,7 @@ public class GameManager : MonoBehaviour
             ChangeState(previousState);
             Time.timeScale = 1f; // Resume the game
             pauseScreen.SetActive(false); // Disable the pause screen
+            gameScreen.SetActive(true);
             Debug.Log("Game is resumed");
         }
     }
@@ -191,6 +195,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         ChangeState(GameState.GameOver);
+        
     }
 
     public void StopGame()
