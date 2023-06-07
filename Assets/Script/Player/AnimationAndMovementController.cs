@@ -27,7 +27,7 @@ public class AnimationAndMovementController : MonoBehaviour
     [HideInInspector]
     public Vector3 lastMovement;
 
-    Vector3 appliedMovement;
+    public Vector3 appliedMovement;
     bool isMovementPressed;
 
     // constants
@@ -103,19 +103,16 @@ public class AnimationAndMovementController : MonoBehaviour
 
         if (currentMovementInput.x != 0)
         {
-            lastMovement = new Vector3(currentMovementInput.x, 0, 0f);
+            lastMovement = new Vector3(currentMovementInput.x, 0, 0f).ToIso();
         }
         if(currentMovementInput.y != 0)
         {
-            lastMovement = new Vector3(0f, 0, currentMovementInput.y);
+            lastMovement = new Vector3(0f, 0, currentMovementInput.y).ToIso();
         }
         if(currentMovementInput.x != 0 && currentMovementInput.y != 0)
         {
-            lastMovement = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
+            lastMovement = new Vector3(currentMovementInput.x, 0, currentMovementInput.y).ToIso();
         }
-        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
-        var skewedMovement = matrix.MultiplyPoint3x4(lastMovement);
-        lastMovement = skewedMovement;
 
         currentMovement.x = currentMovementInput.x * player.CurrentMoveSpeed;
         currentMovement.z = currentMovementInput.y * player.CurrentMoveSpeed;
@@ -141,15 +138,11 @@ public class AnimationAndMovementController : MonoBehaviour
 
     void handleRotation()
     {
-
-        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
-        var skewedMovement = matrix.MultiplyPoint3x4(currentMovement);
-
         Vector3 positionToLookAt;
         // the change in position our character should point to
-        positionToLookAt.x = skewedMovement.x;
+        positionToLookAt.x = currentMovement.ToIso().x;
         positionToLookAt.y = zero;
-        positionToLookAt.z = skewedMovement.z;
+        positionToLookAt.z = currentMovement.ToIso().z;
         // the current rotation of our character
         Quaternion currentRotation = transform.rotation;
 
@@ -167,10 +160,8 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         handleRotation();
         handleAnimation();
-        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
-        var skewedMovement = matrix.MultiplyPoint3x4(currentMovement);
-        appliedMovement.x = skewedMovement.x;
-        appliedMovement.z = skewedMovement.z;
+        appliedMovement.x = currentMovement.ToIso().x;
+        appliedMovement.z = currentMovement.ToIso().z;
         characterController.Move(appliedMovement * Time.deltaTime);
         handleGravity();
         handleJump();

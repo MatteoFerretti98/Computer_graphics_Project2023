@@ -26,7 +26,7 @@ public class BlockScript : MonoBehaviour
 
     private bool ShouldSpawnObject()
     {
-        return Random.Range(0, 100) >= 99 && Random.Range(0, 100) <= 100;
+        return Random.Range(0, 250) >= 249 && Random.Range(0, 1000) <= 1000;
     }
 
     private void SpawnObject(GameObject objectToSpawn)
@@ -47,3 +47,5 @@ public class BlockScript : MonoBehaviour
         return transform.position.y <= 2.0f && transform.position.y >= 1.5f;
     }
 }
+
+

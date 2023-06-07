@@ -12,7 +12,8 @@ public class CoinStar : MonoBehaviour, ICollectible
         PlayerStats stats = FindObjectOfType<PlayerStats>();
 
         //QUI VA AGGIUNTA LA RIGA PER L'INCREMENTO DELLE MONETE
-        //stats.RestoreHealth(healthToRestore);
+        //stats.RestoreHealth(healthToRestore);r
+        stats.IncrementCoins();
         Destroy(gameObject);
     }
 }
