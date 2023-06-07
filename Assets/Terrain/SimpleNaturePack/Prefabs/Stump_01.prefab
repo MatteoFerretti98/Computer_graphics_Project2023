@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8931421077006873462}
   - component: {fileID: 5141713281580860939}
   - component: {fileID: 8420351487566857227}
-  - component: {fileID: -5591431636423086368}
+  - component: {fileID: 1826333250932434901}
   - component: {fileID: 3348620806852142550}
   m_Layer: 0
   m_Name: Stump_01
@@ -180,7 +180,7 @@ CapsuleCollider:
   m_Height: 1.2037575
   m_Direction: 1
   m_Center: {x: -0.026469886, y: 0.10187876, z: 0.040873528}
---- !u!114 &-5591431636423086368
+--- !u!114 &1826333250932434901
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,15 +189,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7370221876098628914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 616e672a052acc8469f06f5e6ce986fd, type: 3}
+  m_Script: {fileID: 11500000, guid: cfe7c2453b9794514ac61d77c2020fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
-  - name: SoftStar
-    itemPrefab: {fileID: 7315938736708012313, guid: 2142cb3046bd9064ab0d1c7d6a16d4c0, type: 3}
-    dropRate: 50
-  - name: Heart
+  - name: Recupero vita
     itemPrefab: {fileID: 4062828244765988839, guid: 488f00986eb23854390405dd8c6e676d, type: 3}
+    dropRate: 50
+  - name: Monete
+    itemPrefab: {fileID: 7315938736708012313, guid: 2142cb3046bd9064ab0d1c7d6a16d4c0, type: 3}
     dropRate: 50
 --- !u!54 &3348620806852142550
 Rigidbody:
