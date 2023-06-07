@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 6805879726213979398}
   - component: {fileID: 290429121629862238}
   - component: {fileID: 1059612920757406140}
+  - component: {fileID: 7326166766858377416}
+  - component: {fileID: 4892063659288805523}
   m_Layer: 0
   m_Name: SlimePBR
   m_TagString: Enemy
@@ -137,8 +139,51 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.75, y: 0.65, z: 0.75}
-  m_Center: {x: 0, y: 0.45, z: 0}
+  m_Size: {x: 0.97720087, y: 0.65, z: 1.0468092}
+  m_Center: {x: 0.007543564, y: 0.45, z: 0.02039519}
+--- !u!54 &7326166766858377416
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588511057650393201}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4892063659288805523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588511057650393201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe7c2453b9794514ac61d77c2020fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - name: exp
+    itemPrefab: {fileID: 2210531888463416059, guid: 2ab104d8dee82264a89ce32c2f01c8f3, type: 3}
+    dropRate: 100
 --- !u!1 &1288107869305827581
 GameObject:
   m_ObjectHideFlags: 0

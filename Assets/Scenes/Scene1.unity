@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1384,70 +1384,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &586640732
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 586640734}
-  - component: {fileID: 586640733}
-  m_Layer: 0
-  m_Name: Enemy Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &586640733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586640732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b87c040d2233fb429ead60ca78f76a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - waveName: Level 1
-    enemyGroups:
-    - enemyName: Bat
-      enemyCount: 40
-      spawnCount: 0
-      enemyPrefab: {fileID: 7465410747223341954, guid: 598d68d0670d66942ad566e66dfa3f2e, type: 3}
-    waveQuota: 1
-    spawnInterval: 1
-    spawnCount: 0
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 70
-  maxEnemiesReached: 0
-  waveInterval: 1
-  relativeSpawnPoints:
-  - {fileID: 1937297404}
-  - {fileID: 543819547}
-  - {fileID: 586325206}
-  - {fileID: 1793648998}
---- !u!4 &586640734
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586640732}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.67, y: 0, z: -10.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &599849949
 GameObject:
@@ -2898,6 +2834,120 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045555856}
   m_CullTransparentMesh: 1
+--- !u!1 &1049153498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049153500}
+  - component: {fileID: 1049153499}
+  m_Layer: 0
+  m_Name: Enemy Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1049153499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049153498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b87c040d2233fb429ead60ca78f76a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - waveName: Level 1
+    enemyGroups:
+    - enemyName: Bat
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 7465410747223341954, guid: 598d68d0670d66942ad566e66dfa3f2e, type: 3}
+    - enemyName: Box 1
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 1975194375736644, guid: a161f06d50baca24c9204e19553dfa35, type: 3}
+    - enemyName: Box 2
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 1111084942782338, guid: 0e9635137b174aa4485ba41374f2cc62, type: 3}
+    - enemyName: Troll
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 3155058319838657794, guid: 3527d64a82739c9439c9dabca130f988, type: 3}
+    - enemyName: Lich
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 1500939411536426, guid: 6fa4f94caa20d624b9cf5b80f5256dd3, type: 3}
+    waveQuota: 80
+    spawnInterval: 5
+    spawnCount: 1
+  - waveName: Level 2
+    enemyGroups:
+    - enemyName: Eyes
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 7487410016656624447, guid: 1fb98cb00b0b1274c9a80a39b953fdbe, type: 3}
+    - enemyName: Chest
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 6860756994242604922, guid: 79867df29f1c36a4f9a57a08d41fab3f, type: 3}
+    waveQuota: 40
+    spawnInterval: 20
+    spawnCount: 1
+  - waveName: Level 3
+    enemyGroups:
+    - enemyName: Lich
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 1500939411536426, guid: 6fa4f94caa20d624b9cf5b80f5256dd3, type: 3}
+    - enemyName: Slime
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 588511057650393201, guid: 7110b504a0b50404ba3bd4c2a2437af9, type: 3}
+    - enemyName: Turtle
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 6875577346646319367, guid: df82f87d8cb53594c9ec75ef5afad6f1, type: 3}
+    - enemyName: Golem
+      enemyCount: 20
+      spawnCount: 0
+      enemyPrefab: {fileID: 1067925524328404, guid: 199a94a232f31184aae2f897984295c5, type: 3}
+    waveQuota: 80
+    spawnInterval: 20
+    spawnCount: 1
+  currentWaveCount: 0
+  enemiesAlive: 0
+  maxEnemiesAllowed: 200
+  maxEnemiesReached: 0
+  waveInterval: 1000
+  relativeSpawnPoints:
+  - {fileID: 1937297404}
+  - {fileID: 543819547}
+  - {fileID: 586325206}
+  - {fileID: 1793648998}
+--- !u!4 &1049153500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049153498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.67, y: 0, z: -10.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1118093002
 GameObject:
   m_ObjectHideFlags: 0

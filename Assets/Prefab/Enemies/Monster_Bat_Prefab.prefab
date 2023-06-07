@@ -163,8 +163,8 @@ GameObject:
   - component: {fileID: 1658154560483268252}
   - component: {fileID: 52643015085633134}
   - component: {fileID: 7946685541707437669}
-  - component: {fileID: 9207456813377432303}
   - component: {fileID: 1716482441082220637}
+  - component: {fileID: 1277737081939914762}
   m_Layer: 0
   m_Name: Monster_Bat_Prefab
   m_TagString: Enemy
@@ -255,22 +255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8354af90658fa984495e7be309fc3bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9207456813377432303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7465410747223341954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 616e672a052acc8469f06f5e6ce986fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drops:
-  - name: esperienza
-    itemPrefab: {fileID: 2210531888463416059, guid: 2ab104d8dee82264a89ce32c2f01c8f3, type: 3}
-    dropRate: 100
 --- !u!54 &1716482441082220637
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -298,6 +282,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1277737081939914762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7465410747223341954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe7c2453b9794514ac61d77c2020fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - name: exp
+    itemPrefab: {fileID: 2210531888463416059, guid: 2ab104d8dee82264a89ce32c2f01c8f3, type: 3}
+    dropRate: 100
 --- !u!1 &7904350798601294738
 GameObject:
   m_ObjectHideFlags: 0
