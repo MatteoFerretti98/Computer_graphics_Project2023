@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     {
         Gameplay,
         Paused,
-        GameOver
+        GameOver,
+        LevelUp
     }
 
     // Store the current state of the game
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     public GameObject resultsScreen;
     public GameObject confirmScreen;
     public GameObject gameScreen;
+    public GameObject levelUpScreen;
 
 
     //Current stat displays
@@ -58,6 +60,12 @@ public class GameManager : MonoBehaviour
 
     // Flag to check if the game is over
     public bool isGameOver = false;
+
+    // Flag to check if the player is choosing their upgrades
+    public bool choosingUpgrade = false;
+
+    // Reference to the player's game object
+    public GameObject playerObject;
 
 
     [SerializeField]
@@ -122,6 +130,15 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Game is over");
                     gameScreen.SetActive(false); //
                     DisplayResults();
+                }
+                break;
+            case GameState.LevelUp:
+                if (!choosingUpgrade)
+                {
+                    choosingUpgrade = true;
+                    Time.timeScale = 0f; //Pause the game for now
+                    Debug.Log("Upgrades shown");
+                    levelUpScreen.SetActive(true);
                 }
                 break;
             default:
@@ -210,6 +227,7 @@ public class GameManager : MonoBehaviour
         pauseScreen.SetActive(false);
         resultsScreen.SetActive(false);
         confirmScreen.SetActive(false);
+        levelUpScreen.SetActive(false);
     }
 
     public void GameOver()
@@ -314,6 +332,20 @@ public class GameManager : MonoBehaviour
 
         // Update the stopwatch text to display the elapsed time
         currentTimeDisplay.text = "Time: "+ string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void StartLevelUp()
+    {
+        ChangeState(GameState.LevelUp);
+        playerObject.SendMessage("RemoveAndApplyUpgrades");
+    }
+
+    public void EndLevelUp()
+    {
+        choosingUpgrade = false;
+        Time.timeScale = 1f;    // Resume the game
+        levelUpScreen.SetActive(false);
+        ChangeState(GameState.Gameplay);
     }
 
 
