@@ -35,7 +35,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         Destroy(gameObject, destroyAfterSeconds);
     }
 
-    public void DirectionChecker(Vector3 dir)
+    public void DirectionChecker(Vector3 dir, Vector3 playerPos)
     {
         direction = dir;
         float dirx = direction.x;
@@ -52,7 +52,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
 
         // Set Y position of weapon to prefer value to spawn
         Vector3 newPosition = transform.position;
-        newPosition.y = 1.5f;
+        newPosition.y = 0.5f + playerPos.y;
         transform.position = newPosition;
 
         transform.localScale = scale;
