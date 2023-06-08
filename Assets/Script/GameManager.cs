@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     //Current stat displays
     [Header("Current Stat Displays")]
+    public TextMeshProUGUI currentTimeDisplay;
     public TextMeshProUGUI currentHealthDisplay;
     public TextMeshProUGUI currentRecoveryDisplay;
     public TextMeshProUGUI currentMoveSpeedDisplay;
@@ -46,8 +47,14 @@ public class GameManager : MonoBehaviour
     public Image chosenCharacterImage;
     public TextMeshProUGUI chosenCharacterName;
     public TextMeshProUGUI levelReachedDisplay;
+    public TextMeshProUGUI timeSurvivedDisplay;
     public List<Image> chosenWeaponsUI = new List<Image>(6);
     public List<Image> chosenPassiveItemsUI = new List<Image>(6);
+
+    [Header("Stopwatch")]
+    public float timeLimit; // The time limit in seconds
+    float stopwatchTime; // The current time elapsed since the stopwatch started
+    public TextMeshProUGUI stopwatchDisplay;
 
     // Flag to check if the game is over
     public bool isGameOver = false;
@@ -87,14 +94,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        TestSwitchState();
+        // TestSwitchState(); // test game over pressing key G
 
         // Define the behavior for each state
         switch (currentState)
         {
             case GameState.Gameplay:
                 // Code for the gameplay state
-                CheckForPauseAndResume();
+                CheckForPauseAndResume(); 
+                UpdateStopwatch();
                 break;
             case GameState.Paused:
                 // Code for the paused state
@@ -150,6 +158,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f; // Stop the game
             gameScreen.SetActive(false);
             pauseScreen.SetActive(true); // Enable the pause screen
+            ShowStopwatchDisplayPauseScreen();
             Debug.Log("Game is paused");
         }
 
@@ -205,6 +214,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        timeSurvivedDisplay.text = stopwatchDisplay.text;
         ChangeState(GameState.GameOver);
         
     }
@@ -272,6 +282,38 @@ public class GameManager : MonoBehaviour
                 chosenPassiveItemsUI[i].enabled = false;
             }
         }
+    }
+
+    void UpdateStopwatch()
+    {
+        stopwatchTime += Time.deltaTime;
+
+        UpdateStopwatchDisplay();
+
+        if (stopwatchTime >= timeLimit)
+        {
+            GameOver(); // change: call here function to start game with boss
+        }
+    }
+
+    void UpdateStopwatchDisplay()
+    {
+        // Calculate the number of minutes and seconds that have elapsed
+        int minutes = Mathf.FloorToInt(stopwatchTime / 60);
+        int seconds = Mathf.FloorToInt(stopwatchTime % 60);
+
+        // Update the stopwatch text to display the elapsed time
+        stopwatchDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    void ShowStopwatchDisplayPauseScreen()
+    {
+        // Calculate the number of minutes and seconds that have elapsed
+        int minutes = Mathf.FloorToInt(stopwatchTime / 60);
+        int seconds = Mathf.FloorToInt(stopwatchTime % 60);
+
+        // Update the stopwatch text to display the elapsed time
+        currentTimeDisplay.text = "Time: "+ string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
 
