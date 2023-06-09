@@ -201,7 +201,7 @@ public class PlayerStats : MonoBehaviour
         CurrentCoins = PersistenceManager.PersistenceInstance.Coins;
 
         //Spawn the starting weapon
-        SpawnWeapon(characterData.StartingWeapon);
+       
         //SpawnWeapon(secondWeaponTest);
         //SpawnPassiveItem(firstPassiveItemTest);
         //SpawnPassiveItem(secondPassiveItemTest);
@@ -209,6 +209,7 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        SpawnWeapon(characterData.StartingWeapon);
         //Initialize the experience cap as the first experience cap increase
         experienceCap = levelRanges[0].experienceCapIncrease;
 

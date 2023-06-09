@@ -93,11 +93,11 @@ public class GenerateGrid : MonoBehaviour
     private bool ShouldSpawnSpecialBlock()
     {
         // Inserire la condizione per spawnare l'arena del boss
-        /*if (GameManager.instance.BossFightTime)
+        if (GameManager.instance.BossFightTime)
         {
             // Questo viene messo a true se il tempo è arrivato a 10 minuti
             spawnSpecialBlock = true;
-        }*/
+        }
         return spawnSpecialBlock;
     }
 

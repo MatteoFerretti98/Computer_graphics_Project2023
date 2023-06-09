@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
     // Reference to the player's game object
     public GameObject playerObject;
 
+    public bool BossFightTime = false;
+
 
     [SerializeField]
     private PlayerStats player;
