@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static InventoryManager;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class PlayerSpawner : MonoBehaviour
     public List<Image> passiveItemUISlots = new List<Image>(6);
     public List<Image> weaponUISlots = new List<Image>(6);
     public List<InventoryManager.UpgradeUI> upgradeUIOptions = new List<InventoryManager.UpgradeUI>();
+
+  
+
+
     private void Awake()
     {
         if (instance == null)
