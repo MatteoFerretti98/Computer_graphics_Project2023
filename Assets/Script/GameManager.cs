@@ -183,6 +183,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public bool IsGamePaused() { 
+    
+        return (currentState == GameState.Paused || currentState == GameState.LevelUp);
+    }
+
     public void ResumeGame()
     {
         if (currentState == GameState.Paused)
