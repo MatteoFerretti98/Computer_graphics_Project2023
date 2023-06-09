@@ -37,7 +37,7 @@ public class DropRateManager : MonoBehaviour
         if (possibleDrops.Count > 0)
         {
             Drops selectedDrop = possibleDrops[UnityEngine.Random.Range(0, possibleDrops.Count)];
-            Vector3 newPosition = transform.position + Vector3.up; // Add 1 to y position
+            Vector3 newPosition = new Vector3(transform.position.x, 2f, transform.position.z); // Add 1 to y position
             GameObject instantiatedItem = Instantiate(selectedDrop.itemPrefab, newPosition, Quaternion.Euler(-90f, 0f, 0f));
             instantiatedItem.transform.localScale = new Vector3(0.015f, 0.015f, 0.015f); // Set scale to 0.015
         }

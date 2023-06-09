@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AnimationScript : MonoBehaviour {
+public class AnimationScript : MonoBehaviour
+{
 
     public bool isAnimated = false;
 
@@ -16,7 +17,7 @@ public class AnimationScript : MonoBehaviour {
     private bool goingUp = true;
     public float floatRate;
     private float floatTimer;
-   
+
     public Vector3 startScale;
     public Vector3 endScale;
 
@@ -25,45 +26,54 @@ public class AnimationScript : MonoBehaviour {
     public float scaleRate;
     private float scaleTimer;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    private bool wasPaused = false; // Aggiunto: tiene traccia dello stato di pausa precedente
 
-       
-        
-        if(isAnimated)
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isAnimated)
         {
-            if(isRotating)
+            if (isRotating)
             {
                 transform.Rotate(rotationAngle * rotationSpeed * Time.deltaTime);
             }
 
-            if(isFloating)
+            if (isFloating)
             {
-                floatTimer += Time.deltaTime;
-                Vector3 moveDir = new Vector3(0.0f, 0.0f, floatSpeed);
-                transform.Translate(moveDir);
-
-                if (goingUp && floatTimer >= floatRate)
+                if (!wasPaused) // Aggiunto: controlla se il gioco era in pausa nel frame precedente
                 {
-                    goingUp = false;
-                    floatTimer = 0;
-                    floatSpeed = -floatSpeed;
+                    // Imposta isFloating su false se il gioco è in pausa
+                    isFloating = !GameManager.instance.IsGamePaused();
                 }
 
-                else if(!goingUp && floatTimer >= floatRate)
+                if (isFloating)
                 {
-                    goingUp = true;
-                    floatTimer = 0;
-                    floatSpeed = +floatSpeed;
+                    floatTimer += Time.deltaTime;
+                    Vector3 moveDir = new Vector3(0.0f, 0.0f, floatSpeed);
+                    transform.Translate(moveDir);
+
+                    if (goingUp && floatTimer >= floatRate)
+                    {
+                        goingUp = false;
+                        floatTimer = 0;
+                        floatSpeed = -floatSpeed;
+                    }
+                    else if (!goingUp && floatTimer >= floatRate)
+                    {
+                        goingUp = true;
+                        floatTimer = 0;
+                        floatSpeed = +floatSpeed;
+                    }
                 }
             }
 
-            if(isScaling)
+            if (isScaling)
             {
                 scaleTimer += Time.deltaTime;
 
@@ -76,7 +86,7 @@ public class AnimationScript : MonoBehaviour {
                     transform.localScale = Vector3.Lerp(transform.localScale, startScale, scaleSpeed * Time.deltaTime);
                 }
 
-                if(scaleTimer >= scaleRate)
+                if (scaleTimer >= scaleRate)
                 {
                     if (scalingUp) { scalingUp = false; }
                     else if (!scalingUp) { scalingUp = true; }
@@ -84,5 +94,7 @@ public class AnimationScript : MonoBehaviour {
                 }
             }
         }
-	}
+
+        wasPaused = GameManager.instance.IsGamePaused(); // Aggiunto: salva lo stato di pausa corrente per il frame successivo
+    }
 }

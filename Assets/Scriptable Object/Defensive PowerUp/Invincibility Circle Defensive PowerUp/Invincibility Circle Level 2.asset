@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49264803a615dc042a78e3c8fcc51c93, type: 3}
+  m_Name: Invincibility Circle Level 2
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 100006, guid: a3eb8a625eb19db49bf328d09f57c8f8, type: 3}
+  duration: 10
+  cooldownDuration: 100
+  speed: 1
+  level: 2
+  nextLevelPrefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: cf6a0ec11fde941d18c8e0157fdeb7c7, type: 3}

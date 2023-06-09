@@ -2,13 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-    Things changed;
-        - Worldx, worldz replaced with a radius.
-        - startPos changed to : startpos = vector3.zero AND made the player spawn on the startPos.
-        - created a detailscale var as you want the seed to be consistent for the noise.
-        - removed all the objectToSpawn stuff from this class.
-*/
+
 public class GenerateGrid : MonoBehaviour
 {
     public GameObject blockGameObject;
@@ -25,6 +19,14 @@ public class GenerateGrid : MonoBehaviour
 
     private Hashtable blockContainer = new Hashtable();
 
+    public GameObject specialBlockPrefab; // Prefab da spawnare quando si verifica la condizione
+    public bool spawnSpecialBlock = false; // Variabile di condizione per determinare se spawnare l'oggetto speciale
+    public bool specialBlockIsNotSpawned = true; // Variabile di condizione per verificare che l'oggetto sia già stato spawnato
+
+
+    //private GameManager manager;
+
+
     void Start()
     {
         player.transform.position = startPosition;
@@ -37,13 +39,7 @@ public class GenerateGrid : MonoBehaviour
                     generateNoise(x, z, detailScale) * noiseHeight,
                     z * 1 + startPosition.z);
 
-                GameObject block = Instantiate(blockGameObject,
-                pos,
-                Quaternion.identity) as GameObject;
-
-                blockContainer.Add(pos, block);
-
-                block.transform.SetParent(this.transform);
+                SpawnBlock(pos);
             }
         }
     }
@@ -64,17 +60,45 @@ public class GenerateGrid : MonoBehaviour
 
                     if (!blockContainer.ContainsKey(pos))
                     {
-                        GameObject block = Instantiate(blockGameObject,
-                        pos,
-                        Quaternion.identity) as GameObject;
-
-                        blockContainer.Add(pos, block);
-
-                        block.transform.SetParent(this.transform);
+                        
+                        if (ShouldSpawnSpecialBlock() && specialBlockIsNotSpawned) // Controllo per la condizione di spawn dell'oggetto speciale
+                        {
+                            SpawnSpecialBlock(pos);
+                            specialBlockIsNotSpawned = false;
+                        }
+                        else
+                        {
+                            SpawnBlock(pos);
+                        }
                     }
                 }
             }
         }
+    }
+
+    private void SpawnBlock(Vector3 position)
+    {
+        GameObject block = Instantiate(blockGameObject, position, Quaternion.identity) as GameObject;
+        blockContainer.Add(position, block);
+        block.transform.SetParent(this.transform);
+    }
+
+    private void SpawnSpecialBlock(Vector3 position)
+    {
+        GameObject specialBlock = Instantiate(specialBlockPrefab, new Vector3(20f, 1.5f, 20f), Quaternion.Euler(0,227f,0)) as GameObject;
+        blockContainer.Add(position, specialBlock);
+        specialBlock.transform.SetParent(this.transform);
+    }
+
+    private bool ShouldSpawnSpecialBlock()
+    {
+        // Inserire la condizione per spawnare l'arena del boss
+        if (GameManager.instance.BossFightTime)
+        {
+            // Questo viene messo a true se il tempo è arrivato a 10 minuti
+            spawnSpecialBlock = true;
+        }
+        return spawnSpecialBlock;
     }
 
     public int xPlayerMove

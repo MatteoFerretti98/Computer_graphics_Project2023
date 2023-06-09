@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
     // Reference to the player's game object
     public GameObject playerObject;
 
+    public bool BossFightTime = false;
+
 
     [SerializeField]
     private PlayerStats player;
@@ -179,6 +181,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game is paused");
         }
 
+    }
+
+    public bool IsGamePaused() { 
+    
+        return (currentState == GameState.Paused || currentState == GameState.LevelUp);
     }
 
     public void ResumeGame()
