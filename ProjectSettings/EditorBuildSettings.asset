@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelector.unity
     guid: d9b6f2fe97abf5e4ba0f9a38815b1b57
   - enabled: 1
+    path: Assets/Scenes/WeaponSelector.unity
+    guid: 6dd40c4c6f186214e87f7ce0226b796d
+  - enabled: 1
     path: Assets/Scenes/Scene1.unity
-    guid: 83c7f90cd9d3c4bac8e399606234576a
+    guid: db2dd6bdae74c4c4da9ec7671d590a3c
   m_configObjects: {}

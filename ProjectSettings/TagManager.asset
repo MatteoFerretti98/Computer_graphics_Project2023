@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Enemy
   - Prop
+  - Male
+  - Female
+  - Knife
+  - Garlic
+  - FlameStream
+  - Undefined
+  - IceShard
   layers:
   - Default
   - TransparentFX

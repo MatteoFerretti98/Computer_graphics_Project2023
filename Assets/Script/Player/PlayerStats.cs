@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    CharacterScriptableObject characterData;
-
+    public CharacterScriptableObject characterData;
     //Current stats
     public float currentHealth;
     float currentRecovery;
@@ -81,12 +80,12 @@ public class PlayerStats : MonoBehaviour
             if (currentMight != value)
             {
                 currentMight = value;
-                
+
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
                 }
-                
+
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
             }
@@ -139,12 +138,12 @@ public class PlayerStats : MonoBehaviour
             //Check if the value has changed
             //if (currentCoins != value)
             //{
-                currentCoins = value;
-                if (GameManager.instance != null)
-                {
-                    GameManager.instance.currentCoinsDisplay.text = "Coins: " + currentCoins;
-                }
-                //Add any additional logic here that needs to be executed when the value changes
+            currentCoins = value;
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.currentCoinsDisplay.text = "Coins: " + currentCoins;
+            }
+            //Add any additional logic here that needs to be executed when the value changes
             //}
         }
     }
@@ -180,15 +179,17 @@ public class PlayerStats : MonoBehaviour
     public GameObject secondWeaponTest;
     public GameObject firstPassiveItemTest, secondPassiveItemTest;
 
+
     void Awake()
     {
-        characterData = CharacterSelector.GetData();
-        CharacterSelector.instance.DestroySingleton();
+        characterData = CharacterSelectorController.GetData();
+        CharacterSelectorController.instance.DestroySingleton();
+        PlayerSpawner.instance.DestroySingleton();
 
-        inventory = GetComponent<InventoryManager>();
+    inventory = GetComponent<InventoryManager>();
 
         PersistenceManager.PersistenceInstance.readFile();
-       
+
 
         //Assign the variables
         CurrentHealth = characterData.MaxHealth;
@@ -278,7 +279,7 @@ public class PlayerStats : MonoBehaviour
             invincibilityTimer = invincibilityDuration;
             isInvincible = true;
 
-            Debug.LogWarning("Damage Player: "+dmg);
+            Debug.LogWarning("Damage Player: " + dmg);
 
             if (CurrentHealth <= 0)
             {
@@ -291,11 +292,11 @@ public class PlayerStats : MonoBehaviour
     public void Kill()
     {
 
-        Debug.Log("Game over:"+GameManager.instance.isGameOver);
+        Debug.Log("Game over:" + GameManager.instance.isGameOver);
         if (!GameManager.instance.isGameOver)
         {
             GameManager.instance.AssignLevelReachedUI(level);
-            GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlots, inventory.passiveItemUISlots); 
+            GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlots, inventory.passiveItemUISlots);
             GameManager.instance.GameOver();
         }
     }
