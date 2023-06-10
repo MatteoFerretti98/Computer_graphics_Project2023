@@ -29,9 +29,8 @@ public class PlayerSpawner : MonoBehaviour
     public static PlayerSpawner instance;
     public List<Image> passiveItemUISlots = new List<Image>(6);
     public List<Image> weaponUISlots = new List<Image>(6);
+    public List<Image> defensivePowerUpUISlots = new List<Image>(6);
     public List<InventoryManager.UpgradeUI> upgradeUIOptions = new List<InventoryManager.UpgradeUI>();
-
-  
 
 
     private void Awake()
@@ -58,6 +57,7 @@ public class PlayerSpawner : MonoBehaviour
         inventoryManager.upgradeUIOptions = upgradeUIOptions;
         inventoryManager.passiveItemUISlots = passiveItemUISlots;
         inventoryManager.weaponUISlots = weaponUISlots;
+        inventoryManager.defensivePowerUpUISlots = defensivePowerUpUISlots;
     }
 
     void Start()
