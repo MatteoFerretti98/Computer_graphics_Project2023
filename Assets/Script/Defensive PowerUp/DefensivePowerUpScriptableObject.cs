@@ -33,4 +33,12 @@ public class DefensivePowerUpScriptableObject : ScriptableObject
     [SerializeField]
     Sprite icon;    //Not meant to be modified in game [Only in Editor]
     public Sprite Icon { get => icon; private set => icon = value; }
+
+    [SerializeField]
+    new string name;
+    public string Name { get => name; private set => name = value; }
+
+    [SerializeField]
+    string description;    //What is the description of this defensive power up? [If this defensive power up is an upgrade, place the description of the upgrades]
+    public string Description { get => description; private set => description = value; }
 }

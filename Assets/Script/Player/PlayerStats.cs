@@ -175,6 +175,7 @@ public class PlayerStats : MonoBehaviour
     InventoryManager inventory;
     public int weaponIndex;
     public int passiveItemIndex;
+    public int defensivePowerUpIndex;
 
     public GameObject secondWeaponTest;
     public GameObject firstPassiveItemTest, secondPassiveItemTest;
@@ -186,7 +187,7 @@ public class PlayerStats : MonoBehaviour
         CharacterSelectorController.instance.DestroySingleton();
         PlayerSpawner.instance.DestroySingleton();
 
-    inventory = GetComponent<InventoryManager>();
+        inventory = GetComponent<InventoryManager>();
 
         PersistenceManager.PersistenceInstance.readFile();
 
@@ -297,7 +298,7 @@ public class PlayerStats : MonoBehaviour
         if (!GameManager.instance.isGameOver)
         {
             GameManager.instance.AssignLevelReachedUI(level);
-            GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlots, inventory.passiveItemUISlots);
+            GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponUISlots, inventory.passiveItemUISlots, inventory.defensivePowerUpUISlots);
             GameManager.instance.GameOver();
         }
     }
@@ -366,5 +367,22 @@ public class PlayerStats : MonoBehaviour
         inventory.AddPassiveItem(passiveItemIndex, spawnedPassiveItem.GetComponent<PassiveItem>());   //Add the passive item to it's slot // instance error
 
         passiveItemIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE PASSIVE ITEM TO THE SLOT]
+    }
+
+    public void SpawnDefensivePowerUp(GameObject defensivePowerUp)
+    {
+        //Checking if the slots are full, and returning if it is
+        if (defensivePowerUpIndex >= inventory.defensivePowerUpSlots.Count - 1) //Must be -1 because a list starts from 0
+        {
+            Debug.LogError("Inventory slots already full");
+            return;
+        }
+
+        //Spawn the passive item
+        GameObject spawnedDefensivePowerUp = Instantiate(defensivePowerUp, transform.position, Quaternion.identity);
+        spawnedDefensivePowerUp.transform.SetParent(transform);    //Set the defensive power up to be a child of the player
+        inventory.AddDefensivePowerUp(defensivePowerUpIndex, spawnedDefensivePowerUp.GetComponent<DefensivePowerUpController>());   //Add the defensive power up to it's slot
+
+        defensivePowerUpIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE DEFENSIVE POWER UP TO THE SLOT]
     }
 }

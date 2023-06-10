@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class InventoryManager : MonoBehaviour
 {
     public List<WeaponController> weaponSlots = new List<WeaponController>(6);
@@ -13,7 +14,10 @@ public class InventoryManager : MonoBehaviour
     public List<PassiveItem> passiveItemSlots = new List<PassiveItem>(6);
     public int[] passiveItemLevels = new int[6];
     public List<Image> passiveItemUISlots = new List<Image>(6);
-    
+    public List<DefensivePowerUpController> defensivePowerUpSlots = new List<DefensivePowerUpController>(6);
+    public int[] defensivePowerUpLevels = new int[6];
+    public List<Image> defensivePowerUpUISlots = new List<Image>(6);
+
 
     [System.Serializable]
     public class WeaponUpgrade
@@ -32,6 +36,14 @@ public class InventoryManager : MonoBehaviour
     }
 
     [System.Serializable]
+    public class DefensivePowerUpUpgrade
+    {
+        public int defensivePowerUpIndex;
+        public GameObject initialDefensivePowerUp;
+        public DefensivePowerUpScriptableObject defensivePowerUpData;
+    }
+
+    [System.Serializable]
     public class UpgradeUI
     {
         public TextMeshProUGUI upgradeNameDisplay;
@@ -42,6 +54,7 @@ public class InventoryManager : MonoBehaviour
 
     public List<WeaponUpgrade> weaponUpgradeOptions = new List<WeaponUpgrade>();    //List of upgrade options for weapons
     public List<PassiveItemUpgrade> passiveItemUpgradeOptions = new List<PassiveItemUpgrade>(); //List of upgrade options for passive items
+    public List<DefensivePowerUpUpgrade> defensivePowerUpUpgradeOptions = new List<DefensivePowerUpUpgrade>(); //List of upgrade options for defensive power up
     public List<UpgradeUI> upgradeUIOptions = new List<UpgradeUI>();    //List of ui for upgrade options present in the scene
 
 
@@ -72,6 +85,19 @@ public class InventoryManager : MonoBehaviour
         passiveItemLevels[slotIndex] = passiveItem.passiveItemData.Level;
         passiveItemUISlots[slotIndex].enabled = true; //Enable the image component
         passiveItemUISlots[slotIndex].sprite = passiveItem.passiveItemData.Icon;
+
+        if (GameManager.instance != null && GameManager.instance.choosingUpgrade)
+        {
+            GameManager.instance.EndLevelUp();
+        }
+    }
+
+    public void AddDefensivePowerUp(int slotIndex, DefensivePowerUpController defensivePowerUp)   //Add a defensive power up to a specific slot
+    {
+        defensivePowerUpSlots[slotIndex] = defensivePowerUp;
+        defensivePowerUpLevels[slotIndex] = defensivePowerUp.defensivePowerUpData.Level;
+        defensivePowerUpUISlots[slotIndex].enabled = true;   //Enable the image component
+        defensivePowerUpUISlots[slotIndex].sprite = defensivePowerUp.defensivePowerUpData.Icon;
 
         if (GameManager.instance != null && GameManager.instance.choosingUpgrade)
         {
@@ -126,15 +152,42 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void LevelUpDefensivePowerUp(int slotIndex, int upgradeIndex)
+    {
+        if (defensivePowerUpSlots.Count > slotIndex)
+        {
+            DefensivePowerUpController defensivePowerUp = defensivePowerUpSlots[slotIndex];
+            if (!defensivePowerUp.defensivePowerUpData.NextLevelPrefab)  //Checks if there is a next level
+            {
+                Debug.LogError("NO NEXT LEVEL FOR " + defensivePowerUp.name);
+                return;
+            }
+            GameObject upgradedDefensivePowerUp = Instantiate(defensivePowerUp.defensivePowerUpData.NextLevelPrefab, transform.position, Quaternion.identity);
+            upgradedDefensivePowerUp.transform.SetParent(transform);    //Set the defensive power up to be a child of the player
+            AddDefensivePowerUp(slotIndex, upgradedDefensivePowerUp.GetComponent<DefensivePowerUpController>());
+            Destroy(defensivePowerUp.gameObject);
+            defensivePowerUpLevels[slotIndex] = upgradedDefensivePowerUp.GetComponent<DefensivePowerUpController>().defensivePowerUpData.Level;  //To make sure we have the correct defensive level up level
+            defensivePowerUpUpgradeOptions[upgradeIndex].defensivePowerUpData = upgradedDefensivePowerUp.GetComponent<DefensivePowerUpController>().defensivePowerUpData;
+        }
+
+        if (GameManager.instance != null && GameManager.instance.choosingUpgrade)
+        {
+            GameManager.instance.EndLevelUp();
+        }
+    }
+
     void ApplyUpgradeOptions()
     {
+   
         List<WeaponUpgrade> availableWeaponUpgrades = new List<WeaponUpgrade>(weaponUpgradeOptions);
         List<PassiveItemUpgrade> availablePassiveItemUpgrades = new List<PassiveItemUpgrade>(passiveItemUpgradeOptions);
+        List<DefensivePowerUpUpgrade> availableDefensivePowerUpUpgrades = new List<DefensivePowerUpUpgrade>(defensivePowerUpUpgradeOptions);
 
         foreach (var upgradeOption in upgradeUIOptions)
         {
+           
 
-            if (availableWeaponUpgrades.Count == 0 && availablePassiveItemUpgrades.Count == 0)
+            if (availableWeaponUpgrades.Count == 0 && availablePassiveItemUpgrades.Count == 0 && availableDefensivePowerUpUpgrades.Count == 0)
             {
                 return;
             }
@@ -143,16 +196,32 @@ public class InventoryManager : MonoBehaviour
 
             if (availableWeaponUpgrades.Count == 0)
             {
-                upgradeType = 2;
+                // upgradeType = 2;
+                upgradeType = Random.Range(2, 4); // chose 2 or 3
             }
             else if (availablePassiveItemUpgrades.Count == 0)
             {
-                upgradeType = 1;
+                // upgradeType = 1;
+                 
+                upgradeType = Random.Range(1, 3); // chose 1 or 3
+                if (upgradeType >= 2)
+                {
+                    upgradeType += 1;
+                }
+            }
+            else if (availableDefensivePowerUpUpgrades.Count == 0)
+            {
+                upgradeType = 3;
+                upgradeType = Random.Range(1, 2); // chose 1 or 2
             }
             else
             {
-                upgradeType = Random.Range(1, 3);    //Choose between weapon and passive items
+                
+                upgradeType = Random.Range(1, 4);    //Choose between weapon and passive items
+
             }
+
+            Debug.Log("upgradeType: " + upgradeType);
 
             if (upgradeType == 1)
             {
@@ -239,6 +308,54 @@ public class InventoryManager : MonoBehaviour
                     }
                     upgradeOption.upgradeIcon.sprite = chosenPassiveItemUpgrade.passiveItemData.Icon;
                 }
+            }
+            else if (upgradeType == 3)
+            {
+                Debug.Log("upgradeType == 3");
+
+                
+                DefensivePowerUpUpgrade chosenDefensivePowerUpUpgrade = availableDefensivePowerUpUpgrades[Random.Range(0, availableDefensivePowerUpUpgrades.Count)];
+                availableDefensivePowerUpUpgrades.Remove(chosenDefensivePowerUpUpgrade);
+
+                if (chosenDefensivePowerUpUpgrade != null)
+                {
+                    EnableUpgradeUI(upgradeOption);
+                    bool newDefensivePowerUp = false;
+                    for (int i = 0; i < defensivePowerUpSlots.Count; i++)
+                    {
+                        if (defensivePowerUpSlots[i] != null && defensivePowerUpSlots[i].defensivePowerUpData == chosenDefensivePowerUpUpgrade.defensivePowerUpData)
+                        {
+                            newDefensivePowerUp = false;
+
+                            if (!newDefensivePowerUp)
+                            {
+                                if (!chosenDefensivePowerUpUpgrade.defensivePowerUpData.NextLevelPrefab)
+                                {
+                                    DisableUpgradeUI(upgradeOption);
+                                    break;
+                                }
+                                upgradeOption.upgradeButton.onClick.AddListener(() => LevelUpDefensivePowerUp(i, chosenDefensivePowerUpUpgrade.defensivePowerUpIndex)); //Apply button functionality
+                                //Set the description and description to be that of the next level
+                                upgradeOption.upgradeDescriptionDisplay.text = chosenDefensivePowerUpUpgrade.defensivePowerUpData.NextLevelPrefab.GetComponent<DefensivePowerUpController>().defensivePowerUpData.Description;
+                                upgradeOption.upgradeNameDisplay.text = chosenDefensivePowerUpUpgrade.defensivePowerUpData.NextLevelPrefab.GetComponent<DefensivePowerUpController>().defensivePowerUpData.Name;
+                                
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            newDefensivePowerUp = true;
+                        }
+                    }
+                    if (newDefensivePowerUp) //Spawn a new defensive power up
+                    {
+                        upgradeOption.upgradeButton.onClick.AddListener(() => player.SpawnDefensivePowerUp(chosenDefensivePowerUpUpgrade.initialDefensivePowerUp)); //Apply button functionality
+                        upgradeOption.upgradeDescriptionDisplay.text = chosenDefensivePowerUpUpgrade.defensivePowerUpData.Description;  //Apply initial description
+                        upgradeOption.upgradeNameDisplay.text = chosenDefensivePowerUpUpgrade.defensivePowerUpData.Name;  //Apply initial name
+                    }
+                    upgradeOption.upgradeIcon.sprite = chosenDefensivePowerUpUpgrade.defensivePowerUpData.Icon;
+                }
+                
             }
         }
     }

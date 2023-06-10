@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timeSurvivedDisplay;
     public List<Image> chosenWeaponsUI = new List<Image>(6);
     public List<Image> chosenPassiveItemsUI = new List<Image>(6);
+    public List<Image> chosenDefensivePowerUpUI = new List<Image>(6);
 
     [Header("Stopwatch")]
     public float timeLimit; // The time limit in seconds
@@ -265,12 +266,13 @@ public class GameManager : MonoBehaviour
         levelReachedDisplay.text = levelReachedData.ToString();
     }
 
-    public void AssignChosenWeaponsAndPassiveItemsUI(List<Image> chosenWeaponsData, List<Image> chosenPassiveItemsData)
+    
+    public void AssignChosenWeaponsAndPassiveItemsUI(List<Image> chosenWeaponsData, List<Image> chosenPassiveItemsData, List<Image> chosenDefensivePowerUpData)
     {
-        // Check that both lists have the same length
-        if (chosenWeaponsData.Count != chosenWeaponsUI.Count || chosenPassiveItemsData.Count != chosenPassiveItemsUI.Count)
+        // Check that lists have the same length
+        if (chosenWeaponsData.Count != chosenWeaponsUI.Count || chosenPassiveItemsData.Count != chosenPassiveItemsUI.Count || chosenDefensivePowerUpData.Count != chosenDefensivePowerUpUI.Count)
         {
-            Debug.LogError("Chosen weapons and passive items data lists have different lengths");
+            Debug.LogError("Chosen weapons and passive items data and defensive power up lists have different lengths");
             return;
         }
 
@@ -307,7 +309,25 @@ public class GameManager : MonoBehaviour
                 chosenPassiveItemsUI[i].enabled = false;
             }
         }
+
+        // Assign chosen defensive power up data to chosenDefensivePowerUpUI
+        for (int i = 0; i < chosenDefensivePowerUpUI.Count; i++)
+        {
+            // Check that the sprite of the corresponding element in chosenDefensivePowerUpData is not null
+            if (chosenDefensivePowerUpData[i].sprite)
+            {
+                // Enable the corresponding element in chosenDefensivePowerUpUI and set its sprite to the corresponding sprite in chosenDefensivePowerUpData
+                chosenDefensivePowerUpUI[i].enabled = true;
+                chosenDefensivePowerUpUI[i].sprite = chosenDefensivePowerUpData[i].sprite;
+            }
+            else
+            {
+                // If the sprite is null, disable the corresponding element in chosenDefensivePowerUpUI
+                chosenDefensivePowerUpUI[i].enabled = false;
+            }
+        }
     }
+    
 
     void UpdateStopwatch()
     {

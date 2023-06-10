@@ -2395,6 +2395,7 @@ MonoBehaviour:
     experienceCapIncrease: 200
   weaponIndex: 0
   passiveItemIndex: 0
+  defensivePowerUpIndex: 0
   secondWeaponTest: {fileID: 1314301844701400672, guid: 113fef7198cbdfa4496e956778147234, type: 3}
   firstPassiveItemTest: {fileID: 6145373405619145763, guid: c89679a9fba222c428eab19eef377559, type: 3}
   secondPassiveItemTest: {fileID: 8903732772856946776, guid: cde74a930909bab40a6f9bbd47b62a93, type: 3}
@@ -2440,6 +2441,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  defensivePowerUpSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  defensivePowerUpLevels: 000000000000000000000000000000000000000000000000
+  defensivePowerUpUISlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   weaponUpgradeOptions:
   - weaponUpgradeIndex: 0
     initialWeapon: {fileID: 7849014901684182460, guid: b1ee2436492b69442900447a181535d1, type: 3}
@@ -2454,6 +2470,7 @@ MonoBehaviour:
   - passiveItemUpgradeIndex: 1
     initialPassiveItem: {fileID: 6145373405619145763, guid: c89679a9fba222c428eab19eef377559, type: 3}
     passiveItemData: {fileID: 11400000, guid: 8c3e6af47923cfb41a72a8e0dfcbddf0, type: 2}
+  defensivePowerUpUpgradeOptions: []
   upgradeUIOptions:
   - upgradeNameDisplay: {fileID: 0}
     upgradeDescriptionDisplay: {fileID: 0}
