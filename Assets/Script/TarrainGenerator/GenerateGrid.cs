@@ -71,6 +71,11 @@ public class GenerateGrid : MonoBehaviour
                             SpawnBlock(pos);
                         }
                     }
+                    else if (ShouldSpawnSpecialBlock() && specialBlockIsNotSpawned) // Controllo per la condizione di spawn dell'oggetto speciale
+                    {
+                        SpawnSpecialBlockInOldBlock(pos);
+                        specialBlockIsNotSpawned = false;
+                    }
                 }
             }
         }
@@ -87,6 +92,12 @@ public class GenerateGrid : MonoBehaviour
     {
         GameObject specialBlock = Instantiate(specialBlockPrefab, new Vector3(20f, 1.5f, 20f), Quaternion.Euler(0,227f,0)) as GameObject;
         blockContainer.Add(position, specialBlock);
+        specialBlock.transform.SetParent(this.transform);
+    }
+
+    private void SpawnSpecialBlockInOldBlock(Vector3 position)
+    {
+        GameObject specialBlock = Instantiate(specialBlockPrefab, new Vector3(xPlayerLocation + 20f, 1.5f, zPlayerLocation + 20f), Quaternion.Euler(0, 227f, 0)) as GameObject;
         specialBlock.transform.SetParent(this.transform);
     }
 
