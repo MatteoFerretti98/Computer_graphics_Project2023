@@ -337,7 +337,10 @@ public class GameManager : MonoBehaviour
 
         if (stopwatchTime >= timeLimit)
         {
-            GameOver(); // change: call here function to start game with boss
+            //GameOver(); // change: call here function to start game with boss
+            BossFightTime = true;
+            player = FindAnyObjectByType<PlayerStats>();
+            DontDestroyOnLoad(player);
         }
     }
 
