@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossArena.unity
     guid: e0b9c341d3aacfd4c92887c02363cdb1
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: cb187683039ce9341a6c54e95dee64db
   m_configObjects: {}

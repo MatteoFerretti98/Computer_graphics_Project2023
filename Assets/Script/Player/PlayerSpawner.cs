@@ -31,7 +31,12 @@ public class PlayerSpawner : MonoBehaviour
     public List<Image> weaponUISlots = new List<Image>(6);
     public List<Image> defensivePowerUpUISlots = new List<Image>(6);
     public List<InventoryManager.UpgradeUI> upgradeUIOptions = new List<InventoryManager.UpgradeUI>();
-
+	//aggiunti Sam
+	public TextMeshProUGUI upgradeDescriptionDisplay;
+    public TextMeshProUGUI upgradeNameDisplay;
+    public Button ChooseButton;
+    public TextMeshProUGUI levelGame;
+	
     public Transform cam;
 
     [Header("UI")]
@@ -68,6 +73,10 @@ public class PlayerSpawner : MonoBehaviour
         inventoryManager.passiveItemUISlots = passiveItemUISlots;
         inventoryManager.weaponUISlots = weaponUISlots;
         inventoryManager.defensivePowerUpUISlots = defensivePowerUpUISlots;
+		inventoryManager.upgradeDescriptionDisplay = upgradeDescriptionDisplay;
+        inventoryManager.upgradeNameDisplay = upgradeNameDisplay;
+        inventoryManager.ChooseButton = ChooseButton;
+        inventoryManager.levelGame = levelGame;
         // playerStats.healthBar = healthBar;
         playerStats.levelText = levelText;
         playerStats.expBar = expBar;

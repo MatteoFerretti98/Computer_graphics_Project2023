@@ -21,4 +21,4 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 7849014901684182460, guid: 5f4b5f286195d4b45a010cf998a6cb7c, type: 3}
   name: Knife
   description: Shoots knives in the direction the player is facing
-  icon: {fileID: 21300000, guid: df03211313565c20ab3d04f51bea5707, type: 3}
+  icon: {fileID: 21300000, guid: c5f379770ddf3470cab5328d5615bb23, type: 3}

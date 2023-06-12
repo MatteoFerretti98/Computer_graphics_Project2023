@@ -13,6 +13,7 @@ TagManager:
   - FlameStream
   - Undefined
   - IceShard
+  - FocusPowerUp
   - FxTemporaire
   - EnemyBoss
   layers:

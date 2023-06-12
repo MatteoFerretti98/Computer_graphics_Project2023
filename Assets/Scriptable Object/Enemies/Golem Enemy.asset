@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Golem Enemy
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  maxHealth: 20
-  damage: 30
+  maxHealth: 5
+  damage: 10

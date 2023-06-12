@@ -20,5 +20,5 @@ MonoBehaviour:
   level: 1
   nextLevelPrefab: {fileID: 265546460124282801, guid: c500a057f51631d428788f3cdf8a946d, type: 3}
   name: FlameStream
-  description: 
-  icon: {fileID: 21300000, guid: ba21e48f675c44360ab2f2adf0f09a65, type: 3}
+  description: Tira scoregge infuocate
+  icon: {fileID: 21300000, guid: 2b13031bc28cb3c48963ec33fad1c303, type: 3}

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26770d3494be64c68aa73a8fa4614a8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 08efe81faa25fe642aaa69764f7e6788, type: 3}
   m_Name: Chicken Boost Item
   m_EditorClassIdentifier: 
-  increment: 100
+  increment: 20
   name: Chicken
-  description: Increment player health by 50
-  icon: {fileID: 21300000, guid: 8734a97f7f751456ab30f67cc586a5e7, type: 3}
+  description: Increment life By 20
+  icon: {fileID: 21300000, guid: a133fd71561cde6498a05e5c1cac3fdb, type: 3}

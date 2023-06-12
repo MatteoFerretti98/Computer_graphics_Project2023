@@ -19,6 +19,6 @@ MonoBehaviour:
   pierce: 1
   level: 1
   nextLevelPrefab: {fileID: 0}
-  name: IceShard Level 2
-  description: 
-  icon: {fileID: 21300000, guid: 06ce499fc948e4526af9ff76839bc1ca, type: 3}
+  name: Ice Lance Level 2
+  description: Ice lance speed up by 5
+  icon: {fileID: 21300000, guid: 440b7abefa80aee438c5db880d403b2d, type: 3}

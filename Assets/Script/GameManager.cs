@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        TestSwitchState(); // test game over pressing key G
+        // TestSwitchState(); // test game over pressing key G
 
         // Define the behavior for each state
         switch (currentState)
@@ -361,7 +361,7 @@ public class GameManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(stopwatchTime % 60);
 
         // Update the stopwatch text to display the elapsed time
-        currentTimeDisplay.text = "Time: "+ string.Format("{0:00}:{1:00}", minutes, seconds);
+        currentTimeDisplay.text = "" + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void StartLevelUp()

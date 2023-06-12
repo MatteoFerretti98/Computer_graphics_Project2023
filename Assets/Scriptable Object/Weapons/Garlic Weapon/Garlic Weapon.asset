@@ -21,4 +21,4 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 1314301844701400672, guid: 1ae83a34ca1cca342bfa4261038a404b, type: 3}
   name: Garlic
   description: Deals damage to every enemy inside
-  icon: {fileID: 21300000, guid: 07caf3d1930bab14aa8f6dcdf2db871a, type: 3}
+  icon: {fileID: 21300000, guid: adfb8ab57db78de469476ca6716a777e, type: 3}

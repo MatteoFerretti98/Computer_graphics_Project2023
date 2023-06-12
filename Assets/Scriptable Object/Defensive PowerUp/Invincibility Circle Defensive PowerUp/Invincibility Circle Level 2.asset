@@ -20,4 +20,4 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: 21300000, guid: cf6a0ec11fde941d18c8e0157fdeb7c7, type: 3}
   name: Invincibility Circle Level 2
-  description: something up by ...
+  description: You are invincible for 10 seconds

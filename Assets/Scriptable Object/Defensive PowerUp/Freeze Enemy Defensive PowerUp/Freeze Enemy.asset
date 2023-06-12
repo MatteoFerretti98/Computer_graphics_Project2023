@@ -19,5 +19,5 @@ MonoBehaviour:
   level: 1
   nextLevelPrefab: {fileID: 1931349279213131211, guid: 102956bb0db9bee4f8262bc2157c0c66, type: 3}
   icon: {fileID: 21300000, guid: 81dc7514fb5b88b42822f9d1982582a3, type: 3}
-  name: 
-  description: 
+  name: Freezer Level 1
+  description: Freeze Enemy

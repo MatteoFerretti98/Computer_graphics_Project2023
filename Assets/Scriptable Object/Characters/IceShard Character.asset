@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88cf03c8491a2b43ad7a4a9d2b7b34f, type: 3}
   m_Name: IceShard Character
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: df03211313565c20ab3d04f51bea5707, type: 3}
+  icon: {fileID: 21300000, guid: 440b7abefa80aee438c5db880d403b2d, type: 3}
   name: Knife Character
   startingWeapon: {fileID: 9021695029825501423, guid: 5b66ffe40038df944a2792c950cbbbf7, type: 3}
   maxHealth: 100

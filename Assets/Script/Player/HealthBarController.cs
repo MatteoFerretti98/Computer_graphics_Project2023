@@ -10,6 +10,6 @@ public class HealthBarController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.LookAt(cam); 
+        transform.LookAt(cam);
     }
 }

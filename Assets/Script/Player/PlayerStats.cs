@@ -47,7 +47,7 @@ public class PlayerStats : MonoBehaviour
                 currentRecovery = value;
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentRecoveryDisplay.text = "Recovery: " + currentRecovery;
+                    GameManager.instance.currentRecoveryDisplay.text = "" + currentRecovery;
                 }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
@@ -66,7 +66,7 @@ public class PlayerStats : MonoBehaviour
                 currentMoveSpeed = value;
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentMoveSpeedDisplay.text = "Move Speed: " + currentMoveSpeed;
+                    GameManager.instance.currentMoveSpeedDisplay.text = "" + currentMoveSpeed;
                 }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
@@ -86,7 +86,7 @@ public class PlayerStats : MonoBehaviour
 
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
+                    GameManager.instance.currentMightDisplay.text = "" + currentMight;
                 }
 
                 //Update the real time value of the stat
@@ -106,7 +106,7 @@ public class PlayerStats : MonoBehaviour
                 currentProjectileSpeed = value;
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
+                    GameManager.instance.currentProjectileSpeedDisplay.text = "" + currentProjectileSpeed;
                 }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
@@ -125,7 +125,7 @@ public class PlayerStats : MonoBehaviour
                 currentMagnet = value;
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
+                    GameManager.instance.currentMagnetDisplay.text = "" + currentMagnet;
                 }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
@@ -144,7 +144,7 @@ public class PlayerStats : MonoBehaviour
             currentCoins = value;
             if (GameManager.instance != null)
             {
-                GameManager.instance.currentCoinsDisplay.text = "Coins: " + currentCoins;
+                GameManager.instance.currentCoinsDisplay.text = "" + currentCoins;
             }
             //Add any additional logic here that needs to be executed when the value changes
             //}
@@ -207,7 +207,7 @@ public class PlayerStats : MonoBehaviour
         CurrentMight = characterData.Might;
         CurrentProjectileSpeed = characterData.ProjectileSpeed;
         CurrentMagnet = characterData.Magnet;
-        CurrentCoins = PersistenceManager.PersistenceInstance.Coins;
+        CurrentCoins = 0;
 
         //Spawn the starting weapon
        
@@ -223,13 +223,13 @@ public class PlayerStats : MonoBehaviour
         experienceCap = levelRanges[0].experienceCapIncrease;
 
         //Set the current stats display
-        GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
-        GameManager.instance.currentRecoveryDisplay.text = "Recovery: " + currentRecovery;
-        GameManager.instance.currentMoveSpeedDisplay.text = "Move Speed: " + currentMoveSpeed;
-        GameManager.instance.currentMightDisplay.text = "Might: " + currentMight;
-        GameManager.instance.currentProjectileSpeedDisplay.text = "Projectile Speed: " + currentProjectileSpeed;
-        GameManager.instance.currentMagnetDisplay.text = "Magnet: " + currentMagnet;
-        GameManager.instance.currentCoinsDisplay.text = "Coins: " + currentCoins;
+        GameManager.instance.currentHealthDisplay.text = "" + currentHealth;
+        GameManager.instance.currentRecoveryDisplay.text = "" + currentRecovery;
+        GameManager.instance.currentMoveSpeedDisplay.text = "" + currentMoveSpeed;
+        GameManager.instance.currentMightDisplay.text = "" + currentMight;
+        GameManager.instance.currentProjectileSpeedDisplay.text = "" + currentProjectileSpeed;
+        GameManager.instance.currentMagnetDisplay.text = "" + currentMagnet;
+        GameManager.instance.currentCoinsDisplay.text = "" + currentCoins;
 
         GameManager.instance.AssignChosenCharacterUI(characterData);
 
@@ -372,6 +372,7 @@ public class PlayerStats : MonoBehaviour
 
     public void SpawnWeapon(GameObject weapon)
     {
+        inventory.DisableAllUIElements();
         //Checking if the slots are full, and returning if it is
         if (weaponIndex >= inventory.weaponSlots.Count - 1) //Must be -1 because a list starts from 0
         {
@@ -383,12 +384,12 @@ public class PlayerStats : MonoBehaviour
         GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
         spawnedWeapon.transform.SetParent(transform);    //Set the weapon to be a child of the player
         inventory.AddWeapon(weaponIndex, spawnedWeapon.GetComponent<WeaponController>());   //Add the weapon to it's slot // instance error
-
         weaponIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE WEAPON TO THE SLOT]
     }
 
     public void SpawnPassiveItem(GameObject passiveItem)
     {
+        inventory.DisableAllUIElements();
         //Checking if the slots are full, and returning if it is
         if (passiveItemIndex >= inventory.passiveItemSlots.Count - 1) //Must be -1 because a list starts from 0
         {
@@ -406,6 +407,7 @@ public class PlayerStats : MonoBehaviour
 
     public void SpawnBoostItem(GameObject boostItem)
     {
+        inventory.DisableAllUIElements();
         //Spawn the boost item
         GameObject spawnedBoostItem = Instantiate(boostItem, transform.position, Quaternion.identity);
         spawnedBoostItem.transform.SetParent(transform);    //Set the boost item to be a child of the player
@@ -420,6 +422,7 @@ public class PlayerStats : MonoBehaviour
 
     public void SpawnDefensivePowerUp(GameObject defensivePowerUp)
     {
+        inventory.DisableAllUIElements();
         //Checking if the slots are full, and returning if it is
         if (defensivePowerUpIndex >= inventory.defensivePowerUpSlots.Count - 1) //Must be -1 because a list starts from 0
         {
@@ -431,8 +434,6 @@ public class PlayerStats : MonoBehaviour
         GameObject spawnedDefensivePowerUp = Instantiate(defensivePowerUp, transform.position, Quaternion.identity);
         spawnedDefensivePowerUp.transform.SetParent(transform);    //Set the defensive power up to be a child of the player
         inventory.AddDefensivePowerUp(defensivePowerUpIndex, spawnedDefensivePowerUp.GetComponent<DefensivePowerUpController>());   //Add the defensive power up to it's slot
-
         defensivePowerUpIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE DEFENSIVE POWER UP TO THE SLOT]
     }
-
 }

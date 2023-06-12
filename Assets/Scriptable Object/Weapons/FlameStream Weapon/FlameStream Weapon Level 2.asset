@@ -20,5 +20,5 @@ MonoBehaviour:
   level: 2
   nextLevelPrefab: {fileID: 0}
   name: FlameStream Level 2
-  description: 
-  icon: {fileID: 21300000, guid: ba21e48f675c44360ab2f2adf0f09a65, type: 3}
+  description: "Tira scoregge infuocate pi\xF9 rapidamente"
+  icon: {fileID: 21300000, guid: 2b13031bc28cb3c48963ec33fad1c303, type: 3}
