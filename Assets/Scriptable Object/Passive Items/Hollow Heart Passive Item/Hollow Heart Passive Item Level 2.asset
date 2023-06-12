@@ -15,4 +15,6 @@ MonoBehaviour:
   multiplier: 150
   level: 2
   nextLevelPrefab: {fileID: 0}
+  name: Hollow Hearth Level 2
+  description: 
   icon: {fileID: 21300000, guid: e5487dbe2dfee44bf949e0ade82bcbf5, type: 3}

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -23,7 +25,8 @@ public class PlayerStats : MonoBehaviour
             //Check if the value has changed
             if (currentHealth != value)
             {
-                currentHealth = value;
+                if (value >= characterData.MaxHealth) currentHealth = characterData.MaxHealth;
+                else currentHealth = value;
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
@@ -177,6 +180,11 @@ public class PlayerStats : MonoBehaviour
     public int passiveItemIndex;
     public int defensivePowerUpIndex;
 
+    [Header("UI")]
+    public Image healthBar;
+    public Image expBar;
+    public TextMeshProUGUI levelText;
+
     public GameObject secondWeaponTest;
     public GameObject firstPassiveItemTest, secondPassiveItemTest;
 
@@ -224,6 +232,10 @@ public class PlayerStats : MonoBehaviour
         GameManager.instance.currentCoinsDisplay.text = "Coins: " + currentCoins;
 
         GameManager.instance.AssignChosenCharacterUI(characterData);
+
+        UpdateHealthBar();
+        UpdateExpBar();
+        UpdateLevelText();
     }
 
     void Update()
@@ -246,6 +258,7 @@ public class PlayerStats : MonoBehaviour
         experience += amount;
 
         LevelUpChecker();
+        UpdateExpBar();
     }
 
     void LevelUpChecker()
@@ -267,8 +280,22 @@ public class PlayerStats : MonoBehaviour
                 }
             }
             experienceCap += experienceCapIncrease;
+            UpdateLevelText();
             GameManager.instance.StartLevelUp();
         }
+    }
+
+    void UpdateExpBar()
+    {
+        // Update exp bar fill amount
+        expBar.fillAmount = (float)experience / experienceCap;
+        
+    }
+
+    void UpdateLevelText()
+    {
+        // Update level text
+        levelText.text = "LV " + level.ToString();
     }
 
     public void TakeDamage(float dmg)
@@ -288,7 +315,15 @@ public class PlayerStats : MonoBehaviour
                 Debug.LogWarning("Death Player");
                 Kill();
             }
+
+            UpdateHealthBar();
         }
+    }
+
+    void UpdateHealthBar()
+    {
+        //Update the health bar
+        healthBar.fillAmount = CurrentHealth / characterData.MaxHealth;
     }
 
     public void Kill()
@@ -369,6 +404,20 @@ public class PlayerStats : MonoBehaviour
         passiveItemIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE PASSIVE ITEM TO THE SLOT]
     }
 
+    public void SpawnBoostItem(GameObject boostItem)
+    {
+        //Spawn the boost item
+        GameObject spawnedBoostItem = Instantiate(boostItem, transform.position, Quaternion.identity);
+        spawnedBoostItem.transform.SetParent(transform);    //Set the boost item to be a child of the player
+        // Destroy(spawnedBoostItem);
+
+        if(GameManager.instance != null && GameManager.instance.choosingUpgrade)
+        {
+            GameManager.instance.EndLevelUp();
+        }
+
+    }
+
     public void SpawnDefensivePowerUp(GameObject defensivePowerUp)
     {
         //Checking if the slots are full, and returning if it is
@@ -385,4 +434,5 @@ public class PlayerStats : MonoBehaviour
 
         defensivePowerUpIndex++;  //Need to increase so slots don't overlap [INCREMENT ONLY AFTER ADDING THE DEFENSIVE POWER UP TO THE SLOT]
     }
+
 }

@@ -15,4 +15,6 @@ MonoBehaviour:
   multiplier: 150
   level: 2
   nextLevelPrefab: {fileID: 0}
+  name: Magnet Level 2
+  description: 
   icon: {fileID: 21300000, guid: eb9e1a1775fb94ee9927b36cca4e3690, type: 3}

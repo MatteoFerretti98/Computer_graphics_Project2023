@@ -15,4 +15,6 @@ MonoBehaviour:
   multiplier: 100
   level: 1
   nextLevelPrefab: {fileID: 4937849742930750205, guid: 0ef6166fe3d89b54b9c474d5d2ef9a0e, type: 3}
+  name: Hollow Hearth
+  description: 
   icon: {fileID: 21300000, guid: e5487dbe2dfee44bf949e0ade82bcbf5, type: 3}
