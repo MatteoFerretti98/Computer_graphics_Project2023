@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
+using UnityEngine.SceneManagement;
 
 public class AnimationAndMovementController : MonoBehaviour
 {
@@ -51,6 +51,8 @@ public class AnimationAndMovementController : MonoBehaviour
     Dictionary<int, float> initialJumpVelocities = new Dictionary<int, float>();
     Dictionary<int, float> jumpGravities = new Dictionary<int, float>();
     Coroutine currentJumpResetRoutine = null;
+
+    public bool EnterFightArena = false;
 
     // Awake is called erlier than Start in Unity's event life cycle
     void Awake()
@@ -155,17 +157,83 @@ public class AnimationAndMovementController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    public GameObject enemyDestroyEffect; // Prefab dell'effetto di distruzione degli Enemy
+
     void Update()
     {
-        handleRotation();
-        handleAnimation();
-        appliedMovement.x = currentMovement.ToIso().x;
-        appliedMovement.z = currentMovement.ToIso().z;
-        characterController.Move(appliedMovement * Time.deltaTime);
-        handleGravity();
-        handleJump();
+        if (!GameManager.instance.BossFightTime || EnterFightArena)
+        {
+            handleRotation();
+            handleAnimation();
+            appliedMovement.x = currentMovement.ToIso().x;
+            appliedMovement.z = currentMovement.ToIso().z;
+            characterController.Move(appliedMovement * Time.deltaTime);
+            handleGravity();
+            handleJump();
+        }
+        else
+        {
+            isMovementPressed = true;
+            isWalkingHash = Animator.StringToHash("isWalking");
+
+            // Aggiungi il codice per distruggere tutti gli oggetti con il tag "Enemy" con l'effetto specifico
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                DestroyEnemyWithEffect(enemy);
+            }
+
+            // Aggiungi il codice per far guardare il personaggio verso sinistra, poi destra
+            // e farlo camminare verso le coordinate (20,1,20) dopo un'attesa di 2 secondi
+            transform.LookAt(Vector3.left); // Guarda verso sinistra
+            StartCoroutine(WaitAndMoveToPosition(new Vector3(transform.position.x + 20f, 1, transform.position.z + 20f), 2f)); // Aspetta 2 secondi e poi cammina verso (20,1,20)
+        }
     }
+
+    void DestroyEnemyWithEffect(GameObject enemy)
+    {
+        if (enemyDestroyEffect != null)
+        {
+            Instantiate(enemyDestroyEffect, enemy.transform.position, enemy.transform.rotation);
+        }
+
+        Destroy(enemy);
+    }
+
+    IEnumerator WaitAndMoveToPosition(Vector3 targetPosition, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        handleAnimation();
+        float duration = 3f; // Durata del movimento
+        float elapsedTime = 0;
+        Vector3 startingPosition = transform.position;
+
+        while (elapsedTime < duration)
+        {
+            if (!EnterFightArena) // Controlla se si è ancora nella scena BossArena
+            {
+                transform.LookAt(targetPosition); // Guarda verso la posizione di destinazione
+                transform.position = Vector3.Lerp(startingPosition, targetPosition, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+
+                UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
+                string sceneName = currentScene.name;
+
+                if (sceneName.Equals("BossArena"))
+                {
+                    EnterFightArena = true;
+                    isMovementPressed = false;
+                    transform.position = new Vector3(0, 16f, 0);
+                }
+                yield return null;
+            }
+            else
+            {
+                yield break;
+            }
+        }
+    }
+
 
 
     // set the initial velocity and gravity using jump heights and duration

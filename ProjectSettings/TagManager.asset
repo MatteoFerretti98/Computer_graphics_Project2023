@@ -13,6 +13,8 @@ TagManager:
   - FlameStream
   - Undefined
   - IceShard
+  - FxTemporaire
+  - EnemyBoss
   layers:
   - Default
   - TransparentFX

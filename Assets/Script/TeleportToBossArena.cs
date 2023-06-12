@@ -8,13 +8,13 @@ public class TeleportToBossArena : SceneController
 
     protected virtual void OnTriggerEnter(Collider col)
     {
+
         if (col.CompareTag("Player"))
         {
-            SceneChange("BossArena");
-
             player = FindAnyObjectByType<PlayerStats>();
 
-            player.transform.position = new Vector3(0, 4f, 0);
+            SceneChange("BossArena");
         }
     }
+
 }

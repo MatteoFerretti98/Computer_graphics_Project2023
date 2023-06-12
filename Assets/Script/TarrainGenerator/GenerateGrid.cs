@@ -20,6 +20,8 @@ public class GenerateGrid : MonoBehaviour
     private Hashtable blockContainer = new Hashtable();
 
     public GameObject specialBlockPrefab; // Prefab da spawnare quando si verifica la condizione
+    public GameObject SpawnEffect;
+
     public bool spawnSpecialBlock = false; // Variabile di condizione per determinare se spawnare l'oggetto speciale
     public bool specialBlockIsNotSpawned = true; // Variabile di condizione per verificare che l'oggetto sia già stato spawnato
 
@@ -90,15 +92,28 @@ public class GenerateGrid : MonoBehaviour
 
     private void SpawnSpecialBlock(Vector3 position)
     {
-        GameObject specialBlock = Instantiate(specialBlockPrefab, new Vector3(20f, 1.5f, 20f), Quaternion.Euler(0,227f,0)) as GameObject;
+        GameObject specialBlock = Instantiate(specialBlockPrefab, new Vector3(20f, 1.5f, 20f), Quaternion.Euler(0,0f,0)) as GameObject;
         blockContainer.Add(position, specialBlock);
         specialBlock.transform.SetParent(this.transform);
+
+        // Spawn dell'effetto di spawn
+        if (SpawnEffect != null)
+        {
+            GameObject spawnEffectInstance = Instantiate(SpawnEffect, specialBlock.transform.position, Quaternion.identity);
+            Destroy(spawnEffectInstance, 5f); // Distruzione dell'effetto dopo 3 secondi
+        }
     }
 
     private void SpawnSpecialBlockInOldBlock(Vector3 position)
     {
-        GameObject specialBlock = Instantiate(specialBlockPrefab, new Vector3(xPlayerLocation + 20f, 1.5f, zPlayerLocation + 20f), Quaternion.Euler(0, 227f, 0)) as GameObject;
+        GameObject specialBlock = Instantiate(specialBlockPrefab, new Vector3(xPlayerLocation + 20f, 1.5f, zPlayerLocation + 20f), Quaternion.Euler(0, 0f, 0)) as GameObject;
         specialBlock.transform.SetParent(this.transform);
+        // Spawn dell'effetto di spawn
+        if (SpawnEffect != null)
+        {
+            GameObject spawnEffectInstance = Instantiate(SpawnEffect, specialBlock.transform.position, Quaternion.identity);
+            Destroy(spawnEffectInstance, 5f); // Distruzione dell'effetto dopo 3 secondi
+        }
     }
 
     private bool ShouldSpawnSpecialBlock()
