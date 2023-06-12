@@ -32,6 +32,14 @@ public class PlayerSpawner : MonoBehaviour
     public List<Image> defensivePowerUpUISlots = new List<Image>(6);
     public List<InventoryManager.UpgradeUI> upgradeUIOptions = new List<InventoryManager.UpgradeUI>();
 
+    public Transform cam;
+
+    [Header("UI")]
+    // public Image healthBar;
+    public Image expBar;
+    public TextMeshProUGUI levelText;
+
+    
 
     private void Awake()
     {
@@ -54,10 +62,17 @@ public class PlayerSpawner : MonoBehaviour
     private void AddReferenceObjects()
     {
         InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+        PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+        HealthBarController healthBarController = FindObjectOfType<HealthBarController>();
         inventoryManager.upgradeUIOptions = upgradeUIOptions;
         inventoryManager.passiveItemUISlots = passiveItemUISlots;
         inventoryManager.weaponUISlots = weaponUISlots;
         inventoryManager.defensivePowerUpUISlots = defensivePowerUpUISlots;
+        // playerStats.healthBar = healthBar;
+        playerStats.levelText = levelText;
+        playerStats.expBar = expBar;
+        healthBarController.cam = cam;
+
     }
 
     void Start()

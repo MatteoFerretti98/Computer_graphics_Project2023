@@ -52,10 +52,19 @@ public class InventoryManager : MonoBehaviour
         public Button upgradeButton;
     }
 
+    [System.Serializable]
+    public class BoostItemUpgrade
+    {
+        public int boostItemUpgradeIndex;
+        public GameObject initialBoostItem;
+        public BoostItemScriptableObject boostItemData;
+    }
+
     public List<WeaponUpgrade> weaponUpgradeOptions = new List<WeaponUpgrade>();    //List of upgrade options for weapons
     public List<PassiveItemUpgrade> passiveItemUpgradeOptions = new List<PassiveItemUpgrade>(); //List of upgrade options for passive items
     public List<DefensivePowerUpUpgrade> defensivePowerUpUpgradeOptions = new List<DefensivePowerUpUpgrade>(); //List of upgrade options for defensive power up
     public List<UpgradeUI> upgradeUIOptions = new List<UpgradeUI>();    //List of ui for upgrade options present in the scene
+    public List<BoostItemUpgrade> boostItemUpgradeOptions = new List<BoostItemUpgrade>();
 
 
     PlayerStats player;
@@ -152,6 +161,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+
     public void LevelUpDefensivePowerUp(int slotIndex, int upgradeIndex)
     {
         if (defensivePowerUpSlots.Count > slotIndex)
@@ -182,54 +192,120 @@ public class InventoryManager : MonoBehaviour
         List<WeaponUpgrade> availableWeaponUpgrades = new List<WeaponUpgrade>(weaponUpgradeOptions);
         List<PassiveItemUpgrade> availablePassiveItemUpgrades = new List<PassiveItemUpgrade>(passiveItemUpgradeOptions);
         List<DefensivePowerUpUpgrade> availableDefensivePowerUpUpgrades = new List<DefensivePowerUpUpgrade>(defensivePowerUpUpgradeOptions);
+        List<BoostItemUpgrade> availableBoostItemUpgrades = new List<BoostItemUpgrade>(boostItemUpgradeOptions);
 
+        for (int i = availableWeaponUpgrades.Count - 1; i >= 0; i--)
+        {
+            Debug.Log("count of available weapons: " + availableWeaponUpgrades.Count);
+            // if (weaponSlots[i] != null && weaponSlots[i].weaponData == availableWeaponUpgrades[i].weaponData)
+            
+            if (!availableWeaponUpgrades[i].weaponData.NextLevelPrefab)
+            {
+                // here if next level of weapon i doesn't exist
+                // remove weapon from available weapons list
+                // availableWeaponUpgrades.Remove(availableWeaponUpgrades[i]);
+                Debug.Log("I'm removing a weapon without next level prefab");
+                availableWeaponUpgrades.RemoveAt(i);
+            }
+
+        }
+
+
+        for (int i = availablePassiveItemUpgrades.Count - 1; i >= 0; i--)
+        {
+            Debug.Log("count of available passive items: " + availablePassiveItemUpgrades.Count);
+            //if (passiveItemSlots[i] != null && passiveItemSlots[i].passiveItemData == availablePassiveItemUpgrades[i].passiveItemData)
+
+            // here if passive item taken yet
+            if (!availablePassiveItemUpgrades[i].passiveItemData.NextLevelPrefab)
+            {
+                // here if next level of passive item doesn't exist
+                // remove passive item from available passive items list
+                Debug.Log("I'm removing a passive item without next level prefab");
+                availablePassiveItemUpgrades.RemoveAt(i);
+            }
+
+        }
+
+        for (int i = availableDefensivePowerUpUpgrades.Count - 1; i >= 0; i--)
+        {
+            Debug.Log("count of available defensive power up: " + availableDefensivePowerUpUpgrades.Count);
+
+            // here if defensivePowerUp taken yet
+            if (!availableDefensivePowerUpUpgrades[i].defensivePowerUpData.NextLevelPrefab)
+            {
+                // here if next level of defensivePowerUp doesn't exist
+                // remove defensivePowerUp from available defensivePowerUp list
+                Debug.Log("I'm removing a defensivePowerUp without next level prefab");
+                availableDefensivePowerUpUpgrades.RemoveAt(i);
+            }
+        }
+ 
         foreach (var upgradeOption in upgradeUIOptions)
         {
-           
+            int upgradeType;
 
             if (availableWeaponUpgrades.Count == 0 && availablePassiveItemUpgrades.Count == 0 && availableDefensivePowerUpUpgrades.Count == 0)
             {
-                return;
+                Debug.Log("THERE ARE NO AVAILABLE WEAPONS, PASSIVE ITEMS AND DEFENSIVE POWER UP UPGRADE");
+                upgradeType = 4;
             }
 
-            int upgradeType;
-
-            if (availableWeaponUpgrades.Count == 0)
+            else if (availableWeaponUpgrades.Count == 0 && availablePassiveItemUpgrades.Count > 0 && availableDefensivePowerUpUpgrades.Count > 0)
             {
                 // upgradeType = 2;
                 upgradeType = Random.Range(2, 4); // chose 2 or 3
             }
-            else if (availablePassiveItemUpgrades.Count == 0)
+            else if (availableWeaponUpgrades.Count > 0 && availablePassiveItemUpgrades.Count == 0 && availableDefensivePowerUpUpgrades.Count > 0)
             {
                 // upgradeType = 1;
-                 
+
                 upgradeType = Random.Range(1, 3); // chose 1 or 3
                 if (upgradeType >= 2)
                 {
                     upgradeType += 1;
                 }
             }
-            else if (availableDefensivePowerUpUpgrades.Count == 0)
+            else if (availableWeaponUpgrades.Count > 0 && availablePassiveItemUpgrades.Count > 0 && availableDefensivePowerUpUpgrades.Count == 0)
             {
-                upgradeType = 3;
-                upgradeType = Random.Range(1, 2); // chose 1 or 2
+                // upgradeType = 3;
+                upgradeType = Random.Range(1, 3); // chose 1 or 2
+            }
+
+            else if (availableWeaponUpgrades.Count == 0 && availablePassiveItemUpgrades.Count == 0 && availableDefensivePowerUpUpgrades.Count > 0)
+            {
+                upgradeType = 3; // chose 3
+            }
+            else if (availableWeaponUpgrades.Count == 0 && availablePassiveItemUpgrades.Count > 0 && availableDefensivePowerUpUpgrades.Count == 0)
+            {
+                upgradeType = 2; // chose 2
+            }
+            else if (availableWeaponUpgrades.Count > 0 && availablePassiveItemUpgrades.Count == 0 && availableDefensivePowerUpUpgrades.Count == 0)
+            {
+                upgradeType = 1; // chose 1
+            }
+            else if (availableWeaponUpgrades.Count > 0 && availablePassiveItemUpgrades.Count > 0 && availableDefensivePowerUpUpgrades.Count > 0)
+            {
+                upgradeType = Random.Range(1, 4);    //Choose between weapon, passive items and defensive power up
             }
             else
             {
-                
-                upgradeType = Random.Range(1, 4);    //Choose between weapon and passive items
-
+                // error
+                Debug.Log("upgradeType = 0");
+                upgradeType = 0; 
             }
 
-            Debug.Log("upgradeType: " + upgradeType);
 
             if (upgradeType == 1)
             {
+                Debug.Log("upgradeType == 1");
                 WeaponUpgrade chosenWeaponUpgrade = availableWeaponUpgrades[Random.Range(0, availableWeaponUpgrades.Count)];
                 availableWeaponUpgrades.Remove(chosenWeaponUpgrade);
 
+                
                 if (chosenWeaponUpgrade != null)
                 {
+                   
                     EnableUpgradeUI(upgradeOption);
                     bool newWeapon = false;
                     for (int i = 0; i < weaponSlots.Count; i++)
@@ -237,10 +313,13 @@ public class InventoryManager : MonoBehaviour
                         if (weaponSlots[i] != null && weaponSlots[i].weaponData == chosenWeaponUpgrade.weaponData)
                         {
                             newWeapon = false;
+                            
                             if (!newWeapon)
                             {
+                                
                                 if (!chosenWeaponUpgrade.weaponData.NextLevelPrefab)
                                 {
+                                    Debug.Log("Next level prefab not available. AvailableWeaponUpgrades: " + availableWeaponUpgrades);
                                     DisableUpgradeUI(upgradeOption);
                                     break;
                                 }
@@ -265,9 +344,11 @@ public class InventoryManager : MonoBehaviour
                     }
                     upgradeOption.upgradeIcon.sprite = chosenWeaponUpgrade.weaponData.Icon;
                 }
+
             }
             else if (upgradeType == 2)
             {
+                Debug.Log("upgradeType == 2");
                 PassiveItemUpgrade chosenPassiveItemUpgrade = availablePassiveItemUpgrades[Random.Range(0, availablePassiveItemUpgrades.Count)];
                 availablePassiveItemUpgrades.Remove(chosenPassiveItemUpgrade);
 
@@ -285,6 +366,7 @@ public class InventoryManager : MonoBehaviour
                             {
                                 if (!chosenPassiveItemUpgrade.passiveItemData.NextLevelPrefab)
                                 {
+                                    Debug.Log("Next level prefab not available. AvailablePassiveItemsUpgrades: " + availablePassiveItemUpgrades);
                                     DisableUpgradeUI(upgradeOption);
                                     break;
                                 }
@@ -331,6 +413,7 @@ public class InventoryManager : MonoBehaviour
                             {
                                 if (!chosenDefensivePowerUpUpgrade.defensivePowerUpData.NextLevelPrefab)
                                 {
+                                    Debug.Log("Next level prefab not available. AvailableDefensiveUpgrades: " + availableDefensivePowerUpUpgrades);
                                     DisableUpgradeUI(upgradeOption);
                                     break;
                                 }
@@ -355,7 +438,24 @@ public class InventoryManager : MonoBehaviour
                     }
                     upgradeOption.upgradeIcon.sprite = chosenDefensivePowerUpUpgrade.defensivePowerUpData.Icon;
                 }
-                
+
+            }
+            else if (upgradeType == 4)
+            {
+                Debug.Log("upgradeType == 4");
+                Debug.Log("availableBoostItemUpgrades.Count: " + availableBoostItemUpgrades.Count);
+                BoostItemUpgrade chosenBoostItemUpgrade = availableBoostItemUpgrades[Random.Range(0, availableBoostItemUpgrades.Count)];
+                Debug.Log("chosenBoostItemUpgrade: " + chosenBoostItemUpgrade);
+
+                if (chosenBoostItemUpgrade != null)
+                {
+                    EnableUpgradeUI(upgradeOption);
+                    Debug.Log("initialBoost: " + chosenBoostItemUpgrade.initialBoostItem);
+                    upgradeOption.upgradeButton.onClick.AddListener(() => player.SpawnBoostItem(chosenBoostItemUpgrade.initialBoostItem)); //Apply button functionality
+                    upgradeOption.upgradeDescriptionDisplay.text = chosenBoostItemUpgrade.boostItemData.Description;  //Apply initial description
+                    upgradeOption.upgradeNameDisplay.text = chosenBoostItemUpgrade.boostItemData.Name;  //Apply initial nam
+                    upgradeOption.upgradeIcon.sprite = chosenBoostItemUpgrade.boostItemData.Icon;
+                }
             }
         }
     }

@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // TestSwitchState(); // test game over pressing key G
+        TestSwitchState(); // test game over pressing key G
 
         // Define the behavior for each state
         switch (currentState)
