@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49264803a615dc042a78e3c8fcc51c93, type: 3}
   m_Name: Repulsive Shield
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  duration: 0
-  cooldownDuration: 0
-  speed: 0
-  level: 0
-  nextLevelPrefab: {fileID: 0}
-  icon: {fileID: 0}
-  name: 
-  description: 
+  prefab: {fileID: 4796543646644090803, guid: b5acba7390ad5494fa53bfafbd7f3b0b, type: 3}
+  duration: 10
+  cooldownDuration: 2
+  speed: 1
+  level: 1
+  nextLevelPrefab: {fileID: 1045461888984940617, guid: 3ef0fe36bb3401541b0efd75c9e38bb2, type: 3}
+  icon: {fileID: 21300000, guid: 073a8df13bee946309db2761048c806a, type: 3}
+  name: Repulsive Shield
+  description: Pushes back nearby enemies
