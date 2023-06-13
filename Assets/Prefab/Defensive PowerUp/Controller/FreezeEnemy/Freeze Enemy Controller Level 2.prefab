@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8838620976950361082}
-  - component: {fileID: 7160351501367001385}
+  - component: {fileID: 8217894059218557302}
   m_Layer: 0
   m_Name: Freeze Enemy Controller Level 2
   m_TagString: Untagged
@@ -30,9 +30,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7160351501367001385
+--- !u!114 &8217894059218557302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931349279213131211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dd033d7239c39a4ab4cbc0ff659483c, type: 3}
+  m_Script: {fileID: 11500000, guid: b5c75481df01ef741b34093659ab8f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defensivePowerUpData: {fileID: 11400000, guid: 9a6b662104359824cb4ef65b23049d5d, type: 2}
+  defensivePowerUpData: {fileID: 11400000, guid: e03d75cb8dce7f548b05eb5e2a61f924, type: 2}
   durataCongelamento: 10
   textureCongelata: {fileID: 2100000, guid: e8a7db8bb30ba7846922a11cebbe1a2f, type: 2}
   enemyTag: Enemy
