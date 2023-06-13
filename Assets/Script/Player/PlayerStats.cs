@@ -141,11 +141,13 @@ public class PlayerStats : MonoBehaviour
             //Check if the value has changed
             //if (currentCoins != value)
             //{
+            Debug.Log(currentCoins);
             currentCoins = value;
             if (GameManager.instance != null)
             {
                 GameManager.instance.currentCoinsDisplay.text = "" + currentCoins;
             }
+            stars.playerCoins.text = "" + currentCoins;
             //Add any additional logic here that needs to be executed when the value changes
             //}
         }
@@ -187,8 +189,10 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject secondWeaponTest;
     public GameObject firstPassiveItemTest, secondPassiveItemTest;
+    public UICoins stars;
 
-
+    public string playerName;
+    public Sprite playerImage;
     void Awake()
     {
         characterData = CharacterSelectorController.GetData();
@@ -198,8 +202,7 @@ public class PlayerStats : MonoBehaviour
         inventory = GetComponent<InventoryManager>();
 
         PersistenceManager.PersistenceInstance.readFile();
-
-
+        
         //Assign the variables
         CurrentHealth = characterData.MaxHealth;
         CurrentRecovery = characterData.Recovery;
@@ -207,8 +210,7 @@ public class PlayerStats : MonoBehaviour
         CurrentMight = characterData.Might;
         CurrentProjectileSpeed = characterData.ProjectileSpeed;
         CurrentMagnet = characterData.Magnet;
-        CurrentCoins = 0;
-
+        
         //Spawn the starting weapon
        
         //SpawnWeapon(secondWeaponTest);
@@ -219,6 +221,9 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         SpawnWeapon(characterData.StartingWeapon);
+
+        stars = GameObject.FindGameObjectWithTag("PlayerStars").GetComponent<UICoins>();
+        CurrentCoins = 0;
         //Initialize the experience cap as the first experience cap increase
         experienceCap = levelRanges[0].experienceCapIncrease;
 
@@ -231,8 +236,8 @@ public class PlayerStats : MonoBehaviour
         GameManager.instance.currentMagnetDisplay.text = "" + currentMagnet;
         GameManager.instance.currentCoinsDisplay.text = "" + currentCoins;
 
-        GameManager.instance.AssignChosenCharacterUI(characterData);
-
+        GameManager.instance.AssignChosenCharacterUI(this.playerName,this.playerImage);
+        
         UpdateHealthBar();
         UpdateExpBar();
         UpdateLevelText();

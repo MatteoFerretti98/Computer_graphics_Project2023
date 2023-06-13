@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSelectorController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class CharacterSelectorController : MonoBehaviour
     public CharacterScriptableObject characterData;
     public string characterSelected = "";
     public string weaponSelected = "";
+    public string nameCharacter = "";
+    public Sprite imageCharacter;
     private void Awake()
     {
         if (instance == null)

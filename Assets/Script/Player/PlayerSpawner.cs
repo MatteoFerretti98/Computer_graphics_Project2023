@@ -11,6 +11,8 @@ public class PlayerSpawner : MonoBehaviour
     
     private string playerChoose;
     private string weaponChoose;
+    private string playerName;
+    private Sprite playerImage;
     [System.Serializable]
     public class CharacterGroup
     {
@@ -54,6 +56,8 @@ public class PlayerSpawner : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             playerChoose = CharacterSelectorController.instance.characterSelected;
             weaponChoose = CharacterSelectorController.instance.weaponSelected;
+            playerName = CharacterSelectorController.instance.nameCharacter;
+            playerImage = CharacterSelectorController.instance.imageCharacter;
             SpawnPlayer(playerChoose, weaponChoose);
             AddReferenceObjects();
         }
@@ -80,6 +84,8 @@ public class PlayerSpawner : MonoBehaviour
         // playerStats.healthBar = healthBar;
         playerStats.levelText = levelText;
         playerStats.expBar = expBar;
+        playerStats.playerName = playerName;
+        playerStats.playerImage = playerImage;
         healthBarController.cam = cam;
 
     }

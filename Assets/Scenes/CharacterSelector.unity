@@ -356,6 +356,7 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: a43c1785d66bfdb49aabf5ed3d93b405, type: 2}
   characterSelected: 
   weaponSelected: 
+  nameCharacter: 
 --- !u!1 &208673982
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,7 +2258,7 @@ GameObject:
   - component: {fileID: 817266311}
   m_Layer: 5
   m_Name: image
-  m_TagString: Untagged
+  m_TagString: FemaleImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3343,7 +3344,7 @@ GameObject:
   - component: {fileID: 1426989605}
   m_Layer: 5
   m_Name: image
-  m_TagString: Untagged
+  m_TagString: MaleImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4876,7 +4877,7 @@ GameObject:
   - component: {fileID: 1985418504}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: FemaleName
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4921,7 +4922,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Marina Paolanti
+  m_text: Chiara
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
   m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
@@ -4955,7 +4956,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5011,7 +5012,7 @@ GameObject:
   - component: {fileID: 2070291300}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: MaleName
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5056,7 +5057,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Primo Zingaretti
+  m_text: Marco
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
   m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
@@ -5090,7 +5091,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
