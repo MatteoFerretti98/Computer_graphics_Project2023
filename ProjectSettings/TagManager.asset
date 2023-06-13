@@ -16,6 +16,11 @@ TagManager:
   - FocusPowerUp
   - FxTemporaire
   - EnemyBoss
+  - FemaleName
+  - MaleName
+  - FemaleImage
+  - MaleImage
+  - PlayerStars
   layers:
   - Default
   - TransparentFX

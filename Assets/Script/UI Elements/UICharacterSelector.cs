@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -47,7 +48,16 @@ public class UICharacterSelector : MonoBehaviour, IPointerEnterHandler, IPointer
             }
             
             CharacterSelectorController.instance.characterSelected = this.tag;
-
+            if (tag == "Male")
+            {
+                CharacterSelectorController.instance.nameCharacter = GameObject.FindGameObjectWithTag("MaleName").GetComponent<TextMeshProUGUI>().text;
+                CharacterSelectorController.instance.imageCharacter = GameObject.FindGameObjectWithTag("MaleImage").GetComponent<Image>().sprite;
+            }
+            else if (tag == "Female")
+            {
+                CharacterSelectorController.instance.nameCharacter = GameObject.FindGameObjectWithTag("FemaleName").GetComponent<TextMeshProUGUI>().text;
+                CharacterSelectorController.instance.imageCharacter = GameObject.FindGameObjectWithTag("FemaleImage").GetComponent<Image>().sprite;
+            }
             targetButton.gameObject.SetActive(true); // Attiva il pulsante
             rectTransform.localScale = originalScale * scaleFactor; // Mantieni l'ingrandimento
         }

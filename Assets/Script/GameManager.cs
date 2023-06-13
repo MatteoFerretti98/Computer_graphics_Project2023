@@ -255,10 +255,10 @@ public class GameManager : MonoBehaviour
         resultsScreen.SetActive(true);
     }
 
-    public void AssignChosenCharacterUI(CharacterScriptableObject chosenCharacterData)
+    public void AssignChosenCharacterUI(string playerName, Sprite playerImage)
     {
-        chosenCharacterImage.sprite = chosenCharacterData.Icon;
-        chosenCharacterName.text = chosenCharacterData.Name;
+        chosenCharacterImage.sprite = playerImage;
+        chosenCharacterName.text = playerName;
     }
 
     public void AssignLevelReachedUI(int levelReachedData)
