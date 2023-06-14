@@ -5,11 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.HID.HID;
 using TMPro;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class GameManager : MonoBehaviour
 
 {
     public static GameManager instance;
+    public GameObject canvas;
 
     // Define the different states of the game
     public enum GameState
@@ -105,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // TestSwitchState(); // test game over pressing key G
+        //TestSwitchState(); // test game over pressing key G
 
         // Define the behavior for each state
         switch (currentState)
@@ -125,14 +128,24 @@ public class GameManager : MonoBehaviour
                 {
                     isGameOver = true;
                     Time.timeScale = 0f;
-                    //aggiunta monete accomulate durante il gioco
-                    player = FindObjectOfType<PlayerStats>();
-                    PersistenceManager.PersistenceInstance.Coins += player.CurrentCoins;
-                    PersistenceManager.PersistenceInstance.writeFile();
 
-                    Debug.Log("Game is over");
-                    gameScreen.SetActive(false); //
-                    DisplayResults();
+                    if(previousState == GameState.Gameplay)
+                    {
+                        Debug.Log("prevoius state: Gameplay");
+                        //aggiunta monete accomulate durante il gioco
+                        player = FindObjectOfType<PlayerStats>();
+                        PersistenceManager.PersistenceInstance.Coins += player.CurrentCoins;
+                        PersistenceManager.PersistenceInstance.writeFile();
+
+                        Debug.Log("Game is over");
+                        gameScreen.SetActive(false); //
+                        DisplayResults();
+                    } else if (previousState == GameState.Paused)
+                    {
+                        Debug.Log("prevoius state: Pause");
+                        Debug.Log("Game is over");
+                        gameScreen.SetActive(false); //
+                    }
                 }
                 break;
             case GameState.LevelUp:
@@ -230,7 +243,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void DisableScreens()
+    public void DisableScreens()
     {
         pauseScreen.SetActive(false);
         resultsScreen.SetActive(false);
@@ -241,6 +254,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         timeSurvivedDisplay.text = stopwatchDisplay.text;
+        previousState = currentState;
         ChangeState(GameState.GameOver);
         
     }
@@ -340,8 +354,26 @@ public class GameManager : MonoBehaviour
             //GameOver(); // change: call here function to start game with boss
             BossFightTime = true;
             player = FindAnyObjectByType<PlayerStats>();
+           
             DontDestroyOnLoad(player);
+            DontDestroyOnLoad(instance);
+            DontDestroyOnLoad(canvas);
         }
+    }
+
+    public void DestroyElements()
+    {
+        Debug.Log("I'm trying to destroy the player to go back to menu");
+        player = FindAnyObjectByType<PlayerStats>();
+        HealthBarBossFight healthBar = FindAnyObjectByType<HealthBarBossFight>();
+        Destroy(healthBar.gameObject);
+        healthBar = null;
+        Destroy(player.gameObject);
+        player = null;
+        Destroy(canvas);
+        canvas = null;
+        Destroy(gameObject);
+        
     }
 
     void UpdateStopwatchDisplay()

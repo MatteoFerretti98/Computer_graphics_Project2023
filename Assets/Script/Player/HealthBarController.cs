@@ -10,6 +10,13 @@ public class HealthBarController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.LookAt(cam);
+        // transform.LookAt(cam); // OK
+
+        // Calculate the target rotation by adding 180 degrees to the camera's rotation
+        Quaternion targetRotation = cam.rotation * Quaternion.Euler(0, 180, 0);
+
+        // Apply the target rotation to the health bar UI object
+        transform.rotation = targetRotation;
+
     }
 }

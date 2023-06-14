@@ -2652,7 +2652,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8054438928841148518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb13a0e38bb9b7429e03f26d4148fd7, type: 3}
+  m_Script: {fileID: 11500000, guid: a69b551a6bc4e4efa8c22b7ca7e9aa7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentMovement: {x: 0, y: 0, z: 0}
@@ -2694,6 +2694,9 @@ MonoBehaviour:
   secondWeaponTest: {fileID: 1314301844701400672, guid: 113fef7198cbdfa4496e956778147234, type: 3}
   firstPassiveItemTest: {fileID: 6145373405619145763, guid: c89679a9fba222c428eab19eef377559, type: 3}
   secondPassiveItemTest: {fileID: 8903732772856946776, guid: cde74a930909bab40a6f9bbd47b62a93, type: 3}
+  stars: {fileID: 0}
+  playerName: 
+  playerImage: {fileID: 0}
 --- !u!114 &4780731971691126703
 MonoBehaviour:
   m_ObjectHideFlags: 0

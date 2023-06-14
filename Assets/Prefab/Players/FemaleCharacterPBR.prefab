@@ -2350,11 +2350,11 @@ GameObject:
   - component: {fileID: 7019920669011962644}
   - component: {fileID: 7413344840680693326}
   - component: {fileID: 48455351913128274}
-  - component: {fileID: 2414670904678850531}
   - component: {fileID: 4981835024780338765}
   - component: {fileID: 6034376885736951491}
   - component: {fileID: 2028474771308958424}
   - component: {fileID: 4685777110144920681}
+  - component: {fileID: 6193212051530771967}
   m_Layer: 0
   m_Name: FemaleCharacterPBR
   m_TagString: Player
@@ -2430,23 +2430,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2414670904678850531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7647134206250791342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb13a0e38bb9b7429e03f26d4148fd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMovement: {x: 0, y: 0, z: 0}
-  lastMovement: {x: 0, y: 0, z: 0}
-  appliedMovement: {x: 0, y: 0, z: 0}
-  EnterFightArena: 0
-  enemyDestroyEffect: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c, type: 3}
 --- !u!114 &4981835024780338765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2481,6 +2464,9 @@ MonoBehaviour:
   secondWeaponTest: {fileID: 1314301844701400672, guid: 113fef7198cbdfa4496e956778147234, type: 3}
   firstPassiveItemTest: {fileID: 6145373405619145763, guid: c89679a9fba222c428eab19eef377559, type: 3}
   secondPassiveItemTest: {fileID: 8903732772856946776, guid: cde74a930909bab40a6f9bbd47b62a93, type: 3}
+  stars: {fileID: 0}
+  playerName: 
+  playerImage: {fileID: 0}
 --- !u!114 &6034376885736951491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2625,6 +2611,23 @@ CapsuleCollider:
   m_Height: 1.4531714
   m_Direction: 1
   m_Center: {x: 0.023702852, y: 0.7717212, z: -0.022043169}
+--- !u!114 &6193212051530771967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7647134206250791342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69b551a6bc4e4efa8c22b7ca7e9aa7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMovement: {x: 0, y: 0, z: 0}
+  lastMovement: {x: 0, y: 0, z: 0}
+  appliedMovement: {x: 0, y: 0, z: 0}
+  EnterFightArena: 0
+  enemyDestroyEffect: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c, type: 3}
 --- !u!1 &7667767699941656935
 GameObject:
   m_ObjectHideFlags: 0
