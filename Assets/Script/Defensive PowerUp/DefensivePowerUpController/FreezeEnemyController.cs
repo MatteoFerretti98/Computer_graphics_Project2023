@@ -15,6 +15,9 @@ public class FreezeEnemyController : DefensivePowerUpController
     protected override void Defend()
     {
         base.Defend();
+        GameObject spawnedFreezeEffect = Instantiate(defensivePowerUpData.Prefab);
+        spawnedFreezeEffect.transform.position = transform.position; //Assign the position to be the same as this object which is parented to the player
+        spawnedFreezeEffect.transform.parent = transform; // So that is spawns below this object
         CongelaOggetti();
     }
 

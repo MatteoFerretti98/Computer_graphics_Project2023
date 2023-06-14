@@ -21,6 +21,7 @@ TagManager:
   - FemaleImage
   - MaleImage
   - PlayerStars
+  - RepulsiveShield
   layers:
   - Default
   - TransparentFX

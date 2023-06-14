@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d339c06edff64e4fafdb1a3e3136a66, type: 3}
+  m_Name: FlameStream Weapon Level 3
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2331254084342948997, guid: fc1879311ad3e714d93e1c50e904692a, type: 3}
+  damage: 100
+  speed: 0
+  cooldownDuration: 2.5
+  pierce: 0
+  level: 3
+  nextLevelPrefab: {fileID: 0}
+  name: FlameStream Level 3
+  description: "Tira scoregge infuocate pi\xF9 rapidamente"
+  icon: {fileID: 21300000, guid: 2b13031bc28cb3c48963ec33fad1c303, type: 3}

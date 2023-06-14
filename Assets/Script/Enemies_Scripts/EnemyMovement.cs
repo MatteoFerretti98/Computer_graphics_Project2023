@@ -16,7 +16,6 @@ public class EnemyMovement : MonoBehaviour
         originalPosition = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isFrozen)
@@ -28,7 +27,9 @@ public class EnemyMovement : MonoBehaviour
 
     void HandleMovement()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.position, enemy.currentMoveSpeed * Time.deltaTime); //Constantly move the enemy towards the player
+        Vector3 targetPosition = player.position;
+        targetPosition.y = transform.position.y; // Mantieni la stessa posizione lungo l'asse y
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemy.currentMoveSpeed * Time.deltaTime);
     }
 
     void HandleRotation()

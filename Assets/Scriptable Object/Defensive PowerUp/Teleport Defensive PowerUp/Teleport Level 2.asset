@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49264803a615dc042a78e3c8fcc51c93, type: 3}
+  m_Name: Teleport Level 2
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1912731163003908, guid: 1592098977466e046b82113e50fdfad5, type: 3}
+  duration: 1
+  cooldownDuration: 10
+  speed: 1
+  level: 2
+  nextLevelPrefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: 44b9aea244f95704b81be6d525c3f6ff, type: 3}
+  name: Teleport Level 2
+  description: Teleport the player to a near position

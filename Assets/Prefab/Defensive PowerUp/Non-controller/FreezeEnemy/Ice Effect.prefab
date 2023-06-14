@@ -49154,7 +49154,7 @@ GameObject:
   - component: {fileID: 1478897623936687424}
   - component: {fileID: 4728314231060634354}
   - component: {fileID: 8188667341099338671}
-  - component: {fileID: 8423623889835539234}
+  - component: {fileID: 2493085721603479088}
   m_Layer: 0
   m_Name: Ice Effect
   m_TagString: Untagged
@@ -49183,7 +49183,7 @@ Transform:
   - {fileID: 1636221107063244709}
   - {fileID: 6475446163404029874}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4728314231060634354
 ParticleSystem:
@@ -54145,7 +54145,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8423623889835539234
+--- !u!114 &2493085721603479088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54154,10 +54154,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5312992130247233131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7849059b913ed9e4a84cf50286c24852, type: 3}
+  m_Script: {fileID: 11500000, guid: 76c4cc41d3572eb4f912f41943ebbabd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defensivePowerUpData: {fileID: 11400000, guid: f86661e252cdcad41b19b4520ed8e9d0, type: 2}
+  weaponData: {fileID: 11400000, guid: 5b3f9b46c6a210948923020a9f5b17da, type: 2}
   destroyAfterSeconds: 3
 --- !u!1 &5388613539654733587
 GameObject:
