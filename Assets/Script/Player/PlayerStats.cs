@@ -29,7 +29,7 @@ public class PlayerStats : MonoBehaviour
                 else currentHealth = value;
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentHealthDisplay.text = "Health: " + currentHealth;
+                    GameManager.instance.currentHealthDisplay.text = "" + currentHealth;
                 }
                 //Add any additional logic here that needs to be executed when the value changes
             }
