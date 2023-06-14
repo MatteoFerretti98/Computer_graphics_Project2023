@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d339c06edff64e4fafdb1a3e3136a66, type: 3}
   m_Name: IceShard Weapon Level 3
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6571948145973924305, guid: 72cbe9da736dad3408d2a34c1a6d7eb1, type: 3}
-  damage: 5
-  speed: 5
-  cooldownDuration: 2
-  pierce: 1
-  level: 1
+  prefab: {fileID: 6571948145973924305, guid: a1098d5842f4b61488cc7f876ed41a79, type: 3}
+  damage: 40
+  speed: 25
+  cooldownDuration: 1.5
+  pierce: 10
+  level: 3
   nextLevelPrefab: {fileID: 0}
-  name: Ice Lance Level 2
-  description: Ice lance speed up by 5
+  name: Ice Lance Level 3
+  description: IceShard damage up to 40
   icon: {fileID: 21300000, guid: 440b7abefa80aee438c5db880d403b2d, type: 3}

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49264803a615dc042a78e3c8fcc51c93, type: 3}
   m_Name: Freeze Enemy Level 3
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1920325297268671343, guid: 67892f2ad7e3bb449a665f0f4d24edec, type: 3}
+  prefab: {fileID: 1920325297268671343, guid: 7e5baf0fde0a12a4eb4461b937dc37ca, type: 3}
   duration: 10
-  cooldownDuration: 10
+  cooldownDuration: 30
   speed: 1
-  level: 2
+  level: 3
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: 21300000, guid: 9e996ee4c3bfbef41b03fe54fb79ea26, type: 3}
-  name: Freezer Level 2
-  description: Freeze enemy Level 2
+  name: Freezer Level 3
+  description: Freeze enemy Level 3

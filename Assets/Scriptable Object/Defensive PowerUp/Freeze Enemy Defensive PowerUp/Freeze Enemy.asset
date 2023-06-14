@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Freeze Enemy
   m_EditorClassIdentifier: 
   prefab: {fileID: 5312992130247233131, guid: bc2cb91d6f94a2841a1a505f611d0cc1, type: 3}
-  duration: 10
-  cooldownDuration: 10
+  duration: 3
+  cooldownDuration: 90
   speed: 1
   level: 1
   nextLevelPrefab: {fileID: 1931349279213131211, guid: 49c678bf968f8cd46b26156c59b44258, type: 3}
