@@ -13,6 +13,8 @@ public class HealthBarBossFight : MonoBehaviour
 	
     public Transform cam;
 
+    
+
     private void Awake()
     {
         if (instance == null)
@@ -32,6 +34,7 @@ public class HealthBarBossFight : MonoBehaviour
     {
         HealthBarController healthBarController = FindObjectOfType<HealthBarController>();
         healthBarController.cam = cam;
+        
     }
 
     void Start()

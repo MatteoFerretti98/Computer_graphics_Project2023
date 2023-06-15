@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FreezeEnemyController : DefensivePowerUpController
@@ -7,6 +8,7 @@ public class FreezeEnemyController : DefensivePowerUpController
     public float durataCongelamento = 10f;
     public Material textureCongelata;
     public string enemyTag = "Enemy";
+    public string bossTag = "EnemyBoss";
 
     private bool inCongelamento = false;
     private float timer;
@@ -23,7 +25,8 @@ public class FreezeEnemyController : DefensivePowerUpController
 
     private void CongelaOggetti()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(bossTag);
+        enemies.AddRange(GameObject.FindGameObjectsWithTag(enemyTag));
 
         foreach (GameObject enemy in enemies)
         {

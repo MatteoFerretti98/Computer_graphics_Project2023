@@ -43,10 +43,8 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
-        Debug.LogWarning("damage:"+dmg);
         if (currentHealth <= 0)
         {
-            Debug.LogWarning("Death Monster");
             Kill();
         }
     }

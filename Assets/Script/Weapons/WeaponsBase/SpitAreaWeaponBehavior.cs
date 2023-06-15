@@ -64,6 +64,11 @@ public class SpitAreaWeaponBehavior : MonoBehaviour
             EnemyStats enemy = col.GetComponent<EnemyStats>();
             enemy.TakeDamage(GetCurrentDamage());    // Make sure to use currentDamage instead of weaponData.damage in case any damage multipliers in the future
         }
+        else if (col.CompareTag("EnemyBoss"))
+        {
+            BossStats boss = col.GetComponent<BossStats>();
+            boss.TakeDamage(GetCurrentDamage());    // Make sure to use currentDamage instead of weaponData.damage in case any damage multipliers in the future
+        }
         else if (col.CompareTag("Prop"))
         {
             if (col.gameObject.TryGetComponent(out BreakableProps breakable))
