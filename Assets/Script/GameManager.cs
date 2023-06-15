@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using Debug = UnityEngine.Debug;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject canvas;
     public GameObject BossHealthBar;
+    
 
     // Define the different states of the game
     public enum GameState
@@ -18,7 +20,8 @@ public class GameManager : MonoBehaviour
         Gameplay,
         Paused,
         GameOver,
-        LevelUp
+        LevelUp,
+        //Tutorial
     }
 
     // Store the current state of the game
@@ -35,6 +38,7 @@ public class GameManager : MonoBehaviour
     public GameObject levelUpScreen;
     public GameObject winScreen;
     public GameObject bossWarningScreen;
+    public GameObject tutorialScreen;
 
     //Current stat displays
     [Header("Current Stat Displays")]
@@ -60,6 +64,9 @@ public class GameManager : MonoBehaviour
     public float timeLimit; // The time limit in seconds
     float stopwatchTime; // The current time elapsed since the stopwatch started
     public TextMeshProUGUI stopwatchDisplay;
+
+    [Header("Tutorial Mode")]
+    public bool tutorialMode = true;
 
     // Flag to check if the game is over
     public bool isGameOver = false;
@@ -124,8 +131,17 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Gameplay:
                 // Code for the gameplay state
-                CheckForPauseAndResume();
-                UpdateStopwatch();
+                if (PersistenceManager.PersistenceInstance.FirstTime)
+                {
+                    Time.timeScale = 0f;
+                    tutorialScreen.SetActive(true);
+                }
+                else 
+                {
+                    CheckForPauseAndResume();
+                    UpdateStopwatch();
+                }
+                
                 break;
             case GameState.Paused:
                 // Code for the paused state
@@ -167,6 +183,10 @@ public class GameManager : MonoBehaviour
                     levelUpScreen.SetActive(true);
                 }
                 break;
+            /*case GameState.Tutorial:
+                if(PersistenceManager.PersistenceInstance.FirstTime)
+                ChangeState(GameState.Gameplay);
+                break;*/
             default:
                 Debug.LogWarning("STATE DOES NOT EXIST");
                 break;
@@ -231,6 +251,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void HideTutorial()
+    {
+        PersistenceManager.PersistenceInstance.FirstTime = false;
+        PersistenceManager.PersistenceInstance.writeFile();
+        Time.timeScale = 1f;
+    }
+
     // Define the method to check for pause and resume input
     void CheckForPauseAndResume()
     {
@@ -268,6 +295,7 @@ public class GameManager : MonoBehaviour
         levelUpScreen.SetActive(false);
         winScreen.SetActive(false);
         bossWarningScreen.SetActive(false);
+        tutorialScreen.SetActive(false);
     }
 
     public void GameOver()
@@ -371,6 +399,10 @@ public class GameManager : MonoBehaviour
         if (stopwatchTime >= timeLimit)
         {
             //GameOver(); // change: call here function to start game with boss
+            //Mostra schermata della boss warning
+
+            
+
             BossFightTime = true;
             player = FindAnyObjectByType<PlayerStats>();
 

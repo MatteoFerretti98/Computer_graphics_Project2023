@@ -10,7 +10,7 @@ public class AnimationAndMovementController : MonoBehaviour
     PlayerStats player;
 
 
-
+    private float timeBossWarningScreen = 1.8f;
     //Declere reference variables
     CharacterController characterController;
     Animator animator;
@@ -181,6 +181,7 @@ public class AnimationAndMovementController : MonoBehaviour
             {
                 DestroyEnemyWithEffect(enemy);
             }
+            
 
             // Aggiungi il codice per far guardare il personaggio verso sinistra, poi destra
             // e farlo camminare verso le coordinate (20,1,20) dopo un'attesa di 2 secondi
@@ -201,6 +202,8 @@ public class AnimationAndMovementController : MonoBehaviour
 
     IEnumerator WaitAndMoveToPosition(Vector3 targetPosition, float waitTime)
     {
+        // mostra schermata boss warning
+        StartCoroutine(ShowAndHideObjectAfterDelay(GameManager.instance.bossWarningScreen, timeBossWarningScreen));
         yield return new WaitForSeconds(waitTime);
         handleAnimation();
         float duration = 3f; // Durata del movimento
@@ -332,5 +335,12 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         playerInput.CharacterControls.Disable();
     }
+    private IEnumerator ShowAndHideObjectAfterDelay(GameObject obj, float delay)
+    {
+        obj.SetActive(true); // Mostra l'oggetto
 
+        yield return new WaitForSeconds(delay);
+
+        obj.SetActive(false); // Nascondi l'oggetto
+    }
 }

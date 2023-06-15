@@ -12,7 +12,7 @@ public class CoinStar : MonoBehaviour, ICollectible
     public void Collect()
     {
         PlayerStats stats = FindObjectOfType<PlayerStats>();
-        stats.IncrementCoins();
+        stats.IncrementCoins(CoinToAdd);
         Destroy(gameObject);
 
         // Spawn del prefab
