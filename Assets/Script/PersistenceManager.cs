@@ -1,11 +1,14 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 public class PersistenceManager : MonoBehaviour
 {
+    private static object lockObject = new object();
     private class GameData
     {
         public int Coins;
+        public List<string> Weapons;
     }
 
     private GameData gameData;
@@ -14,6 +17,12 @@ public class PersistenceManager : MonoBehaviour
     {
         get => gameData.Coins;
         set => gameData.Coins = value;
+    }
+
+    public List<string> Weapons
+    {
+        get => gameData.Weapons;
+        set => gameData.Weapons = value;
     }
 
     // Create a field for the save file.
@@ -36,12 +45,13 @@ public class PersistenceManager : MonoBehaviour
         Debug.Log(PersistenceInstance.saveFile);
         if (!File.Exists(PersistenceInstance.saveFile))
         {
-            GameData firstGameData = new GameData();
-            firstGameData.Coins = 0;
-            // Serialize the object into JSON and save string.
-            string jsonString = JsonUtility.ToJson(firstGameData);
-
             PersistenceInstance.Coins = 0;
+            List<string> weapons = new List<string>();
+            weapons.Add("Knife");
+            PersistenceInstance.Weapons = weapons;
+            // Serialize the object into JSON and save string.
+            string jsonString = JsonUtility.ToJson(gameData);
+
             // Write JSON to file.
             File.WriteAllText(PersistenceInstance.saveFile, jsonString);
         }
@@ -52,9 +62,7 @@ public class PersistenceManager : MonoBehaviour
 
             // Deserialize the JSON data 
             //  into a pattern matching the GameData class.
-            gameData = JsonUtility.FromJson<GameData>(fileContents);
-            
-            PersistenceInstance.gameData.Coins = gameData.Coins;
+            PersistenceInstance.gameData = gameData = JsonUtility.FromJson<GameData>(fileContents);
         }
         
     }
@@ -76,9 +84,30 @@ public class PersistenceManager : MonoBehaviour
     public void writeFile()
     {
         // Serialize the object into JSON and save string.
-        string jsonString = JsonUtility.ToJson(PersistenceInstance.gameData);
+        lock (lockObject)
+        {
+            string jsonString = JsonUtility.ToJson(PersistenceInstance.gameData);
 
-        // Write JSON to file.
-        File.WriteAllText(PersistenceInstance.saveFile, jsonString);
+            // Write JSON to file.
+            File.WriteAllText(PersistenceInstance.saveFile, jsonString);
+        }
+    }
+
+    public void DecrementBalance(int value)
+    {
+        lock (lockObject)
+        {
+            PersistenceInstance.Coins -= value;
+        }
+    }
+
+    public void AddWeapon(string weapon)
+    {
+        lock (lockObject)
+        {
+            List<string> weapons = new List<string>(PersistenceInstance.Weapons);
+            weapons.Add(weapon);
+            PersistenceInstance.Weapons = weapons;
+        }
     }
 }
