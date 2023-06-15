@@ -16,5 +16,5 @@ MonoBehaviour:
   level: 2
   nextLevelPrefab: {fileID: 8903732772856946776, guid: 7af48b9573a7f9945b0fffd7db25f3ea, type: 3}
   name: Wings Level 2
-  description: Increase movement speed by 25%
+  description: Increase movement speed by 50%.
   icon: {fileID: 21300000, guid: cb99960ac6f744bdba007abf1dcbac2b, type: 3}

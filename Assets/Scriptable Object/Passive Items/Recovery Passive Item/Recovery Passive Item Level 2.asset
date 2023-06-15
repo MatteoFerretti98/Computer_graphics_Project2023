@@ -16,5 +16,5 @@ MonoBehaviour:
   level: 2
   nextLevelPrefab: {fileID: 4700847077541128522, guid: 597a05a7065f1c04198853e1e74abaab, type: 3}
   name: Recovery Level 2
-  description: Increase Recovery Life by 2 %
+  description: Increase recovery life by 5%.
   icon: {fileID: 21300000, guid: 00d24408568984f129b7023cb677c0cd, type: 3}
