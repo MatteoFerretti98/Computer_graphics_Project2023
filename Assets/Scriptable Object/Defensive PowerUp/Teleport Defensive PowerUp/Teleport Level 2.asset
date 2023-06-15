@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1912731163003908, guid: 1592098977466e046b82113e50fdfad5, type: 3}
   duration: 1
-  cooldownDuration: 60
+  cooldownDuration: 40
   speed: 1
   level: 2
   nextLevelPrefab: {fileID: 1045461888984940617, guid: 138ec47f9f9d2ae4ca5611044608cf73, type: 3}

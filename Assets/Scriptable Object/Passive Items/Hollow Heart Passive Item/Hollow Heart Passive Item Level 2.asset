@@ -16,5 +16,5 @@ MonoBehaviour:
   level: 2
   nextLevelPrefab: {fileID: 4937849742930750205, guid: e6667efc37eb35a4e8d48006875b5f4d, type: 3}
   name: Hollow Hearth Level 2
-  description: Increase max health by 150%
+  description: Increase max health by 50%
   icon: {fileID: 21300000, guid: c23bb5c1541e4415bb82f430a308f7e3, type: 3}

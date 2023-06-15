@@ -16,5 +16,5 @@ MonoBehaviour:
   level: 2
   nextLevelPrefab: {fileID: 1587731065608565183, guid: b5e62b83bba74f54ebb04068ac122dd9, type: 3}
   name: Magnet Level 2
-  description: Increase Magnet by 50%
+  description: Increase Magnet by 25%
   icon: {fileID: 21300000, guid: a94a0e97f8321c44386484ea65e92ac8, type: 3}

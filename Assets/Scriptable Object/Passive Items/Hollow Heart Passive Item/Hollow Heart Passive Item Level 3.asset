@@ -16,5 +16,5 @@ MonoBehaviour:
   level: 3
   nextLevelPrefab: {fileID: 0}
   name: Hollow Hearth Level 3
-  description: Increase max health by 150%
+  description: Increase max health by 100%
   icon: {fileID: 21300000, guid: c23bb5c1541e4415bb82f430a308f7e3, type: 3}
