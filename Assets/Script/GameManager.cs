@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         Paused,
         GameOver,
         LevelUp,
+        Win
         //Tutorial
     }
 
@@ -79,6 +80,8 @@ public class GameManager : MonoBehaviour
 
     public bool BossFightTime = false;
 
+    public bool isWin = false;
+
 
     [SerializeField]
     private PlayerStats player;
@@ -96,8 +99,6 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("EXTRA " + this + " DELETED");
             Destroy(gameObject);
         }
-
-
 
         DisableScreens();
     }
@@ -187,6 +188,24 @@ public class GameManager : MonoBehaviour
                 if(PersistenceManager.PersistenceInstance.FirstTime)
                 ChangeState(GameState.Gameplay);
                 break;*/
+            case GameState.Win:
+                if (!isWin)
+                {
+                    isWin = true;
+                    Time.timeScale = 0f;
+
+                    //aggiunta monete accomulate durante il gioco
+                    player = FindObjectOfType<PlayerStats>();
+                    PersistenceManager.PersistenceInstance.Coins += player.CurrentCoins;
+                    PersistenceManager.PersistenceInstance.writeFile();
+
+                    Debug.Log("Game is in Win state: congratulation!");
+                    gameScreen.SetActive(false); //
+                    winScreen.SetActive(true);
+                }
+
+                break;
+
             default:
                 Debug.LogWarning("STATE DOES NOT EXIST");
                 break;
