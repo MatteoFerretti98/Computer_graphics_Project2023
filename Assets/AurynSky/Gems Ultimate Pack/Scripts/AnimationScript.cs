@@ -27,6 +27,7 @@ public class AnimationScript : MonoBehaviour
     private float scaleTimer;
 
     private bool wasPaused = false; // Aggiunto: tiene traccia dello stato di pausa precedente
+    private bool wasGameOver = false; // Aggiunto: tiene traccia dello stato di GameOver precedente
 
     // Use this for initialization
     void Start()
@@ -46,10 +47,17 @@ public class AnimationScript : MonoBehaviour
 
             if (isFloating)
             {
-                if (!wasPaused) // Aggiunto: controlla se il gioco era in pausa nel frame precedente
+                if (!wasPaused || !wasGameOver) // Aggiunto: controlla se il gioco era in pausa nel frame precedente
                 {
-                    // Imposta isFloating su false se il gioco è in pausa
-                    isFloating = !GameManager.instance.IsGamePaused();
+                    if(!wasPaused)
+                    {
+                        // Imposta isFloating su false se il gioco è in pausa
+                        isFloating = !GameManager.instance.IsGamePaused();
+                    }
+                    else if(!wasGameOver)
+                    {
+                        isFloating = !GameManager.instance.IsGameOver();
+                    }
                 }
 
                 if (isFloating)
@@ -96,5 +104,6 @@ public class AnimationScript : MonoBehaviour
         }
 
         wasPaused = GameManager.instance.IsGamePaused(); // Aggiunto: salva lo stato di pausa corrente per il frame successivo
+        wasGameOver = GameManager.instance.IsGameOver(); // Aggiunto: salva lo stato di GameOver corrente per il frame successivo
     }
 }

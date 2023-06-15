@@ -676,9 +676,9 @@ GameObject:
   - component: {fileID: 6860756994242704218}
   - component: {fileID: 6860756994249858238}
   - component: {fileID: 27306021975909451}
-  - component: {fileID: -3710827526648307206}
   - component: {fileID: 4946289247124330146}
   - component: {fileID: -8917856548259493634}
+  - component: {fileID: -7966682635126622928}
   m_Layer: 0
   m_Name: NormalChest
   m_TagString: Prop
@@ -745,33 +745,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.99836534, y: 1.2743496, z: 0.7893894}
   m_Center: {x: 0.005911976, y: 0.7621748, z: 0.0196947}
---- !u!54 &-3710827526648307206
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6860756994242604922}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &4946289247124330146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,6 +777,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+--- !u!54 &-7966682635126622928
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6860756994242604922}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &6860756994242604924
 GameObject:
   m_ObjectHideFlags: 0
