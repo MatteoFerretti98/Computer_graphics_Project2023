@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: FlameStream Weapon Level 2
   m_EditorClassIdentifier: 
   prefab: {fileID: 2331254084342948997, guid: 3e70692cc1691984e84cdc952360930a, type: 3}
-  damage: 100
+  damage: 20
   speed: 0
-  cooldownDuration: 2.5
+  cooldownDuration: 5
   pierce: 0
   level: 2
-  nextLevelPrefab: {fileID: 0}
+  nextLevelPrefab: {fileID: 265546460124282801, guid: c500a057f51631d428788f3cdf8a946d, type: 3}
   name: FlameStream Level 2
-  description: "Tira scoregge infuocate pi\xF9 rapidamente"
+  description: Damage up by 10
   icon: {fileID: 21300000, guid: 2b13031bc28cb3c48963ec33fad1c303, type: 3}

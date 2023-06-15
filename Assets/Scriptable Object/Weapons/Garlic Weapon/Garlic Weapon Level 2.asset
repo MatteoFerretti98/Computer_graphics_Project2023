@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Garlic Weapon Level 2
   m_EditorClassIdentifier: 
   prefab: {fileID: 100002, guid: 5a843b120db859747bb3940a8b1851ae, type: 3}
-  damage: 50
+  damage: 15
   speed: 0
-  cooldownDuration: 1.5
+  cooldownDuration: 3.5
   pierce: 0
   level: 2
-  nextLevelPrefab: {fileID: 1314301844701400672, guid: 1633d9b46a2b44ff4acd3b2c9966b28c, type: 3}
-  name: Garlic Level 2
-  description: Cooldown reduce by 2
+  nextLevelPrefab: {fileID: 1314301844701400672, guid: 81c0179d570df5448b157a199901f6e0, type: 3}
+  name: ShockWave Level 2
+  description: Cooldown reduce by 1.5
   icon: {fileID: 21300000, guid: adfb8ab57db78de469476ca6716a777e, type: 3}

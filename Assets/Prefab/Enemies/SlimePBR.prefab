@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 7733499965579577204}
   - component: {fileID: 6805879726213979398}
   - component: {fileID: 290429121629862238}
-  - component: {fileID: 1059612920757406140}
   - component: {fileID: 7326166766858377416}
   - component: {fileID: 4892063659288805523}
+  - component: {fileID: 2455583136560904791}
   m_Layer: 0
   m_Name: SlimePBR
   m_TagString: Enemy
@@ -120,27 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8354af90658fa984495e7be309fc3bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1059612920757406140
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588511057650393201}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.97720087, y: 0.65, z: 1.0468092}
-  m_Center: {x: 0.007543564, y: 0.45, z: 0.02039519}
 --- !u!54 &7326166766858377416
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -184,6 +163,27 @@ MonoBehaviour:
   - name: exp
     itemPrefab: {fileID: 2210531888463416059, guid: 2ab104d8dee82264a89ce32c2f01c8f3, type: 3}
     dropRate: 100
+--- !u!135 &2455583136560904791
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588511057650393201}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.48801434
+  m_Center: {x: 0, y: 0.42549235, z: 0.01198566}
 --- !u!1 &1288107869305827581
 GameObject:
   m_ObjectHideFlags: 0

@@ -78781,7 +78781,7 @@ GameObject:
   - component: {fileID: 1920325297268671248}
   - component: {fileID: 1920325297268671249}
   - component: {fileID: 1920325297268671342}
-  - component: {fileID: 5353275248610310296}
+  - component: {fileID: 6692766405778950200}
   m_Layer: 0
   m_Name: Ice Effect Level 2
   m_TagString: Untagged
@@ -83772,7 +83772,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5353275248610310296
+--- !u!114 &6692766405778950200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83781,8 +83781,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1920325297268671343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7849059b913ed9e4a84cf50286c24852, type: 3}
+  m_Script: {fileID: 11500000, guid: 76c4cc41d3572eb4f912f41943ebbabd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defensivePowerUpData: {fileID: 11400000, guid: 9a6b662104359824cb4ef65b23049d5d, type: 2}
+  weaponData: {fileID: 11400000, guid: 8efe26f56628210449e0341b05a7ee6f, type: 2}
   destroyAfterSeconds: 3

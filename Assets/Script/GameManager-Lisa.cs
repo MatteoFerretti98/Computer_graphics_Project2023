@@ -1,20 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.InputSystem.HID.HID;
 using TMPro;
-using System.Diagnostics;
 using Debug = UnityEngine.Debug;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 
 {
     public static GameManager instance;
     public GameObject canvas;
-    public GameObject BossHealthBar;
 
     // Define the different states of the game
     public enum GameState
@@ -37,7 +31,8 @@ public class GameManager : MonoBehaviour
     public GameObject confirmScreen;
     public GameObject gameScreen;
     public GameObject levelUpScreen;
-
+    public GameObject winScreen;
+    public GameObject bossWarningScreen;
 
     //Current stat displays
     [Header("Current Stat Displays")]
@@ -75,8 +70,6 @@ public class GameManager : MonoBehaviour
 
     public bool BossFightTime = false;
 
-    
-
 
     [SerializeField]
     private PlayerStats player;
@@ -95,41 +88,31 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-       
+
 
         DisableScreens();
     }
 
     private void Start()
     {
-        
+
         ChangeState(GameState.Gameplay); // Set the initial state to gameplay
         Time.timeScale = 1f; // Resume the game
         Debug.Log("Game is started");
+
+        // code to initialize status and powers?
     }
 
     void Update()
     {
         //TestSwitchState(); // test game over pressing key G
 
-        // manage boss bar visualization
-        // Check if the current scene is the target scene
-        if (SceneManager.GetActiveScene().name == "Scene1")
-        {
-            HideBossHealthBar();
-        }
-        else if (SceneManager.GetActiveScene().name == "BossArena")
-        {
-            ShowBossHealthBar();
-        }
-
-
         // Define the behavior for each state
         switch (currentState)
         {
             case GameState.Gameplay:
                 // Code for the gameplay state
-                CheckForPauseAndResume(); 
+                CheckForPauseAndResume();
                 UpdateStopwatch();
                 break;
             case GameState.Paused:
@@ -143,7 +126,7 @@ public class GameManager : MonoBehaviour
                     isGameOver = true;
                     Time.timeScale = 0f;
 
-                    if(previousState == GameState.Gameplay)
+                    if (previousState == GameState.Gameplay)
                     {
                         Debug.Log("prevoius state: Gameplay");
                         //aggiunta monete accomulate durante il gioco
@@ -154,7 +137,8 @@ public class GameManager : MonoBehaviour
                         Debug.Log("Game is over");
                         gameScreen.SetActive(false); //
                         DisplayResults();
-                    } else if (previousState == GameState.Paused)
+                    }
+                    else if (previousState == GameState.Paused)
                     {
                         Debug.Log("prevoius state: Pause");
                         Debug.Log("Game is over");
@@ -178,7 +162,7 @@ public class GameManager : MonoBehaviour
     }
 
     // test game over
-    
+
     void TestSwitchState()
     {
         if (Input.GetKeyDown(KeyCode.G))
@@ -186,7 +170,7 @@ public class GameManager : MonoBehaviour
             ChangeState(GameState.GameOver);
         }
     }
-    
+
 
     // Define the method to change the state of the game
     public void ChangeState(GameState newState)
@@ -211,8 +195,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public bool IsGamePaused() { 
-    
+    public bool IsGamePaused()
+    {
+
         return (currentState == GameState.Paused || currentState == GameState.LevelUp);
     }
 
@@ -247,13 +232,13 @@ public class GameManager : MonoBehaviour
     public void DisplayPauseScreen()
     {
         confirmScreen.SetActive(false);
-        pauseScreen.SetActive(true); 
+        pauseScreen.SetActive(true);
 
     }
 
     public void DisplayQuitConfirmScreen()
     {
-        confirmScreen.SetActive(true); 
+        confirmScreen.SetActive(true);
 
     }
 
@@ -263,6 +248,8 @@ public class GameManager : MonoBehaviour
         resultsScreen.SetActive(false);
         confirmScreen.SetActive(false);
         levelUpScreen.SetActive(false);
+        winScreen.SetActive(false);
+        bossWarningScreen.SetActive(false);
     }
 
     public void GameOver()
@@ -270,7 +257,7 @@ public class GameManager : MonoBehaviour
         timeSurvivedDisplay.text = stopwatchDisplay.text;
         previousState = currentState;
         ChangeState(GameState.GameOver);
-        
+
     }
 
     public void StopGame()
@@ -294,7 +281,7 @@ public class GameManager : MonoBehaviour
         levelReachedDisplay.text = levelReachedData.ToString();
     }
 
-    
+
     public void AssignChosenWeaponsAndPassiveItemsUI(List<Image> chosenWeaponsData, List<Image> chosenPassiveItemsData, List<Image> chosenDefensivePowerUpData)
     {
         // Check that lists have the same length
@@ -355,7 +342,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+
 
     void UpdateStopwatch()
     {
@@ -368,7 +355,7 @@ public class GameManager : MonoBehaviour
             //GameOver(); // change: call here function to start game with boss
             BossFightTime = true;
             player = FindAnyObjectByType<PlayerStats>();
-           
+
             DontDestroyOnLoad(player);
             DontDestroyOnLoad(instance);
             DontDestroyOnLoad(canvas);
@@ -380,14 +367,17 @@ public class GameManager : MonoBehaviour
         Debug.Log("I'm trying to destroy the player to go back to menu");
         player = FindAnyObjectByType<PlayerStats>();
         HealthBarBossFight healthBar = FindAnyObjectByType<HealthBarBossFight>();
-        Destroy(healthBar.gameObject);
-        healthBar = null;
+        if (healthBar)
+        {
+            Destroy(healthBar.gameObject);
+            healthBar = null;
+        }
         Destroy(player.gameObject);
         player = null;
         Destroy(canvas);
         canvas = null;
         Destroy(gameObject);
-        
+
     }
 
     void UpdateStopwatchDisplay()
@@ -422,19 +412,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;    // Resume the game
         levelUpScreen.SetActive(false);
         ChangeState(GameState.Gameplay);
-    }
-
-
-    // Call this method to make the canvas visible
-    public void ShowBossHealthBar()
-    {
-        BossHealthBar.SetActive(true);
-    }
-
-    // Call this method to hide the canvas
-    public void HideBossHealthBar()
-    {
-        BossHealthBar.SetActive(false);
     }
 
 

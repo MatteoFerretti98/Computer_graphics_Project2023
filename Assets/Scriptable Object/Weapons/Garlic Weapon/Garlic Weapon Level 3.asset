@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d339c06edff64e4fafdb1a3e3136a66, type: 3}
   m_Name: Garlic Weapon Level 3
   m_EditorClassIdentifier: 
-  prefab: {fileID: 100002, guid: dd2e4ac3b12e541e580b49bf74b2e375, type: 3}
-  damage: 100
+  prefab: {fileID: 100002, guid: c404037ab2565f1438352c6649beca9f, type: 3}
+  damage: 30
   speed: 0
   cooldownDuration: 1.5
   pierce: 0
   level: 3
   nextLevelPrefab: {fileID: 0}
-  name: Garlic Level 3
-  description: Damage up by 2
+  name: ShockWave Level 3
+  description: Damage up by 15
   icon: {fileID: 21300000, guid: adfb8ab57db78de469476ca6716a777e, type: 3}

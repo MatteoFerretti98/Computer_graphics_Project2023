@@ -19,6 +19,7 @@ public class UICoins : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (PersistenceManager.PersistenceInstance != null && !gameCoins)
+            playerCoins.text = PersistenceManager.PersistenceInstance.Coins.ToString();
     }
 }
