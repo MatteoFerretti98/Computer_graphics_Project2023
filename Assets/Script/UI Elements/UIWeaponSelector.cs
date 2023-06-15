@@ -118,10 +118,4 @@ public class UIWeaponSelector : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         }
     }
-
-    private IEnumerator HideObjectAfterDelay(GameObject message)
-    {
-        yield return new WaitForSeconds(2);
-        message.SetActive(false);
-    }
 }

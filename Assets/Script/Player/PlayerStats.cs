@@ -254,7 +254,7 @@ public class PlayerStats : MonoBehaviour
         {
             isInvincible = false;
         }
-
+        UpdateHealthBar();
         Recover();
     }
 
@@ -342,9 +342,9 @@ public class PlayerStats : MonoBehaviour
             GameManager.instance.GameOver();
         }
     }
-    public void IncrementCoins()
+    public void IncrementCoins(int coinToAdd)
     {
-        CurrentCoins += 1;
+        CurrentCoins += coinToAdd;
     }
     public void RestoreHealth(float amount)
     {
