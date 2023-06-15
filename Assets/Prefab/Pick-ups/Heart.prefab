@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthToRestore: 100
+  heartEffect: {fileID: 100004, guid: 3af6f68141914ca43ba39b2403757bd0, type: 3}
 --- !u!54 &5095269486825607976
 Rigidbody:
   m_ObjectHideFlags: 0

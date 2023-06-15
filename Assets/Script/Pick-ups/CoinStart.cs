@@ -7,13 +7,18 @@ public class CoinStar : MonoBehaviour, ICollectible
     // The amount of money to add when this item is collected
     public int CoinToAdd;
 
+    public GameObject coinEffect; // Prefab da far apparire
+
     public void Collect()
     {
         PlayerStats stats = FindObjectOfType<PlayerStats>();
-
-        //QUI VA AGGIUNTA LA RIGA PER L'INCREMENTO DELLE MONETE
-        //stats.RestoreHealth(healthToRestore);r
         stats.IncrementCoins();
         Destroy(gameObject);
+
+        // Spawn del prefab
+        GameObject spawnedPrefab = Instantiate(coinEffect, transform.position, Quaternion.identity);
+
+        // Scomparsa del prefab dopo 2 secondi
+        Destroy(spawnedPrefab, 2f);
     }
 }

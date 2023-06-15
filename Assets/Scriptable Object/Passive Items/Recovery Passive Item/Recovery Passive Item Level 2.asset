@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df852fddd9962df40b339de9432c5289, type: 3}
   m_Name: Recovery Passive Item Level 2
   m_EditorClassIdentifier: 
-  multiplier: 150
+  multiplier: 5
   level: 2
-  nextLevelPrefab: {fileID: 0}
+  nextLevelPrefab: {fileID: 4700847077541128522, guid: 597a05a7065f1c04198853e1e74abaab, type: 3}
   name: Recovery Level 2
-  description: Increase Recovery Life By 150 %
+  description: Increase Recovery Life By 5 %
   icon: {fileID: 21300000, guid: 00d24408568984f129b7023cb677c0cd, type: 3}

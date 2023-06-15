@@ -173,3 +173,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinToAdd: 5
+  coinEffect: {fileID: 100006, guid: 8fc06027b01064e4f885fd8dd2929310, type: 3}

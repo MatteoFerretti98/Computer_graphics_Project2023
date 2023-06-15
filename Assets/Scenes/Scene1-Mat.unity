@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17647,62 +17647,78 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - waveName: Level 1
+  - waveName: Orda1 - Pipistrelli
     enemyGroups:
-    - enemyName: Bat
-      enemyCount: 100
+    - enemyName: Pipistrello
+      enemyCount: 0
       spawnCount: 0
       enemyPrefab: {fileID: 7465410747223341954, guid: 598d68d0670d66942ad566e66dfa3f2e, type: 3}
-    - enemyName: Box 1
-      enemyCount: 100
-      spawnCount: 0
-      enemyPrefab: {fileID: 1975194375736644, guid: a161f06d50baca24c9204e19553dfa35, type: 3}
-    - enemyName: Box 2
-      enemyCount: 100
-      spawnCount: 0
-      enemyPrefab: {fileID: 1111084942782338, guid: 0e9635137b174aa4485ba41374f2cc62, type: 3}
-    - enemyName: Troll
-      enemyCount: 100
-      spawnCount: 0
-      enemyPrefab: {fileID: 3155058319838657794, guid: 3527d64a82739c9439c9dabca130f988, type: 3}
-    - enemyName: Lich
-      enemyCount: 100
-      spawnCount: 0
-      enemyPrefab: {fileID: 1500939411536426, guid: 6fa4f94caa20d624b9cf5b80f5256dd3, type: 3}
     waveQuota: 500
     spawnInterval: 5
     spawnCount: 1
-  - waveName: Level 2
+  - waveName: Orda2 - Slime e Tartaspini
     enemyGroups:
-    - enemyName: Eyes
-      enemyCount: 20
+    - enemyName: Tartaspini
+      enemyCount: 0
       spawnCount: 0
-      enemyPrefab: {fileID: 7487410016656624447, guid: 1fb98cb00b0b1274c9a80a39b953fdbe, type: 3}
-    - enemyName: Chest
-      enemyCount: 20
+      enemyPrefab: {fileID: 6875577346646319367, guid: df82f87d8cb53594c9ec75ef5afad6f1, type: 3}
+    - enemyName: Slime
+      enemyCount: 0
       spawnCount: 0
-      enemyPrefab: {fileID: 6860756994242604922, guid: 79867df29f1c36a4f9a57a08d41fab3f, type: 3}
+      enemyPrefab: {fileID: 588511057650393201, guid: 7110b504a0b50404ba3bd4c2a2437af9, type: 3}
     waveQuota: 40
     spawnInterval: 20
     spawnCount: 1
-  - waveName: Level 3
+  - waveName: Orda3 - Occhi e Bauli
     enemyGroups:
-    - enemyName: Lich
+    - enemyName: Occhi
+      enemyCount: 0
+      spawnCount: 0
+      enemyPrefab: {fileID: 7487410016656624447, guid: 1fb98cb00b0b1274c9a80a39b953fdbe, type: 3}
+    - enemyName: Bauli
       enemyCount: 20
       spawnCount: 0
-      enemyPrefab: {fileID: 1500939411536426, guid: 6fa4f94caa20d624b9cf5b80f5256dd3, type: 3}
-    - enemyName: Slime
-      enemyCount: 20
+      enemyPrefab: {fileID: 6860756994242604922, guid: 79867df29f1c36a4f9a57a08d41fab3f, type: 3}
+    waveQuota: 80
+    spawnInterval: 20
+    spawnCount: 1
+  - waveName: Orda4 - Diavoli Cubo
+    enemyGroups:
+    - enemyName: Diavolo blu
+      enemyCount: 0
       spawnCount: 0
-      enemyPrefab: {fileID: 588511057650393201, guid: 7110b504a0b50404ba3bd4c2a2437af9, type: 3}
-    - enemyName: Turtle
-      enemyCount: 20
+      enemyPrefab: {fileID: 1111084942782338, guid: 0e9635137b174aa4485ba41374f2cc62, type: 3}
+    - enemyName: Diavolo rosso
+      enemyCount: 0
       spawnCount: 0
-      enemyPrefab: {fileID: 6875577346646319367, guid: df82f87d8cb53594c9ec75ef5afad6f1, type: 3}
+      enemyPrefab: {fileID: 1975194375736644, guid: a161f06d50baca24c9204e19553dfa35, type: 3}
+    waveQuota: 80
+    spawnInterval: 20
+    spawnCount: 1
+  - waveName: Orda5 - Troll
+    enemyGroups:
+    - enemyName: Troll
+      enemyCount: 0
+      spawnCount: 0
+      enemyPrefab: {fileID: 3155058319838657794, guid: 3527d64a82739c9439c9dabca130f988, type: 3}
+    waveQuota: 80
+    spawnInterval: 20
+    spawnCount: 1
+  - waveName: Orda6 - Golem
+    enemyGroups:
     - enemyName: Golem
-      enemyCount: 20
+      enemyCount: 0
       spawnCount: 0
       enemyPrefab: {fileID: 1067925524328404, guid: 199a94a232f31184aae2f897984295c5, type: 3}
+    waveQuota: 80
+    spawnInterval: 20
+    spawnCount: 1
+  - waveName: Orda7 - Streghe
+    enemyGroups:
+    - enemyName: Streghe
+      enemyCount: 0
+      spawnCount: 0
+      enemyPrefab: {fileID: 1500939411536426, guid: 6fa4f94caa20d624b9cf5b80f5256dd3, type: 3}
     waveQuota: 80
     spawnInterval: 20
     spawnCount: 1
@@ -38836,13 +38852,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToSpawn:
   - {fileID: 4263922822445002727, guid: 3cdafb3c2f54d434894928d72d282874, type: 3}
-  - {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
-  - {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
   - {fileID: 2807449429036958551, guid: f0c16f0ea935ea64297ca1d4d55d9746, type: 3}
   - {fileID: 7370221876098628914, guid: 50aa1e8834eb7b749b3ef36508197ca2, type: 3}
-  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
   - {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
   - {fileID: 6941765000743290380, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
+  - {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
+  - {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
+  - {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
+  - {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
+  - {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
+  - {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
+  - {fileID: 3356751432538110193, guid: ffbddc4ef9676cc419e81e06aaa836d8, type: 3}
+  - {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
+  - {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
+  - {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
+  - {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
+  - {fileID: 6860756994242604922, guid: b0bab12dbe777034999f7ab3312a7125, type: 3}
+  - {fileID: 6860756994242604922, guid: b0bab12dbe777034999f7ab3312a7125, type: 3}
 --- !u!1 &1877961387
 GameObject:
   m_ObjectHideFlags: 0

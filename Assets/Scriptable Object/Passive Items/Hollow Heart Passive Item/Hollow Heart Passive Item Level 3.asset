@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df852fddd9962df40b339de9432c5289, type: 3}
   m_Name: Hollow Heart Passive Item Level 3
   m_EditorClassIdentifier: 
-  multiplier: 150
-  level: 2
+  multiplier: 100
+  level: 3
   nextLevelPrefab: {fileID: 0}
-  name: Hollow Hearth Level 2
+  name: Hollow Hearth Level 3
   description: Increase max health by 150%
   icon: {fileID: 21300000, guid: c23bb5c1541e4415bb82f430a308f7e3, type: 3}

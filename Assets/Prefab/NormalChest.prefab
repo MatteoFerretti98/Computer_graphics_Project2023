@@ -676,13 +676,12 @@ GameObject:
   - component: {fileID: 6860756994242704218}
   - component: {fileID: 6860756994249858238}
   - component: {fileID: 27306021975909451}
-  - component: {fileID: -9199525549462754146}
   - component: {fileID: -3710827526648307206}
-  - component: {fileID: 6183043953912547242}
-  - component: {fileID: 3101859042021538424}
+  - component: {fileID: 4946289247124330146}
+  - component: {fileID: -8917856548259493634}
   m_Layer: 0
-  m_Name: ChestMonsterPBR
-  m_TagString: Enemy
+  m_Name: NormalChest
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -714,7 +713,7 @@ Animator:
   m_GameObject: {fileID: 6860756994242604922}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 97e7b2e9aff997844b8b8dd53b0fffc1, type: 3}
-  m_Controller: {fileID: 9100000, guid: ad18e1e3bc906104699c48eb7dfd95dc, type: 2}
+  m_Controller: {fileID: 9100000, guid: b9100f4fb9632c14a9f1e33c0a909ba9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -746,23 +745,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.99836534, y: 1.2743496, z: 0.7893894}
   m_Center: {x: 0.005911976, y: 0.7621748, z: 0.0196947}
---- !u!114 &-9199525549462754146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6860756994242604922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae9deb745e878bb49a7f4732240fa7c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 690996b21ff416442a1f89dc49ae2de5, type: 2}
-  currentMoveSpeed: 0
-  currentHealth: 0
-  currentDamage: 0
-  despawnDistance: 20
 --- !u!54 &-3710827526648307206
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -785,12 +767,12 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6183043953912547242
+--- !u!114 &4946289247124330146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -803,10 +785,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
-  - name: exp
-    itemPrefab: {fileID: 2210531888463416059, guid: 2ab104d8dee82264a89ce32c2f01c8f3, type: 3}
-    dropRate: 100
---- !u!114 &3101859042021538424
+  - name: Recupero vita
+    itemPrefab: {fileID: 4062828244765988839, guid: 488f00986eb23854390405dd8c6e676d, type: 3}
+    dropRate: 50
+  - name: Monete
+    itemPrefab: {fileID: 7315938736708012313, guid: 2142cb3046bd9064ab0d1c7d6a16d4c0, type: 3}
+    dropRate: 50
+--- !u!114 &-8917856548259493634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -815,9 +800,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6860756994242604922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 326517e1b90829e4cab3cf96b7c74a1c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc29170ac50571d4ba62c0c0eff90eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
 --- !u!1 &6860756994242604924
 GameObject:
   m_ObjectHideFlags: 0
