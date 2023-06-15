@@ -20,4 +20,5 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 1931349279213131211, guid: 49c678bf968f8cd46b26156c59b44258, type: 3}
   icon: {fileID: 21300000, guid: 9e996ee4c3bfbef41b03fe54fb79ea26, type: 3}
   name: Freezer Level 1
-  description: Freeze Enemy
+  description: 'Freeze enemies: freezed enemies are unable to attack, but they still
+    receive damage.'

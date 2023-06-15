@@ -20,5 +20,5 @@ MonoBehaviour:
   level: 3
   nextLevelPrefab: {fileID: 0}
   name: FlameStream Level 3
-  description: Damage up by 30, speed up by 2.5
+  description: Damage is up by 30, cooldown is reduced by 1.5.
   icon: {fileID: 21300000, guid: 2b13031bc28cb3c48963ec33fad1c303, type: 3}

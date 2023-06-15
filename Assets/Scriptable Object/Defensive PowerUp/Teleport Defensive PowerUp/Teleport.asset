@@ -20,4 +20,4 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 1045461888984940617, guid: 3ef0fe36bb3401541b0efd75c9e38bb2, type: 3}
   icon: {fileID: 21300000, guid: 44b9aea244f95704b81be6d525c3f6ff, type: 3}
   name: Teleport
-  description: Teleport the player to a near position
+  description: Teleport the player to a near position.

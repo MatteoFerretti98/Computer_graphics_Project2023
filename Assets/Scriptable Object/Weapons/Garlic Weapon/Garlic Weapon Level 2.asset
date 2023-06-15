@@ -20,5 +20,5 @@ MonoBehaviour:
   level: 2
   nextLevelPrefab: {fileID: 1314301844701400672, guid: 81c0179d570df5448b157a199901f6e0, type: 3}
   name: ShockWave Level 2
-  description: Cooldown reduce by 1.5
+  description: Damage is up by 10, cooldown is reduced by 1.
   icon: {fileID: 21300000, guid: adfb8ab57db78de469476ca6716a777e, type: 3}
