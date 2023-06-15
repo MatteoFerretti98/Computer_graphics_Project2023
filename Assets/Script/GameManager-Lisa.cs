@@ -7,12 +7,14 @@ using static UnityEngine.InputSystem.HID.HID;
 using TMPro;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 
 {
     public static GameManager instance;
     public GameObject canvas;
+    public GameObject BossHealthBar;
 
     // Define the different states of the game
     public enum GameState
@@ -73,6 +75,8 @@ public class GameManager : MonoBehaviour
 
     public bool BossFightTime = false;
 
+    
+
 
     [SerializeField]
     private PlayerStats player;
@@ -102,13 +106,23 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.Gameplay); // Set the initial state to gameplay
         Time.timeScale = 1f; // Resume the game
         Debug.Log("Game is started");
-
-        // code to initialize status and powers?
     }
 
     void Update()
     {
         //TestSwitchState(); // test game over pressing key G
+
+        // manage boss bar visualization
+        // Check if the current scene is the target scene
+        if (SceneManager.GetActiveScene().name == "Scene1")
+        {
+            HideBossHealthBar();
+        }
+        else if (SceneManager.GetActiveScene().name == "BossArena")
+        {
+            ShowBossHealthBar();
+        }
+
 
         // Define the behavior for each state
         switch (currentState)
@@ -408,6 +422,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;    // Resume the game
         levelUpScreen.SetActive(false);
         ChangeState(GameState.Gameplay);
+    }
+
+
+    // Call this method to make the canvas visible
+    public void ShowBossHealthBar()
+    {
+        BossHealthBar.SetActive(true);
+    }
+
+    // Call this method to hide the canvas
+    public void HideBossHealthBar()
+    {
+        BossHealthBar.SetActive(false);
     }
 
 
