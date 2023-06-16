@@ -25,8 +25,7 @@ public class FreezeEnemyController : DefensivePowerUpController
 
     private void CongelaOggetti()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(bossTag);
-        enemies.AddRange(GameObject.FindGameObjectsWithTag(enemyTag));
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 
         foreach (GameObject enemy in enemies)
         {
@@ -70,8 +69,13 @@ public class FreezeEnemyController : DefensivePowerUpController
     private IEnumerator EnableEnemyMovement(EnemyMovement enemyMovement)
     {
         yield return new WaitForSeconds(durataCongelamento);
-        enemyMovement.enabled = true; // Riabilita l'EnemyMovement dopo il congelamento
+
+        if (enemyMovement != null) // Controlla se l'oggetto EnemyMovement esiste ancora
+        {
+            enemyMovement.enabled = true; // Riabilita l'EnemyMovement dopo il congelamento
+        }
     }
+
 
     private IEnumerator RestoreTextures()
     {
@@ -90,7 +94,7 @@ public class FreezeEnemyController : DefensivePowerUpController
             Renderer renderer = enemy.GetComponentInChildren<Renderer>();
             if (renderer != null)
             {
-                // Ripristina il materiale originale
+                // Ripristina il materiale originale solo se l'oggetto nemico esiste ancora
                 if (originalMaterials.TryGetValue(enemy, out Material originalMaterial))
                 {
                     renderer.material = originalMaterial;
@@ -107,9 +111,14 @@ public class FreezeEnemyController : DefensivePowerUpController
         // Rimuovi i materiali dei nemici distrutti dal dizionario
         foreach (GameObject destroyedEnemy in destroyedEnemies)
         {
-            originalMaterials.Remove(destroyedEnemy);
+            if (originalMaterials.ContainsKey(destroyedEnemy))
+            {
+                originalMaterials.Remove(destroyedEnemy);
+            }
         }
 
         inCongelamento = false;
     }
+
+
 }

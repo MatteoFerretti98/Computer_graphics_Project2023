@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49264803a615dc042a78e3c8fcc51c93, type: 3}
   m_Name: Freeze Enemy Level 3
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1920325297268671343, guid: 7e5baf0fde0a12a4eb4461b937dc37ca, type: 3}
+  prefab: {fileID: 100000, guid: 8c3016b442b943a46a4d1d50833a0fb1, type: 3}
   duration: 10
   cooldownDuration: 30
   speed: 1
