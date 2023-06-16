@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public Sound[] sounds;
-
+    public Sound[] musicSounds,sfxSounds;
+    public AudioSource musicSource, sfxSource;
+    
     void Awake()
     {
         if (instance != null)
@@ -23,24 +25,79 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        foreach (Sound s in sounds)
+    }
+
+    private void Start()
+    {
+        musicSource.volume = PersistenceManager.PersistenceInstance.MusicValue;
+        sfxSource.volume = PersistenceManager.PersistenceInstance.FxValue;
+        PlayMusic("Intro");
+    }
+
+    public void PlayMusic(string name)
+    {
+        Sound s = Array.Find(musicSounds, x => x.name == name);
+        if(s == null)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
+            Debug.Log("Sound not found");
+        }
+        else
+        {
+            musicSource.clip = s.clip;
+            musicSource.Play();
         }
     }
 
-    public void Play(string sound)
+    public void PlayMusicLoop(string name)
     {
-        Sound s = Array.Find(sounds, item => item.name == sound);
-        s.source.Play();
+        Sound s = Array.Find(musicSounds, x => x.name == name);
+        if (s == null)
+        {
+            Debug.Log("Sound not found");
+        }
+        else
+        {
+            musicSource.clip = s.clip;
+            musicSource.loop = true;
+            musicSource.Play();
+        }
     }
-    public void Stop(string sound)
+
+    public void StopMusic()
     {
-        Sound s = Array.Find(sounds, item => item.name == sound);
-        s.source.Stop();
+       if(musicSource) musicSource.Stop();
+    }
+
+    public void PlaySFX(string name)
+    {
+        Sound s = Array.Find(sfxSounds, x => x.name == name);
+        if (s == null)
+        {
+            Debug.Log("Sound not found");
+        }
+        else
+        {
+            sfxSource.PlayOneShot(s.clip);
+        }
+    }
+
+    public void ToggleMusic()
+    {
+        musicSource.mute = !musicSource.mute;
+    }
+
+    public void ToggleSFX()
+    {
+        sfxSource.mute = !sfxSource.mute;
+    }
+
+    public void MusicVolume(float volume)
+    {
+        musicSource.volume = volume / 100;
+    }
+
+    public void SfXVolume(float volume)
+    {
+        sfxSource.volume = volume / 100;
     }
 }

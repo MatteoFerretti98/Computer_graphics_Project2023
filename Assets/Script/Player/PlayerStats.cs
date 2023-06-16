@@ -377,6 +377,7 @@ public class PlayerStats : MonoBehaviour
 
     public void SpawnWeapon(GameObject weapon)
     {
+        AudioManager.instance.PlaySFX("LevelUp");
         inventory.DisableAllUIElements();
         //Checking if the slots are full, and returning if it is
         if (weaponIndex >= inventory.weaponSlots.Count - 1) //Must be -1 because a list starts from 0
@@ -394,6 +395,7 @@ public class PlayerStats : MonoBehaviour
 
     public void SpawnPassiveItem(GameObject passiveItem)
     {
+        AudioManager.instance.PlaySFX("LevelUp");
         inventory.DisableAllUIElements();
         //Checking if the slots are full, and returning if it is
         if (passiveItemIndex >= inventory.passiveItemSlots.Count - 1) //Must be -1 because a list starts from 0
@@ -412,6 +414,7 @@ public class PlayerStats : MonoBehaviour
 
     public void SpawnBoostItem(GameObject boostItem)
     {
+        AudioManager.instance.PlaySFX("LevelUp");
         inventory.DisableAllUIElements();
         //Spawn the boost item
         GameObject spawnedBoostItem = Instantiate(boostItem, transform.position, Quaternion.identity);

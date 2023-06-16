@@ -46,8 +46,8 @@ public class PlayerSpawner : MonoBehaviour
     public Image expBar;
     public TextMeshProUGUI levelText;
 
-    
-
+    public Slider[] sliders;
+    public AudioManager audioManager;
     private void Awake()
     {
         if (instance == null)
@@ -73,6 +73,8 @@ public class PlayerSpawner : MonoBehaviour
         InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
         PlayerStats playerStats = FindObjectOfType<PlayerStats>();
         HealthBarController healthBarController = FindObjectOfType<HealthBarController>();
+        sliders = FindObjectsOfType<Slider>();
+        AudioManager audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
         inventoryManager.upgradeUIOptions = upgradeUIOptions;
         inventoryManager.passiveItemUISlots = passiveItemUISlots;
         inventoryManager.weaponUISlots = weaponUISlots;
@@ -87,8 +89,29 @@ public class PlayerSpawner : MonoBehaviour
         playerStats.playerName = playerName;
         playerStats.playerImage = playerImage;
         healthBarController.cam = cam;
+        
 
+        for(int i = 0; i < sliders.Length; i++)
+        {
+            Debug.Log(i);
+            if (sliders[i].gameObject.name == "SFX Slider")
+            {
+                Debug.Log("ok SFX");
+                Slider.SliderEvent sliderEvent = new Slider.SliderEvent();
+                sliderEvent.AddListener(audioManager.gameObject.GetComponent<AudioManager>().SfXVolume);
+                sliders[i].GetComponent<Slider>().onValueChanged = sliderEvent;
+            }
+            else if (sliders[i].gameObject.name == "Music Slider")
+            {
+                Debug.Log("ok Music");
+                Slider.SliderEvent sliderEvent = new Slider.SliderEvent();
+                sliderEvent.AddListener(audioManager.gameObject.GetComponent<AudioManager>().MusicVolume);
+                sliders[i].GetComponent<Slider>().onValueChanged = sliderEvent;
+            }
+            
+        }
     }
+
 
     void Start()
     {

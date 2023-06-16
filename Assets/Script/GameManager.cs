@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        AudioManager.instance.PlayMusicLoop("InGameMusic");
         ChangeState(GameState.Gameplay); // Set the initial state to gameplay
         Time.timeScale = 1f; // Resume the game
         Debug.Log("Game is started");
@@ -150,9 +150,12 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GameOver:
                 // Code for the game over state
+                
                 if (!isGameOver)
                 {
                     isGameOver = true;
+                    AudioManager.instance.StopMusic();
+                    AudioManager.instance.PlaySFX("GameOver");
                     Time.timeScale = 0f;
 
                     if (previousState == GameState.Gameplay)
@@ -419,8 +422,8 @@ public class GameManager : MonoBehaviour
         {
             //GameOver(); // change: call here function to start game with boss
             //Mostra schermata della boss warning
+            AudioManager.instance.StopMusic();
 
-            
 
             BossFightTime = true;
             player = FindAnyObjectByType<PlayerStats>();

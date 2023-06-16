@@ -8371,6 +8371,18 @@ MonoBehaviour:
           m_StringArgument: Scene1
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 74512099}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: AudioSelector
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Continue
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1861321881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9593,6 +9605,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: CharacterSelector
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 74512099}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: AudioSelector
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Back
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2094080081

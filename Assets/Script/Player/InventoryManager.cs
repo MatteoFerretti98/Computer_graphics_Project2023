@@ -146,6 +146,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void LevelUpWeapon(int slotIndex, int upgradeIndex)
     {
+        AudioManager.instance.PlaySFX("LevelUp");
         DisableAllUIElements();
         if (weaponSlots.Count > slotIndex)
         {
@@ -172,6 +173,7 @@ public class InventoryManager : MonoBehaviour
 
     public void LevelUpPassiveItem(int slotIndex, int upgradeIndex)
     {
+        AudioManager.instance.PlaySFX("LevelUp");
         DisableAllUIElements();
         if (passiveItemSlots.Count > slotIndex)
         {
@@ -197,6 +199,7 @@ public class InventoryManager : MonoBehaviour
 
     public void LevelUpDefensivePowerUp(int slotIndex, int upgradeIndex)
     {
+        AudioManager.instance.PlaySFX("LevelUp");
         DisableAllUIElements();
         if (defensivePowerUpSlots.Count > slotIndex)
         {
