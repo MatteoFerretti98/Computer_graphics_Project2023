@@ -103,11 +103,13 @@ public class UIWeaponSelector : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if (PersistenceManager.PersistenceInstance.Coins < price)
         {
             Debug.Log("Non Puoi comprarlo");
+            AudioManager.instance.PlaySFX("Lock");
             MessageManager.ShowMessage(messageError, 2f);
         }
         else
         {
             // Aggiorno Saldo
+            AudioManager.instance.PlaySFX("Unlock");
             PersistenceManager.PersistenceInstance.DecrementBalance(price);
             PersistenceManager.PersistenceInstance.AddWeapon(tag);
             PersistenceManager.PersistenceInstance.writeFile();

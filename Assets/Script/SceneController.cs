@@ -5,7 +5,9 @@ public class SceneController : MonoBehaviour
 {
     public void SceneChange(string name)
     {
+        //AudioManager.instance.Play("Menu Selection");
         SceneManager.LoadScene(name);
+        if(name == "Menu") AudioManager.instance.StopMusic();
         Time.timeScale = 1;
     }
 
@@ -26,6 +28,24 @@ public class SceneController : MonoBehaviour
         foreach (GameObject obj in sceneObjects)
         {
             obj.SetActive(false); // Or use Destroy(obj) if you want to destroy the objects
+        }
+    }
+
+    public void AudioSelector(string type)
+    {
+        switch (type)
+        {
+            case "Start":
+                AudioManager.instance.PlaySFX("ClickButtonStart");
+                break;
+            case "Continue":
+                AudioManager.instance.PlaySFX("ClickButtonMenu");
+                break;
+            case "Back":
+                AudioManager.instance.PlaySFX("Back");
+                break;
+            default:
+                break;
         }
     }
 }

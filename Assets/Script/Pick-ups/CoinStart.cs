@@ -11,6 +11,7 @@ public class CoinStar : MonoBehaviour, ICollectible
 
     public void Collect()
     {
+        AudioManager.instance.PlaySFX("StarCollect");
         PlayerStats stats = FindObjectOfType<PlayerStats>();
         stats.IncrementCoins(CoinToAdd);
         Destroy(gameObject);

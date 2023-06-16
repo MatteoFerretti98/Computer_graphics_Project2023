@@ -10,9 +10,26 @@ public class PersistenceManager : MonoBehaviour
         public int Coins;
         public List<string> Weapons;
         public bool FirstTime;
+        public float FxValue;
+        public float MusicValue;
     }
 
     private GameData gameData;
+
+    
+    public float MusicValue
+    {
+        get => gameData.MusicValue;
+        set => gameData.MusicValue = value;
+    }
+    public float FxValue
+    {
+        get => gameData.FxValue;
+        set => gameData.FxValue = value;
+    }
+
+    
+
     public bool FirstTime
     {
         get => gameData.FirstTime;
@@ -55,6 +72,8 @@ public class PersistenceManager : MonoBehaviour
             weapons.Add("Knife");
             PersistenceInstance.Weapons = weapons;
             PersistenceInstance.FirstTime = true;
+            PersistenceInstance.FxValue = 0.5f;
+            PersistenceInstance.MusicValue = 0.5f;
             // Serialize the object into JSON and save string.
             string jsonString = JsonUtility.ToJson(gameData);
 
