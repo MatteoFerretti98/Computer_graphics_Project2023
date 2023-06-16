@@ -325,6 +325,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1128758269040250, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 620450652}
+    - targetCorrespondingSourceObject: {fileID: 1128758269040250, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 620450655}
   m_SourcePrefab: {fileID: 100100000, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
 --- !u!1 &620450648 stripped
 GameObject:
@@ -362,8 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3b72e819133554fb71128f9738664a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
-  damageZonePrefab: {fileID: 1956197547661106, guid: f293a2dcc753a4a489fefe7f8f312d69, type: 3}
+  fireballPrefab: {fileID: 1947871717301538, guid: 471fb20e011bb524cbe2c99a51704248, type: 3}
+  damageZonePrefab: {fileID: 1956197547661106, guid: 0be48a3139be086459df8a8c664e4e03, type: 3}
   fireballSpeed: 5
   maxAttacksPerPhase: 10
   damageZoneRadius: 20
@@ -440,6 +443,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &620450655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620450648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228dbe8fd1977ca4a88f72b7d704abda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - name: FinalGift
+    itemPrefab: {fileID: 6860756994242604922, guid: 7530c545ddd6dd341a2ed1131fc096ca, type: 3}
+    sparklePrefab: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
+    dropRate: 100
 --- !u!1 &1081597749
 GameObject:
   m_ObjectHideFlags: 0

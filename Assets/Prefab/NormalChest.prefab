@@ -762,7 +762,7 @@ MonoBehaviour:
     itemPrefab: {fileID: 4062828244765988839, guid: 488f00986eb23854390405dd8c6e676d, type: 3}
     dropRate: 50
   - name: Monete
-    itemPrefab: {fileID: 7315938736708012313, guid: 2142cb3046bd9064ab0d1c7d6a16d4c0, type: 3}
+    itemPrefab: {fileID: 7315938736708012313, guid: c9461ca72d9efee429d1c8cc23838315, type: 3}
     dropRate: 50
 --- !u!114 &-8917856548259493634
 MonoBehaviour:

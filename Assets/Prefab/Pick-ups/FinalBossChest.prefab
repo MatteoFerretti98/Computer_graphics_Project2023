@@ -677,10 +677,11 @@ GameObject:
   - component: {fileID: 6860756994249858238}
   - component: {fileID: 27306021975909451}
   - component: {fileID: -7966682635126622928}
-  - component: {fileID: 7482511355610153929}
+  - component: {fileID: -7264225435744950656}
+  - component: {fileID: -4185949668660843047}
   m_Layer: 0
   m_Name: FinalBossChest
-  m_TagString: Prop
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -693,7 +694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6860756994242604922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -771,7 +772,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &7482511355610153929
+--- !u!114 &-7264225435744950656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -780,11 +781,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 6860756994242604922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e7c8127c07a4146ad67bb28a0ae055, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ff967b7ed48f2441bcf509edf6b889a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnimated: 1
+  isRotating: 0
+  isFloating: 0
+  isScaling: 1
+  rotationAngle: {x: 0, y: 0, z: 10}
+  rotationSpeed: 10
+  floatSpeed: 0.02
+  floatRate: 0.2
+  startScale: {x: 2, y: 2, z: 2}
+  endScale: {x: 2, y: 2, z: 2}
+  scaleSpeed: 1
+  scaleRate: 0.5
+--- !u!114 &-4185949668660843047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6860756994242604922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099e5d16ae9e6f448a809a206865f185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CoinToAdd: 100
   coinEffect: {fileID: 100006, guid: 8fc06027b01064e4f885fd8dd2929310, type: 3}
+  numPrefabsToSpawn: 10
+  spawnRadius: 1
 --- !u!1 &6860756994242604924
 GameObject:
   m_ObjectHideFlags: 0

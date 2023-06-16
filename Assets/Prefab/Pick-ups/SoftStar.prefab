@@ -172,5 +172,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e7c8127c07a4146ad67bb28a0ae055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinToAdd: 5
+  CoinToAdd: 1
   coinEffect: {fileID: 100006, guid: 8fc06027b01064e4f885fd8dd2929310, type: 3}
