@@ -37,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
     public List<Transform> relativeSpawnPoints; //A list to store all the relative spawn points of enemies
 
     Transform player;
+    bool waveInProgress = false; // Flag indicating if a wave is currently in progress
 
     void Start()
     {
@@ -46,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == 0)  //Check if the wave has ended and the next wave should start
+        if (!waveInProgress && currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == 0)  //Check if the wave has ended and the next wave should start
         {
             StartCoroutine(BeginNextWave());
         }
@@ -54,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
         spawnTimer += Time.deltaTime;
 
         //Check if it's time to spawn the next enemy
-        if (spawnTimer >= waves[currentWaveCount].spawnInterval)
+        if (waveInProgress && spawnTimer >= waves[currentWaveCount].spawnInterval)
         {
             spawnTimer = 0f;
             SpawnEnemies();
@@ -63,6 +64,8 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator BeginNextWave()
     {
+        waveInProgress = true; // Imposta il flag di wave in corso prima di attendere l'intervallo
+
         //Wait for `waveInterval` seconds before starting the next wave.
         yield return new WaitForSeconds(waveInterval);
 
@@ -72,7 +75,10 @@ public class EnemySpawner : MonoBehaviour
             currentWaveCount++;
             CalculateWaveQuota();
         }
+
+        waveInProgress = false; // Imposta il flag di wave in corso su false dopo l'attesa
     }
+
 
     void CalculateWaveQuota()
     {
@@ -123,6 +129,12 @@ public class EnemySpawner : MonoBehaviour
         if (enemiesAlive < maxEnemiesAllowed)
         {
             maxEnemiesReached = false;
+        }
+
+        // Check if the wave quota has been reached
+        if (waves[currentWaveCount].spawnCount >= waves[currentWaveCount].waveQuota)
+        {
+            waveInProgress = false;
         }
     }
 
