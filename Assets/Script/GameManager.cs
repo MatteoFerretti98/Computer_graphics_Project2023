@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
     public List<Image> chosenPassiveItemsUI = new List<Image>(6);
     public List<Image> chosenDefensivePowerUpUI = new List<Image>(6);
 
+    [Header("Win Screen Displays")]
+    public Image winCharacterImage;
+
     [Header("Stopwatch")]
     public float timeLimit; // The time limit in seconds
     float stopwatchTime; // The current time elapsed since the stopwatch started
@@ -342,6 +345,7 @@ public class GameManager : MonoBehaviour
     {
         chosenCharacterImage.sprite = playerImage;
         chosenCharacterName.text = playerName;
+        winCharacterImage.sprite = playerImage;
     }
 
     public void AssignLevelReachedUI(int levelReachedData)
