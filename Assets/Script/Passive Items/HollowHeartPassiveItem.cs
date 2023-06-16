@@ -6,6 +6,6 @@ public class HollowHeartPassiveItem : PassiveItem
 {
     protected override void ApplyModifier()
     {
-        player.CurrentHealth *= 1 + passiveItemData.Multiplier / 100f;
+        player.MaxHealth *= 1 + passiveItemData.Multiplier / 100f;
     }
 }

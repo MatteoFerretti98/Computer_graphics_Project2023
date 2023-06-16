@@ -16,6 +16,8 @@ public class PlayerStats : MonoBehaviour
     float currentMagnet;
     int currentCoins;
 
+    public float MaxHealth;
+
     #region Current Stats Properties
     public float CurrentHealth
     {
@@ -25,7 +27,7 @@ public class PlayerStats : MonoBehaviour
             //Check if the value has changed
             if (currentHealth != value)
             {
-                if (value >= characterData.MaxHealth) currentHealth = characterData.MaxHealth;
+                if (value >= MaxHealth) currentHealth = MaxHealth;
                 else currentHealth = value;
                 if (GameManager.instance != null)
                 {
@@ -202,8 +204,10 @@ public class PlayerStats : MonoBehaviour
         inventory = GetComponent<InventoryManager>();
 
         PersistenceManager.PersistenceInstance.readFile();
-        
+
         //Assign the variables
+        MaxHealth = characterData.MaxHealth;
+
         CurrentHealth = characterData.MaxHealth;
         CurrentRecovery = characterData.Recovery;
         CurrentMoveSpeed = characterData.MoveSpeed;
@@ -328,7 +332,7 @@ public class PlayerStats : MonoBehaviour
     void UpdateHealthBar()
     {
         //Update the health bar
-        healthBar.fillAmount = CurrentHealth / characterData.MaxHealth;
+        healthBar.fillAmount = CurrentHealth / MaxHealth;
     }
 
     public void Kill()
@@ -349,28 +353,28 @@ public class PlayerStats : MonoBehaviour
     public void RestoreHealth(float amount)
     {
         // Only heal the player if their current health is less than their maximum health
-        if (CurrentHealth < characterData.MaxHealth)
+        if (CurrentHealth < MaxHealth)
         {
             CurrentHealth += amount;
 
             // Make sure the player's health doesn't exceed their maximum health
-            if (CurrentHealth > characterData.MaxHealth)
+            if (CurrentHealth > MaxHealth)
             {
-                CurrentHealth = characterData.MaxHealth;
+                CurrentHealth = MaxHealth;
             }
         }
     }
 
     void Recover()
     {
-        if (CurrentHealth < characterData.MaxHealth)
+        if (CurrentHealth < MaxHealth)
         {
             CurrentHealth += CurrentRecovery * Time.deltaTime;
 
             // Make sure the player's health doesn't exceed their maximum health
-            if (CurrentHealth > characterData.MaxHealth)
+            if (CurrentHealth > MaxHealth)
             {
-                CurrentHealth = characterData.MaxHealth;
+                CurrentHealth = MaxHealth;
             }
         }
     }

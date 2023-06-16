@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lich Enemy
   m_EditorClassIdentifier: 
   moveSpeed: 1.8
-  maxHealth: 40
-  damage: 30
+  maxHealth: 50
+  damage: 50
