@@ -160,7 +160,7 @@ public class BossMovement : MonoBehaviour
         for (int i = 0; i < maxAttacksPerPhase; i++)
         {
             // Genera una posizione casuale all'interno del raggio specificato
-            Vector3 randomPosition = transform.position + Random.insideUnitSphere * damageZoneRadius;
+            Vector3 randomPosition = new Vector3(transform.position.x + Random.insideUnitSphere.x * damageZoneRadius, transform.position.y+2f, transform.position.z + Random.insideUnitSphere.z * damageZoneRadius);
 
             // Istanzia la zona di danno utilizzando il damageZonePrefab nella posizione casuale generata
             GameObject damageZone = Instantiate(damageZonePrefab, randomPosition, Quaternion.identity);
