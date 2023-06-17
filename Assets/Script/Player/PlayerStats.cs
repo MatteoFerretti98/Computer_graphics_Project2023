@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -49,7 +50,7 @@ public class PlayerStats : MonoBehaviour
                 currentRecovery = value;
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentRecoveryDisplay.text = "" + currentRecovery;
+                    GameManager.instance.currentRecoveryDisplay.text = "" + Math.Round(currentRecovery, 2).ToString().Replace(",", ".");
                 }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
@@ -68,7 +69,7 @@ public class PlayerStats : MonoBehaviour
                 currentMoveSpeed = value;
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentMoveSpeedDisplay.text = "" + currentMoveSpeed;
+                    GameManager.instance.currentMoveSpeedDisplay.text = "" + Math.Round(currentMoveSpeed, 2).ToString().Replace(",", ".");
                 }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
@@ -88,7 +89,7 @@ public class PlayerStats : MonoBehaviour
 
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentMightDisplay.text = "" + currentMight;
+                    GameManager.instance.currentMightDisplay.text = "" + Math.Round(currentMight, 2).ToString().Replace(",", ".");
                 }
 
                 //Update the real time value of the stat
@@ -127,7 +128,7 @@ public class PlayerStats : MonoBehaviour
                 currentMagnet = value;
                 if (GameManager.instance != null)
                 {
-                    GameManager.instance.currentMagnetDisplay.text = "" + currentMagnet;
+                    GameManager.instance.currentMagnetDisplay.text = "" + Math.Round(currentMagnet, 2).ToString().Replace(",",".");
                 }
                 //Update the real time value of the stat
                 //Add any additional logic here that needs to be executed when the value changes
@@ -237,7 +238,7 @@ public class PlayerStats : MonoBehaviour
         GameManager.instance.currentMoveSpeedDisplay.text = "" + currentMoveSpeed;
         GameManager.instance.currentMightDisplay.text = "" + currentMight;
         GameManager.instance.currentProjectileSpeedDisplay.text = "" + currentProjectileSpeed;
-        GameManager.instance.currentMagnetDisplay.text = "" + currentMagnet;
+        GameManager.instance.currentMagnetDisplay.text = "" + currentMagnet.ToString().Replace(",", ".");
         GameManager.instance.currentCoinsDisplay.text = "" + currentCoins;
 
         GameManager.instance.AssignChosenCharacterUI(this.playerName,this.playerImage);
