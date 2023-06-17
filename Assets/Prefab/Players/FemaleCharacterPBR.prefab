@@ -2444,6 +2444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterData: {fileID: 0}
   currentHealth: 0
+  MaxHealth: 0
   experience: 0
   level: 1
   experienceCap: 5
@@ -2556,8 +2557,14 @@ MonoBehaviour:
     passiveItemData: {fileID: 11400000, guid: 99b12627a571acf46adaed1ae4ea6207, type: 2}
   defensivePowerUpUpgradeOptions:
   - defensivePowerUpIndex: 0
+    initialDefensivePowerUp: {fileID: 1931349279213131211, guid: ee3232e316b7b704897095a536a84d17, type: 3}
+    defensivePowerUpData: {fileID: 11400000, guid: 467a8474f8eb23c428ada03779618aa3, type: 2}
+  - defensivePowerUpIndex: 1
     initialDefensivePowerUp: {fileID: 1850512446608178633, guid: 481956c255247f44588787a3a2b00a16, type: 3}
     defensivePowerUpData: {fileID: 11400000, guid: 698cbf969f938bb4b8a4fbce56e26cd3, type: 2}
+  - defensivePowerUpIndex: 2
+    initialDefensivePowerUp: {fileID: 1045461888984940617, guid: 7276f41ea84879041b1a74de4346d5c9, type: 3}
+    defensivePowerUpData: {fileID: 11400000, guid: 3166dbd1c676f4e499eada2a7cc333ed, type: 2}
   upgradeUIOptions:
   - upgradeIcon: {fileID: 0}
     upgradeButton: {fileID: 0}
