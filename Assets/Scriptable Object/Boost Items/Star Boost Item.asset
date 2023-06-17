@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   increment: 20
   name: Star
-  description: Increment Stars Value By 20
+  description: Increment stars value by 20.
   icon: {fileID: 21300000, guid: 8f4e44c701fc24e0aa0b15876fbed4c4, type: 3}
