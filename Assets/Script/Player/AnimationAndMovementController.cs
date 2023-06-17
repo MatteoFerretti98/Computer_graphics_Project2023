@@ -10,7 +10,7 @@ public class AnimationAndMovementController : MonoBehaviour
     PlayerStats player;
 
 
-    private float timeBossWarningScreen = 1.8f;
+    private float timeBossWarningScreen = 3f;
     //Declere reference variables
     CharacterController characterController;
     Animator animator;
@@ -52,6 +52,8 @@ public class AnimationAndMovementController : MonoBehaviour
     Coroutine currentJumpResetRoutine = null;
 
     public bool EnterFightArena = false;
+    private bool BossWarning = true;
+    private bool ShowWarning = true;
 
     // Awake is called erlier than Start in Unity's event life cycle
     void Awake()
@@ -172,25 +174,36 @@ public class AnimationAndMovementController : MonoBehaviour
         }
         else
         {
-            isMovementPressed = true;
-            isWalkingHash = Animator.StringToHash("isWalking");
+
 
             // Aggiungi il codice per distruggere tutti gli oggetti con il tag "Enemy" con l'effetto specifico
+
+            // mostra schermata boss warning
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
                 DestroyEnemyWithEffect(enemy);
             }
 
+            if (BossWarning)
+            {
+                if (ShowWarning) {
+                    ShowWarning = false;
+                    AudioManager.instance.PlaySFX("Warning");
+                    StartCoroutine(ShowAndHideObjectAfterDelay(GameManager.instance.bossWarningScreen, timeBossWarningScreen));
+                }
 
-            
-            // mostra schermata boss warning
-            StartCoroutine(ShowAndHideObjectAfterDelay(GameManager.instance.bossWarningScreen, timeBossWarningScreen));
-
-            // Aggiungi il codice per far guardare il personaggio verso sinistra, poi destra
-            // e farlo camminare verso le coordinate (20,1,20) dopo un'attesa di 2 secondi
-            transform.LookAt(Vector3.left); // Guarda verso sinistra
-            StartCoroutine(WaitAndMoveToPosition(new Vector3(transform.position.x + 20f, 1, transform.position.z + 20f), 2f)); // Aspetta 2 secondi e poi cammina verso (20,1,20)
+            }
+            else
+            {
+                // Aggiungi il codice per far guardare il personaggio verso sinistra, poi destra
+                // e farlo camminare verso le coordinate (20,1,20) dopo un'attesa di 2 secondi
+                
+                isMovementPressed = true;
+                isWalkingHash = Animator.StringToHash("isWalking");
+                transform.LookAt(Vector3.left); // Guarda verso sinistra
+                StartCoroutine(WaitAndMoveToPosition(new Vector3(transform.position.x + 20f, 1, transform.position.z + 20f), 0.5f)); // Aspetta 2 secondi e poi cammina verso (20,1,20)
+            }
         }
     }
 
@@ -211,6 +224,7 @@ public class AnimationAndMovementController : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         obj.SetActive(false); // Nascondi l'oggetto
+        BossWarning = false;
     }
 
     IEnumerator WaitAndMoveToPosition(Vector3 targetPosition, float waitTime)

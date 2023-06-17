@@ -7,7 +7,12 @@ public class SceneController : MonoBehaviour
     {
         //AudioManager.instance.Play("Menu Selection");
         SceneManager.LoadScene(name);
-        if(name == "Menu") AudioManager.instance.StopMusic();
+        if (name == "Menu") AudioManager.instance.StopMusic();
+        else if (name == "BossArena")
+        {
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic("InGameBossMusic");
+        }
         Time.timeScale = 1;
     }
 

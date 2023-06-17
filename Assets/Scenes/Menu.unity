@@ -13638,6 +13638,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a2b2e0682e0303c42b2ae9149440e398, type: 3}
   - name: InGameMusic
     clip: {fileID: 8300000, guid: 06ffad83fbf60904a8bd3892feee3351, type: 3}
+  - name: InGameBossMusic
+    clip: {fileID: 8300000, guid: 465b16abf2de5164db053ae2cc06ad82, type: 3}
   sfxSounds:
   - name: ClickButtonStart
     clip: {fileID: 8300000, guid: a87ea1289f86cc24d8bd7e9c2b69dbd6, type: 3}
@@ -13655,6 +13657,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5c52bc0ba1282d04abfd90647939c3a1, type: 3}
   - name: GameOver
     clip: {fileID: 8300000, guid: 810c5c51447f4604e8a163f2ffa6b082, type: 3}
+  - name: Warning
+    clip: {fileID: 8300000, guid: 1d13d64cee354914aa8f3f6ecac670f1, type: 3}
+  - name: Win
+    clip: {fileID: 8300000, guid: 4283e0592951efa488afec56c40fec15, type: 3}
   musicSource: {fileID: 1221024276}
   sfxSource: {fileID: 126543523}
 --- !u!4 &1452072250

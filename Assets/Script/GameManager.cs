@@ -197,6 +197,7 @@ public class GameManager : MonoBehaviour
             case GameState.Win:
                 if (!isWin)
                 {
+                    AudioManager.instance.StopMusic();
                     isWin = true;
                     Time.timeScale = 0f;
 
@@ -208,6 +209,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Game is in Win state: congratulation!");
                     gameScreen.SetActive(false); //
                     winScreen.SetActive(true);
+                    AudioManager.instance.PlaySFX("Win");
                 }
 
                 break;
@@ -422,10 +424,11 @@ public class GameManager : MonoBehaviour
 
         UpdateStopwatchDisplay();
 
-        if (stopwatchTime >= timeLimit)
+        if (stopwatchTime >= timeLimit && !BossFightTime)
         {
             //GameOver(); // change: call here function to start game with boss
             //Mostra schermata della boss warning
+            
             AudioManager.instance.StopMusic();
 
 
