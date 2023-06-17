@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6257041692608135990}
   - component: {fileID: 490931963175841446}
   - component: {fileID: 8332214037828494591}
+  - component: {fileID: 7565879337551916919}
   - component: {fileID: 4168011191681304815}
   - component: {fileID: 5690365196208366747}
-  - component: {fileID: 7565879337551916919}
   - component: {fileID: 1048828085549535676}
   m_Layer: 0
   m_Name: MaleCharacter
@@ -85,6 +85,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7565879337551916919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793122096414303919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ea476d93492b147887fb5ad2bbf34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: cf8a920be0944dd468224e5f30ab91f5, type: 2}
+  currentHealth: 0
+  MaxHealth: 0
+  experience: 0
+  level: 1
+  experienceCap: 5
+  invincibilityDuration: 1
+  levelRanges:
+  - startLevel: 1
+    endLevel: 3
+    experienceCapIncrease: 100
+  - startLevel: 4
+    endLevel: 5
+    experienceCapIncrease: 200
+  weaponIndex: 0
+  passiveItemIndex: 0
+  defensivePowerUpIndex: 0
+  healthBar: {fileID: 7502071361017606429}
+  expBar: {fileID: 0}
+  levelText: {fileID: 0}
+  secondWeaponTest: {fileID: 1314301844701400672, guid: 113fef7198cbdfa4496e956778147234, type: 3}
+  firstPassiveItemTest: {fileID: 6145373405619145763, guid: c89679a9fba222c428eab19eef377559, type: 3}
+  secondPassiveItemTest: {fileID: 8903732772856946776, guid: cde74a930909bab40a6f9bbd47b62a93, type: 3}
+  stars: {fileID: 0}
+  playerName: 
+  playerImage: {fileID: 0}
 --- !u!114 &4168011191681304815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,44 +257,6 @@ MonoBehaviour:
   appliedMovement: {x: 0, y: 0, z: 0}
   EnterFightArena: 0
   enemyDestroyEffect: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c, type: 3}
---- !u!114 &7565879337551916919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4793122096414303919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ea476d93492b147887fb5ad2bbf34b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterData: {fileID: 11400000, guid: cf8a920be0944dd468224e5f30ab91f5, type: 2}
-  currentHealth: 0
-  MaxHealth: 0
-  experience: 0
-  level: 1
-  experienceCap: 5
-  invincibilityDuration: 1
-  levelRanges:
-  - startLevel: 1
-    endLevel: 3
-    experienceCapIncrease: 100
-  - startLevel: 4
-    endLevel: 5
-    experienceCapIncrease: 200
-  weaponIndex: 0
-  passiveItemIndex: 0
-  defensivePowerUpIndex: 0
-  healthBar: {fileID: 7502071361017606429}
-  expBar: {fileID: 0}
-  levelText: {fileID: 0}
-  secondWeaponTest: {fileID: 1314301844701400672, guid: 113fef7198cbdfa4496e956778147234, type: 3}
-  firstPassiveItemTest: {fileID: 6145373405619145763, guid: c89679a9fba222c428eab19eef377559, type: 3}
-  secondPassiveItemTest: {fileID: 8903732772856946776, guid: cde74a930909bab40a6f9bbd47b62a93, type: 3}
-  stars: {fileID: 0}
-  playerName: 
-  playerImage: {fileID: 0}
 --- !u!136 &1048828085549535676
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -352,6 +352,7 @@ PrefabInstance:
     - {fileID: 861468738955913118, guid: f40609b925048d340ad527699f1a8476, type: 3}
     - {fileID: 1296103929238565034, guid: f40609b925048d340ad527699f1a8476, type: 3}
     - {fileID: 7982658587401106823, guid: f40609b925048d340ad527699f1a8476, type: 3}
+    - {fileID: 4712309730738413339, guid: f40609b925048d340ad527699f1a8476, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
