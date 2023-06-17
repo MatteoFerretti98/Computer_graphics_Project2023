@@ -20,4 +20,4 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 1850512446608178633, guid: 7fda40a044f683e49b6517a12c121504, type: 3}
   icon: {fileID: 21300000, guid: bc935e5afc647634f812eb47d91028e4, type: 3}
   name: Invincibility Circle Level 2
-  description: Invicibility circle duration is up by 2, cooldown is reduced by 20.
+  description: Invincibility circle duration is up by 2, cooldown is reduced by 20.

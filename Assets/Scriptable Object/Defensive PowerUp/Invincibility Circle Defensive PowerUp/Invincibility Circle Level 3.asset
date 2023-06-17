@@ -20,4 +20,4 @@ MonoBehaviour:
   nextLevelPrefab: {fileID: 0}
   icon: {fileID: 21300000, guid: bc935e5afc647634f812eb47d91028e4, type: 3}
   name: Invincibility Circle Level 3
-  description: Invicibility circle duration is up by 5, cooldown is reduced by 10.
+  description: Invincibility circle duration is up by 5, cooldown is reduced by 10.
