@@ -53,6 +53,12 @@ public class FreezeEnemyController : DefensivePowerUpController
                 enemyMovement.enabled = false; // Disabilita temporaneamente l'EnemyMovement
                 StartCoroutine(EnableEnemyMovement(enemyMovement)); // Riabilita l'EnemyMovement dopo il congelamento
             }
+            EnemyChestMovement enemyChestMovement = enemy.GetComponent<EnemyChestMovement>();
+            if (enemyChestMovement != null)
+            {
+                enemyChestMovement.enabled = false; // Disabilita temporaneamente l'EnemyMovement
+                StartCoroutine(EnableEnemyMovement(enemyChestMovement)); // Riabilita l'EnemyMovement dopo il congelamento
+            }
 
             Animator animator = enemy.GetComponent<Animator>();
             if (animator != null)
@@ -73,6 +79,16 @@ public class FreezeEnemyController : DefensivePowerUpController
         if (enemyMovement != null) // Controlla se l'oggetto EnemyMovement esiste ancora
         {
             enemyMovement.enabled = true; // Riabilita l'EnemyMovement dopo il congelamento
+        }
+    }
+
+    private IEnumerator EnableEnemyMovement(EnemyChestMovement enemyChestMovement)
+    {
+        yield return new WaitForSeconds(durataCongelamento);
+
+        if (enemyChestMovement != null) // Controlla se l'oggetto EnemyMovement esiste ancora
+        {
+            enemyChestMovement.enabled = true; // Riabilita l'EnemyMovement dopo il congelamento
         }
     }
 

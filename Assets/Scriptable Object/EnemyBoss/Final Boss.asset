@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Final Boss
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  maxHealth: 1500
+  maxHealth: 5000
   damage1: 150
   damage2: 80
   damage3: 200
