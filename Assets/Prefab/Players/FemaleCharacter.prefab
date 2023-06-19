@@ -210,6 +210,9 @@ MonoBehaviour:
   - passiveItemUpgradeIndex: 3
     initialPassiveItem: {fileID: 4937849742930750205, guid: 80e3c62cb90ce7c42869e9fce4fa071d, type: 3}
     passiveItemData: {fileID: 11400000, guid: 99b12627a571acf46adaed1ae4ea6207, type: 2}
+  - passiveItemUpgradeIndex: 4
+    initialPassiveItem: {fileID: 4700847077541128522, guid: c83afdb298182e742a3b46938ea8debf, type: 3}
+    passiveItemData: {fileID: 11400000, guid: 5655e97f6b9b66b4d87101b60399aa0c, type: 2}
   defensivePowerUpUpgradeOptions:
   - defensivePowerUpIndex: 0
     initialDefensivePowerUp: {fileID: 1931349279213131211, guid: ee3232e316b7b704897095a536a84d17, type: 3}
