@@ -370,6 +370,7 @@ MonoBehaviour:
   fireballSpeed: 5
   maxAttacksPerPhase: 10
   damageZoneRadius: 20
+  cooldownDuration: 3
 --- !u!136 &620450652
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -389,10 +390,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.17973605
+  m_Radius: 0.27949414
   m_Height: 3.2826908
   m_Direction: 2
-  m_Center: {x: 0.000000023841858, y: 0.6653644, z: 0.45154554}
+  m_Center: {x: 0.000000023841858, y: 0.5656063, z: 0.45154554}
 --- !u!136 &620450653
 CapsuleCollider:
   m_ObjectHideFlags: 0
