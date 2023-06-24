@@ -12,10 +12,14 @@ public class TeleportController : DefensivePowerUpController
     protected override void Defend()
     {
         base.Defend();
-        GameObject spawnedTeleportEffect = Instantiate(defensivePowerUpData.Prefab);
-        spawnedTeleportEffect.transform.position = new Vector3 (transform.position.x, transform.position.y + 0.5f, transform.position.z); //Assign the position to be the same as this object which is parented to the player
-        spawnedTeleportEffect.transform.parent = transform; // So that is spawns below this object
-        Teleport(); // Teletrasporto
+
+        if (!GameManager.instance.BossFightTime)
+        {
+            GameObject spawnedTeleportEffect = Instantiate(defensivePowerUpData.Prefab);
+            spawnedTeleportEffect.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z); //Assign the position to be the same as this object which is parented to the player
+            spawnedTeleportEffect.transform.parent = transform; // So that is spawns below this object
+            Teleport(); // Teletrasporto
+        }
     }
 
     // Metodo per il teletrasporto
